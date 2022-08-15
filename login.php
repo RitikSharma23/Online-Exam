@@ -1,9 +1,11 @@
 <?php
 
-$number=$_REQUEST['number'];
-$password=$_REQUEST['password'];
+$number;
 
-echo "Phone number : "+$number;
-echo "password : "+$password;
+$number=$_POST['number'];
+$password=$_POST['password'];
+
+echo "Phone number : ".$number;
+echo "password : ".$password;
 
 ?>
