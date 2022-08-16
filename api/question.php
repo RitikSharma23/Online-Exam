@@ -9,33 +9,28 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$number = $_REQUEST['number'];
-$password = $_REQUEST['password'];
+$question = $_REQUEST['question'];
+$a = $_REQUEST['a'];
+$b = $_REQUEST['b'];
+$c = $_REQUEST['c'];
+$d = $_REQUEST['d'];
+$correct = $_REQUEST['correct'];
 
-$result=array();
-$result['data']=array();
-$select="SELECT * FROM student WHERE phone='$number' AND pass='$password'";
-$responce=mysqli_query($conn,$select);
+// $question = "Question";
+// $a = "a";
+// $b = "b";
+// $c = "c";
+// $d = "d";
+// $correct = "c";
 
 
-while($row=mysqli_fetch_array($responce)){
+$select="INSERT INTO question(question,a,b,c,d,correct) VALUES ('$question','$a','$b','$c','$d','$correct')";
 
-$index["roll"]=$row['0'];
-$index["fname"]=$row['1'];
-$index["lname"]=$row['2'];
-$index["email"]=$row['3'];
-$index["phone"]=$row['4'];
-$index["uid"]=$row['5'];
-$index["semester"]=$row['6'];
-$index["pass"]=$row['7'];
-
-array_push($result['data'],$index);
-}
-if($result['data']==null){
-  $result['success']="0";
-}else{
-  $result['success']="1";
-}
-echo json_encode($result);
-mysqli_close($conn);
+if ($conn->query($select) === TRUE) {
+    echo "New record created successfully";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  
+  $conn->close();
 ?>

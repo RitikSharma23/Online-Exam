@@ -125,5 +125,16 @@ document.getElementById("sub").addEventListener("click",()=>{
                 }
             }
     document.getElementById("res").innerHTML=document.getElementById("res").innerHTML+q1+" "+o1+" "+o2+" "+o3+" "+o4+" "+selectedSize+"<br>";
+
+    // api/question.php?question=what&a=a&b=b&c=c&d=d&correct=c
+    
+    ss=new XMLHttpRequest
+    ss.open("GET","api/question.php?question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
+    ss.onload=function(){
+    res=this.responseText
+
+    alert(res)
+    }
+    ss.send()
         }
 })
