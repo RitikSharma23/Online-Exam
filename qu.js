@@ -132,6 +132,7 @@ document.getElementById("sub").addEventListener("click",()=>{
     }
     ss.send()
         }
+document.getElementById("res").innerHTML="Questions has been added successfully"
+    
 
-        document.getElementById("div1").value="Questions has been added successfully"
 })
