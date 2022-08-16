@@ -29,3 +29,28 @@ ALTER TABLE `student`
 ALTER TABLE `student`
   MODIFY `roll` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
+
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+CREATE TABLE `question` (
+  `no` int(11) NOT NULL,
+  `question` longtext NOT NULL,
+  `a` mediumtext NOT NULL,
+  `b` mediumtext NOT NULL,
+  `c` mediumtext NOT NULL,
+  `d` mediumtext NOT NULL,
+  `correct` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+ALTER TABLE `question`
+  ADD UNIQUE KEY `1` (`no`);
+
+ALTER TABLE `question`
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
