@@ -8,21 +8,38 @@
 </head>
 <body>
 
-    <form>
+  
+    Enter Phone : <input type="phone" name="number" id="number"><br>
+    Enter Password : <input type="password" name="password" id="password"><br>
 
-        Enter Phone : <input type="phone" name="number"><br>
-        Enter Password : <input type="password" name="password"><br>
+    <button id="submit">submit</button><br>
 
-        <input type="submit" id="submit">
-    </form>
+    <span id="fname"></span><br>
+    <span id="uid"></span><br>
+    <span id="email"></span><br>
+    <span id="phone"></span><br>
 
-    <span id="fname"></span>
-    <span id="lname">sdv</span>
-    <span id="uid"></span>
-    <span id="email"></span>
-    <span id="phone"></span>
+    <script>
+        document.getElementById("submit").addEventListener("click",()=>{
 
-    <script src="student.js"></script>
+num=document.getElementById("number").value;
+ph=document.getElementById("password").value;
+
+ss=new XMLHttpRequest
+ss.open("GET","api/student.php?number="+num+"&password="+ph,true)
+ss.onload=function(){
+   res=JSON.parse(this.responseText)
+
+document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
+document.getElementById("uid").innerHTML=""+res['data'][0].uid;
+document.getElementById("email").innerHTML=res['data'][0].email;
+document.getElementById("phone").innerHTML=res['data'][0].phone;
+   
+}
+ss.send()
+
+})
+    </script>
     
 </body>
 </html>

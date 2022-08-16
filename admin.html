@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Admin login</title>
 </head>
 <body>
+  
+    Enter Phone : <input type="phone" name="number" id="number"><br>
+    Enter Password : <input type="password" name="password" id="password"><br>
+
+    <button id="submit">submit</button><br>
+
+    <span id="fname"></span><br>
+    <span id="email"></span><br>
+    <span id="phone"></span><br>
+
+    <script >
+        
+document.getElementById("submit").addEventListener("click",()=>{
+
+num=document.getElementById("number").value;
+ph=document.getElementById("password").value;
+
+ss=new XMLHttpRequest
+ss.open("GET","api/admin.php?number="+num+"&password="+ph,true)
+ss.onload=function(){
+   res=JSON.parse(this.responseText)
+
+document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
+document.getElementById("email").innerHTML=res['data'][0].email;
+document.getElementById("phone").innerHTML=res['data'][0].phone;
+   
+}
+ss.send()
+
+})
+    </script>
     
 </body>
 </html>
