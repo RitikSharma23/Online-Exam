@@ -16,6 +16,7 @@
     <span id="fname"></span><br>
     <span id="email"></span><br>
     <span id="phone"></span><br>
+    <span id="exam"></span><br>
 
     <br><br>
     <br><br>
@@ -23,23 +24,47 @@
     <a href="question.html"><button>Create Questions</button></a>
 
     <script >
+    var c=[];
+
         
-document.getElementById("submit").addEventListener("click",()=>{
+    document.getElementById("submit").addEventListener("click",()=>{
 
-num=document.getElementById("number").value;
-ph=document.getElementById("password").value;
+    num=document.getElementById("number").value;
+    ph=document.getElementById("password").value;
 
-ss=new XMLHttpRequest
-ss.open("GET","api/admin.php?number="+num+"&password="+ph,true)
-ss.onload=function(){
-   res=JSON.parse(this.responseText)
+    ss=new XMLHttpRequest
+    ss.open("GET","api/admin.php?number="+num+"&password="+ph,true)
+    ss.onload=function(){
+    res=JSON.parse(this.responseText)
 
-document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
-document.getElementById("email").innerHTML=res['data'][0].email;
-document.getElementById("phone").innerHTML=res['data'][0].phone;
-   
-}
-ss.send()
+    document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
+    document.getElementById("email").innerHTML=res['data'][0].email;
+    document.getElementById("phone").innerHTML=res['data'][0].phone;
+    
+    }
+    ss.send()
+
+})
+
+
+    document.getElementById("submit").addEventListener("click",()=>{
+
+    ss=new XMLHttpRequest
+    ss.open("GET","api/column.php",true)
+    ss.onload=function(){
+    res=JSON.parse(this.responseText)
+    var count = Object.keys(res['data']).length;
+
+    for(i=8;i<count;i++){
+    document.getElementById("exam").innerHTML=document.getElementById("exam").innerHTML+" "+res['data'][i].col;
+
+    c[i-8]=res['data'][i].col;
+    }
+
+    console.log(c)
+
+    }
+    ss.send()
 
 })
     </script>

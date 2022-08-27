@@ -20,25 +20,25 @@
     <span id="phone"></span><br>
 
     <script>
-    document.getElementById("submit").addEventListener("click",()=>{
+        document.getElementById("submit").addEventListener("click",()=>{
 
-num=document.getElementById("number").value;
-ph=document.getElementById("password").value;
+        num=document.getElementById("number").value;
+        ph=document.getElementById("password").value;
 
-ss=new XMLHttpRequest
-ss.open("GET","api/student.php?number="+num+"&password="+ph,true)
-ss.onload=function(){
-   res=JSON.parse(this.responseText)
+        ss=new XMLHttpRequest
+        ss.open("GET","api/student.php?number="+num+"&password="+ph,true)
+        ss.onload=function(){
+        res=JSON.parse(this.responseText)
 
-document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
-document.getElementById("uid").innerHTML=""+res['data'][0].uid;
-document.getElementById("email").innerHTML=res['data'][0].email;
-document.getElementById("phone").innerHTML=res['data'][0].phone;
-   
-}
-ss.send()
+        document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
+        document.getElementById("uid").innerHTML=""+res['data'][0].uid;
+        document.getElementById("email").innerHTML=res['data'][0].email;
+        document.getElementById("phone").innerHTML=res['data'][0].phone;
+        
+        }
+    ss.send()
 
-})
+    })
     </script>
     
 </body>
