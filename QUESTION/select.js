@@ -247,8 +247,6 @@ document.getElementById("submit").addEventListener("click",()=>{
         }
     }
 
-
-
     if(flag==0){
     ss=new XMLHttpRequest
     ss.open("GET","addcol.php?column="+colname+"&pos="+c[pos-1],true)
