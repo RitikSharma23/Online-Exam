@@ -21,13 +21,13 @@
     <br><br>
     <br><br>
 
-    <a href="question.html"><button>Create Questions</button></a>
+    <button id="create">Create Questions</button>
 
     <script >
   
 
   var data=[[]];
-
+fname=""
         
     document.getElementById("submit").addEventListener("click",()=>{
 
@@ -35,16 +35,22 @@
     ph=document.getElementById("password").value;
 
     ss=new XMLHttpRequest
-    ss.open("GET","api/admin.php?number="+num+"&password="+ph,true)
+    ss.open("GET","admin.php?number="+num+"&password="+ph,true)
     ss.onload=function(){
     res=JSON.parse(this.responseText)
 
     document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
     document.getElementById("email").innerHTML=res['data'][0].email;
     document.getElementById("phone").innerHTML=res['data'][0].phone;
+    fname=res['data'][0].fname;
     
     }
     ss.send()
+
+})
+
+document.getElementById("create").addEventListener("click",()=>{
+window.location.href = "select.php?fname="+fname;  
 
 })
 

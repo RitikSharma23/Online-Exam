@@ -7,6 +7,13 @@
 
 <body onload="column()">
 
+<?php
+
+$fname=$_REQUEST['fname'];
+
+echo "<h1 id='fname'>".$fname."</h1>";
+?>
+
     <div id="sem">Select Sem : <br><br></div>
     <button id="se">Submit</button>
     

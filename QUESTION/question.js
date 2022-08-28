@@ -110,7 +110,7 @@ document.getElementById("add").addEventListener("click",()=>{
 
 document.getElementById("sub").addEventListener("click",()=>{
     
-    for(i=1;i<=x;i++){
+    for(i=1;i<x;i++){
 
     q1=(document.getElementById("input"+i).value)
     o1=(document.getElementById("optiona"+i).value)
@@ -124,9 +124,14 @@ document.getElementById("sub").addEventListener("click",()=>{
                     break;
                 }
             }
+    
+            nam=document.getElementById("name").innerHTML;
+            sub=document.getElementById("subject").innerHTML;
+            sem=document.getElementById("sem").innerHTML;
+            unit=document.getElementById("unit").innerHTML;
 
     ss=new XMLHttpRequest
-    ss.open("GET","api/question.php?question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
+    ss.open("GET","insert_question.php?quid="+nam+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
     ss.onload=function(){
     res=this.responseText
     }
@@ -137,38 +142,8 @@ document.getElementById("res").innerHTML="Questions has been added successfully"
 
 })
 
-data=[[]]
-document.getElementById("sub").addEventListener("click",()=>{
-    var c = [];
-    ss=new XMLHttpRequest
-    ss.open("GET","column.php",true)
-    ss.onload=function(){
-        res=JSON.parse(this.responseText)
-        var count = Object.keys(res['data']).length;
-        for(i=8;i<count;i++){
-                c[i-8]=res['data'][i].col;   
-                data[i-8]= c[i-8].split("_");
-        }
-        console.log(data);
-    }
-    ss.send()
-
-   
+document.getElementById("click").addEventListener("click",()=>{
+    
+    
+    alert(document.getElementById("sem").innerHTML)
 })
-
-
-function column(){
-    var c = [];
-    ss=new XMLHttpRequest
-    ss.open("GET","api/column.php",true)
-    ss.onload=function(){
-        res=JSON.parse(this.responseText)
-        var count = Object.keys(res['data']).length;
-        for(i=8;i<count;i++){
-                c[i-8]=res['data'][i].col;   
-                data[i-8]= c[i-8].split("_");
-        }
-        document.getElementById("exam").innerHTML=data;
-    }
-    ss.send()
-}

@@ -260,10 +260,11 @@ document.getElementById("submit").addEventListener("click",()=>{
   
 }
 
-localStorage.setItem("semester",semester);
-localStorage.setItem("unit",uni);
-localStorage.setItem("subject",sbj);
-    
+// localStorage.setItem("semester",semester);
+// localStorage.setItem("unit",uni);
+// localStorage.setItem("subject",sbj);
+nam=document.getElementById("fname").innerHTML;
+window.location.href = "question.php?name="+nam+"&sem="+semester+"&subject="+sbj+"&unit="+uni;  
 
 })
 
