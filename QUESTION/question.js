@@ -110,6 +110,10 @@ document.getElementById("add").addEventListener("click",()=>{
 
 document.getElementById("sub").addEventListener("click",()=>{
     
+    function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
+    y=new Date;
+    id=pad(y.getMinutes())+pad(y.getDate())+pad(y.getMonth())+pad(y.getSeconds());
+    
     for(i=1;i<x;i++){
 
     q1=(document.getElementById("input"+i).value)
@@ -131,22 +135,28 @@ document.getElementById("sub").addEventListener("click",()=>{
             unit=document.getElementById("unit").innerHTML;
 
     ss=new XMLHttpRequest
-    ss.open("GET","insert_question.php?quid="+nam+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
+    ss.open("GET","insert_question.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
     ss.onload=function(){
     res=this.responseText
     }
     ss.send()
-        }
+    }
     
         document.getElementById("res").innerHTML="Questions has been added successfully"
-    
+        ss=new XMLHttpRequest
+        ss.open("GET","insert_question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+x-1,true)
+        ss.onload=function(){
+        res=this.responseText
+        }
+        ss.send()
+
+        alert(res)
 })
 
 document.getElementById("click").addEventListener("click",()=>{
-   
-   x= parseInt(Math.random() * (9999 - 1000) + 1000);
 
-   console.log(x);
+    
+
    
 })
 

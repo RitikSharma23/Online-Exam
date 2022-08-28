@@ -10,6 +10,7 @@ if ($conn->connect_error) {
 }
 
 $quid=$_REQUEST['quid'];
+$total=$_REQUEST['total'];
 $sem=$_REQUEST['sem'];
 $testid=$_REQUEST['id'];
 $subject=$_REQUEST['subject'];
@@ -23,6 +24,8 @@ $d = $_REQUEST['d'];
 $correct = $_REQUEST['correct'];
 
 $division="B";
+$status="start";
+
 // $quid="ritik1";
 // $sem=1;
 // $subject="cpp";
@@ -38,7 +41,7 @@ $division="B";
 // $testid=123456;
 
 
-$select="INSERT INTO question(user,question_id,dat,sem,subject,unit,division,question,a,b,c,d,correct)VALUES ('$quid','$testid','$date','$sem','$subject','$unit','$division','$question','$a','$b','$c','$d','$correct')";
+$select="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
 
 if ($conn->query($select) === TRUE) {
     echo "New record created successfully";
@@ -46,18 +49,6 @@ if ($conn->query($select) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
-  	
-  $total=2;
-  $status="start";
-
-
-$select1="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
-
-if ($conn->query($select1) === TRUE) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
   
   $conn->close();
 ?>
