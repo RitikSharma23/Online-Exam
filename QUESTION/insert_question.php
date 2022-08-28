@@ -53,11 +53,6 @@ if ($conn->query($select) === TRUE) {
 
 $select1="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
 
-if ($conn->query($select1) === TRUE) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
   
   $conn->close();
 ?>
