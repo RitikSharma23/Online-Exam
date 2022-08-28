@@ -140,6 +140,13 @@ document.getElementById("sub").addEventListener("click",()=>{
     
         document.getElementById("res").innerHTML="Questions has been added successfully"
     
+})
 
+document.getElementById("click").addEventListener("click",()=>{
+   
+   x= parseInt(Math.random() * (9999 - 1000) + 1000);
+
+   console.log(x);
+   
 })
 
