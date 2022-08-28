@@ -47,11 +47,11 @@ if ($conn->query($select) === TRUE) {
   }
 
   	
-  $total=2;
-  $status="start";
+//   $total=2;
+//   $status="start";
 
 
-$select1="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
+// $select1="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
 
   
   $conn->close();

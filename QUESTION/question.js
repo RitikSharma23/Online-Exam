@@ -141,22 +141,29 @@ document.getElementById("sub").addEventListener("click",()=>{
     }
     ss.send()
     }
+
+    tot=x-1
+
+    alert("insert_question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot.toString())
+
     
-        document.getElementById("res").innerHTML="Questions has been added successfully"
+        // document.getElementById("res").innerHTML="Questions has been added successfully"
         ss=new XMLHttpRequest
-        ss.open("GET","insert_question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+x-1,true)
+        ss.open("GET","question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total=2",true)
         ss.onload=function(){
         res=this.responseText
         }
         ss.send()
 
-        alert(res)
+    
+
+
 })
 
-document.getElementById("click").addEventListener("click",()=>{
+// document.getElementById("click").addEventListener("click",()=>{
 
     
 
    
-})
+// })
 

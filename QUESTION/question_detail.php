@@ -9,19 +9,18 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+// quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+x-1,true)
+
 $quid=$_REQUEST['quid'];
 $total=$_REQUEST['total'];
 $sem=$_REQUEST['sem'];
 $testid=$_REQUEST['id'];
 $subject=$_REQUEST['subject'];
 $unit=$_REQUEST['unit'];
+
+
 $date=date('Y-m-d');
-$question = $_REQUEST['question'];
-$a = $_REQUEST['a'];
-$b = $_REQUEST['b'];
-$c = $_REQUEST['c'];
-$d = $_REQUEST['d'];
-$correct = $_REQUEST['correct'];
+
 
 $division="B";
 $status="start";
