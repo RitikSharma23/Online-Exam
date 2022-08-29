@@ -9,26 +9,22 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// $id=$_REQUEST['id'];
 
+$quid=$_REQUEST['id'];
 $result=array();
 $result['data']=array();
-$select="SELECT * FROM `question_details`;";
+$select="SELECT question,a,b,c,d,correct	 FROM `question` WHERE question_id=$quid ORDER BY no;";
 $responce=mysqli_query($conn,$select);
 
 
 while($row=mysqli_fetch_array($responce)){
 
-$index["user"]=$row['0'];
-$index["date"]=$row['1'];
-$index["question_id"]=$row['2'];
-$index["sem"]=$row['3'];
-$index["dev"]=$row['4'];
-$index["subject"]=$row['5'];
-$index["unit"]=$row['6'];
-$index["total"]=$row['7'];
-$index["status"]=$row['8'];
-
+$index["question"]=$row['0'];
+$index["a"]=$row['1'];
+$index["b"]=$row['2'];
+$index["c"]=$row['3'];
+$index["d"]=$row['4'];
+$index["correct"]=$row['5'];
 
 array_push($result['data'],$index);
 }

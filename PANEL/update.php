@@ -9,13 +9,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$quid=$_REQUEST['quid'];
+// $quid=$_REQUEST['quid'];
 $no=$_REQUEST['no'];
-$sem=$_REQUEST['sem'];
-$testid=$_REQUEST['id'];
-$subject=$_REQUEST['subject'];
-$unit=$_REQUEST['unit'];
-$date=date('Y-m-d');
+$quid=$_REQUEST['id'];
 $question = $_REQUEST['question'];
 $a = $_REQUEST['a'];
 $b = $_REQUEST['b'];
@@ -23,23 +19,10 @@ $c = $_REQUEST['c'];
 $d = $_REQUEST['d'];
 $correct = $_REQUEST['correct'];
 
-$division="B";
-// $quid="ritik1";
-// $sem=1;
-// $subject="cpp";
-// $unit=1;
-// $date=date('Y-m-d');
-// $question = "Question";
-// $a = "a";
-// $b = "b";
-// $c = "c";
-// $d = "d";
-// $correct = "c";
-
-// $testid=123456;
 
 
-$select="INSERT INTO question(user,question_id,dat,sem,subject,unit,division,no,question,a,b,c,d,correct)VALUES ('$quid','$testid','$date','$sem','$subject','$unit','$division','$no','$question','$a','$b','$c','$d','$correct')";
+
+$select="UPDATE question set question='$question',a='$a',b='$b',c='$c',d='$d',correct='$correct' WHERE no='$no' AND question_id='$quid';";
 
 if ($conn->query($select) === TRUE) {
     echo "New record created successfully";

@@ -72,7 +72,12 @@ text8=document.createTextNode(res['data'][i]['status'])
 td8.appendChild(text8)
 
 td9=document.createElement('td')
-text9=document.createTextNode("start")
+var a=document.createElement('a')
+a.href="modify.php?id="+res['data'][i]['question_id']
+text9=document.createTextNode('Edit')
+a.appendChild(text9)
+td9.appendChild(a)
+
 
 row.appendChild(td0)
 row.appendChild(td1)
@@ -83,6 +88,7 @@ row.appendChild(td5)
 row.appendChild(td6)
 row.appendChild(td7)
 row.appendChild(td8)
+row.appendChild(td9)
 table.appendChild(row)
 div.appendChild(table)
 
