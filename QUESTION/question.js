@@ -139,12 +139,12 @@ document.getElementById("sub").addEventListener("click",()=>{
     ss.onload=function(){
     res=this.responseText
     }
+    alert(res)
     ss.send()
     }
 
     tot=x-1
 
-    alert("insert_question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot.toString())
 
     
         // document.getElementById("res").innerHTML="Questions has been added successfully"
@@ -154,6 +154,12 @@ document.getElementById("sub").addEventListener("click",()=>{
         res=this.responseText
         }
         ss.send()
+
+
+        // window.location.href = "../QUESTION/admin.php"; 
+
+
+        
 
     
 
