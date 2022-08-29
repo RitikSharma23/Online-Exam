@@ -23,7 +23,7 @@ $date=date('Y-m-d');
 
 
 $division="B";
-$status="start";
+$status="stop";
 
 // $quid="ritik1";
 // $sem=1;

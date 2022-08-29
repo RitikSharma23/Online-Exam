@@ -160,10 +160,4 @@ document.getElementById("sub").addEventListener("click",()=>{
 
 })
 
-// document.getElementById("click").addEventListener("click",()=>{
-
-    
-
-   
-// })
 
