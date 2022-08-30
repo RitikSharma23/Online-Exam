@@ -48,7 +48,7 @@ echo "obj : <span id='obj'>".$obj."</span><br>";
     <button id="submit" disabled> Confirm</button>
 
 
-<script src="../javascript/sem.js"></script>
+<script src="../javascript/ADMIN/sem.js"></script>
 </body>
 </html>
 	

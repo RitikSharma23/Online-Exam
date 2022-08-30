@@ -47,7 +47,7 @@
 
     <button id="click">Click</button>
 
-    <script src="../javascript/question.js"></script>
+    <script src="../javascript/ADMIN/question.js"></script>
 
     
 </body>
