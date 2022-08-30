@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2022 at 06:30 PM
+-- Generation Time: Aug 30, 2022 at 05:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -66,17 +66,6 @@ CREATE TABLE `question` (
   `correct` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `question`
---
-
-INSERT INTO `question` (`user`, `question_id`, `dat`, `sem`, `subject`, `unit`, `division`, `no`, `question`, `a`, `b`, `c`, `d`, `correct`) VALUES
-('ritik', 19290755, '2022-08-29', 1, 'html', 1, 'B', 0, 'this ', 'is', 'ritik', 'edit', 'xx', 'd'),
-('ritik', 19290755, '2022-08-29', 1, 'html', 1, 'B', 1, 'hello', 'yy', 'yy', 'yy', 'world', 'd'),
-('ritik', 19290755, '2022-08-29', 1, 'html', 1, 'B', 2, 'gg', 'zz', 'shanu', 'alright', 'zz', 'c'),
-('ritik', 47290708, '2022-08-29', 7, 'python', 1, 'B', 1, 'xx', 'xx', 'xx', 'xx', 'xx', 'b'),
-('ritik', 47290708, '2022-08-29', 7, 'python', 1, 'B', 0, 'yy', 'yy', 'yy', 'yy', 'yy', 'c');
-
 -- --------------------------------------------------------
 
 --
@@ -95,14 +84,6 @@ CREATE TABLE `question_details` (
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `question_details`
---
-
-INSERT INTO `question_details` (`user`, `date`, `question_id`, `sem`, `dev`, `subject`, `unit`, `total`, `status`) VALUES
-('ritik', '2022-08-29', 19290755, 1, 'B', 'html', 1, 2, 'stop'),
-('ritik', '2022-08-29', 47290708, 7, 'B', 'python', 1, 2, 'stop');
-
 -- --------------------------------------------------------
 
 --
@@ -118,25 +99,17 @@ CREATE TABLE `student` (
   `semester` int(11) DEFAULT NULL,
   `uid` char(20) COLLATE utf8_unicode_ci NOT NULL,
   `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `sem_1_html_unit_1` int(11) NOT NULL,
-  `sem_2_sdot_unit_1` int(11) NOT NULL,
-  `sem_3_cpp_unit_1` int(11) NOT NULL,
-  `sem_3_ot_unit_1` int(11) NOT NULL,
-  `sem_4_java_unit_1` int(11) NOT NULL,
-  `sem_4_java_unit_2` int(11) NOT NULL,
-  `sem_5_php_unit_1` int(11) NOT NULL,
-  `sem_5_php_unit_2` int(11) NOT NULL,
-  `sem_7_python_unit_1` int(11) NOT NULL
+  `sem_1_html_unit_1` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `semester`, `uid`, `pass`, `sem_1_html_unit_1`, `sem_2_sdot_unit_1`, `sem_3_cpp_unit_1`, `sem_3_ot_unit_1`, `sem_4_java_unit_1`, `sem_4_java_unit_2`, `sem_5_php_unit_1`, `sem_5_php_unit_2`, `sem_7_python_unit_1`) VALUES
-(3, 'vrutik', 'jagad', NULL, NULL, NULL, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'Shanu', 'Pandey', '9106692865', 'shanukumarpandey2003@gmail.com', 3, '21004500210088', 'shanu123', 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(1, 'Ritik', 'Sharma', '8866892314', 'ritikss748@gmail.com', 3, '21004500210167', 'ritik123', 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `semester`, `uid`, `pass`, `sem_1_html_unit_1`) VALUES
+(3, 'vrutik', 'jagad', '9004365963', 'vrutikjagad1@gmail.com', 3, '21004500210048', 'vrutik123', 0),
+(2, 'Shanu', 'Pandey', '9106692865', 'shanukumarpandey2003@gmail.com', 3, '21004500210088', 'shanu123', 0),
+(1, 'Ritik', 'Sharma', '8866892314', 'ritikss748@gmail.com', 3, '21004500210167', 'ritik123', 0);
 
 --
 -- Indexes for dumped tables

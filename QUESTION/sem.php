@@ -10,8 +10,16 @@
 <?php
 
 $fname=$_REQUEST['fname'];
+$lname=$_REQUEST['lname'];
+$email=$_REQUEST['email'];
+$phone=$_REQUEST['phone'];
+$obj=$_REQUEST['obj'];
 
-echo "<h1 id='fname'>".$fname."</h1>";
+echo "fname : <span id='fname'>".$fname."</span><br>";
+echo "lname : <span id='lname'>".$lname."</span><br>";
+echo "email : <span id='email'>".$email."</span><br>";
+echo "phone : <span id='phone'>".$phone."</span><br>";
+echo "obj : <span id='obj'>".$obj."</span><br>";
 ?>
 
     <div id="sem">Select Sem : <br><br></div>
@@ -40,7 +48,7 @@ echo "<h1 id='fname'>".$fname."</h1>";
     <button id="submit" disabled> Confirm</button>
 
 
-<script src="select.js"></script>
+<script src="../javascript/ADMIN/sem.js"></script>
 </body>
 </html>
 	

@@ -1,16 +1,30 @@
-x=1;
+que=[[]]
+res={}
+qid=document.getElementById("quid").innerHTML
 
-document.getElementById("add").addEventListener("click",()=>{
+ss=new XMLHttpRequest
+ss.open("GET","../api/dashboard.php?id="+qid+"&obj=3",true)
+ss.onload=function(){
+res=JSON.parse(this.responseText)
+
+que=(res['data'])
+
+
+for(x=0;x<que.length;x++){
+// for(x=que.length-1;x>=0;x--){
+console.log(res['data'][x]['correct'])
+
+
     var field=document.createElement("fieldset")
     var legend=document.createElement("legend")
-    var text=document.createTextNode("Question "+x)
+    var text=document.createTextNode("Question "+(x+1))
     legend.appendChild(text)
     field.appendChild(legend)
 
     var input = document.createElement("input");
     input.type = "text";
     input.id="input"+x
-    input.placeholder="Question "+x
+    input.defaultValue=res['data'][x]['question']
     input.name = "member";
 
     var A=document.createElement("span")
@@ -18,7 +32,7 @@ document.getElementById("add").addEventListener("click",()=>{
     var IA=document.createElement("input");
     IA.type = "text";
     IA.id="optiona"+x
-    IA.placeholder="Option A "
+    IA.defaultValue=res['data'][x]['a']
     IA.name = "member";
 
     var B=document.createElement("span")
@@ -26,7 +40,7 @@ document.getElementById("add").addEventListener("click",()=>{
     var IB=document.createElement("input");
     IB.type = "text";
     IB.id="optionb"+x
-    IB.placeholder="Option B "
+    IB.defaultValue=res['data'][x]['b']
     IB.name = "member";
 
     var C=document.createElement("span")
@@ -34,7 +48,7 @@ document.getElementById("add").addEventListener("click",()=>{
     var IC=document.createElement("input");
     IC.type = "text";
     IC.id="optionc"+x
-    IC.placeholder="Option C "
+    IC.defaultValue=res['data'][x]['c']
     IC.name = "member";
 
     var D=document.createElement("span")
@@ -42,7 +56,7 @@ document.getElementById("add").addEventListener("click",()=>{
     var ID=document.createElement("input");
     ID.type = "text";
     ID.id="optiond"+x
-    ID.placeholder="Option D "
+    ID.defaultValue=res['data'][x]['d']
     ID.name = "member";
 
     var t=document.createElement("span").appendChild(document.createTextNode("Correct Option : "))
@@ -51,24 +65,34 @@ document.getElementById("add").addEventListener("click",()=>{
     ans1.type="radio"
     ans1.name="o"+x
     ans1.value="a"
+    if(res['data'][x]['correct']=='a'){
+    ans1.checked=true
+    }
+
 
     var zz2=document.createElement("span").appendChild(document.createTextNode(" B:"))
     var ans2=document.createElement("input")
     ans2.type="radio"
     ans2.name="o"+x
     ans2.value="b"
+    if(res['data'][x]['correct']=='b'){
+        ans2.checked=true}
 
     var zz3=document.createElement("span").appendChild(document.createTextNode(" C:"))
     var ans3=document.createElement("input")
     ans3.type="radio"
     ans3.name="o"+x
     ans3.value="c"
+    if(res['data'][x]['correct']=='c'){
+        ans3.checked=true}
 
     var zz4=document.createElement("span").appendChild(document.createTextNode(" D:"))
     var ans4=document.createElement("input")
     ans4.type="radio"
     ans4.name="o"+x
     ans4.value="d"
+    if(res['data'][x]['correct']=='d'){
+        ans4.checked=true}
 
     field.appendChild(input)
     field.appendChild(document.createElement("br"))
@@ -104,8 +128,18 @@ document.getElementById("add").addEventListener("click",()=>{
     element.appendChild(div);
     element.appendChild(document.createElement("br"));
 
-    x=x+1;
-})
+
+}
+
+}
+ss.send()
+
+
+
+
+
+
+
 
 
 document.getElementById("sub").addEventListener("click",()=>{
@@ -113,8 +147,8 @@ document.getElementById("sub").addEventListener("click",()=>{
     function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
     y=new Date;
     id=pad(y.getMinutes())+pad(y.getDate())+pad(y.getMonth())+pad(y.getSeconds());
-    
-    for(i=1;i<x;i++){
+    res=""
+    for(i=0;i<que.length;i++){
 
     q1=(document.getElementById("input"+i).value)
     o1=(document.getElementById("optiona"+i).value)
@@ -129,37 +163,17 @@ document.getElementById("sub").addEventListener("click",()=>{
                 }
             }
     
-            nam=document.getElementById("name").innerHTML;
-            sub=document.getElementById("subject").innerHTML;
-            sem=document.getElementById("sem").innerHTML;
-            unit=document.getElementById("unit").innerHTML;
-            no=i-1
     ss=new XMLHttpRequest
-    ss.open("GET","insert_question.php?quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
+    ss.open("GET","../api/dashboard.php?&id="+qid+"&no="+i+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=6",true)
     ss.onload=function(){
     res=this.responseText
     }
-    alert(res)
     ss.send()
     }
 
     tot=x-1
 
-
-    
-        // document.getElementById("res").innerHTML="Questions has been added successfully"
-        ss=new XMLHttpRequest
-        ss.open("GET","question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total=2",true)
-        ss.onload=function(){
-        res=this.responseText
-        }
-        ss.send()
-
-
-        // window.location.href = "../QUESTION/admin.php"; 
-
-
-        
+    alert(res)
 
     
 

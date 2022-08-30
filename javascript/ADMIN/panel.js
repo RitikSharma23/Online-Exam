@@ -1,7 +1,7 @@
 l=0;
 res={}
 ss=new XMLHttpRequest
-ss.open("GET","panel.php",true)
+ss.open("GET","../api/dashboard.php?obj=1",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 
@@ -73,7 +73,7 @@ td8.appendChild(text8)
 
 td9=document.createElement('td')
 var a=document.createElement('a')
-a.href="modify.php?id="+res['data'][i]['question_id']
+a.href="edit.php?id="+res['data'][i]['question_id']
 text9=document.createTextNode('Edit')
 a.appendChild(text9)
 td9.appendChild(a)
@@ -119,7 +119,7 @@ document.getElementById("start").addEventListener("click",()=>{
     for(i=0;i<chec.length;i++){
         // alert(chec[i])
             ss=new XMLHttpRequest
-            ss.open("GET","start.php?id="+chec[i],true)
+            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&obj=4",true)
             ss.onload=function(){
             res=this.responseText
         }
@@ -147,7 +147,7 @@ document.getElementById("stop").addEventListener("click",()=>{
     for(i=0;i<chec.length;i++){
         // alert(chec[i])
             ss=new XMLHttpRequest
-            ss.open("GET","stop.php?id="+chec[i],true)
+            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&obj=5",true)
             ss.onload=function(){
             res=this.responseText
         }
@@ -177,7 +177,7 @@ document.getElementById("delete").addEventListener("click",()=>{
     for(i=0;i<chec.length;i++){
         // alert(chec[i])
             ss=new XMLHttpRequest
-            ss.open("GET","delete.php?id="+chec[i],true)
+            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&obj=2",true)
             ss.onload=function(){
             res=this.responseText
         }
