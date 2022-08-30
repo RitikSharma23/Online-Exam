@@ -8,8 +8,6 @@
 <body onload="column()">
 
 <?php
-// var details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;
-
 
 $fname=$_REQUEST['fname'];
 $lname=$_REQUEST['lname'];
@@ -50,7 +48,7 @@ echo "obj : <span id='obj'>".$obj."</span><br>";
     <button id="submit" disabled> Confirm</button>
 
 
-<script src="select.js"></script>
+<script src="../javascript/sem.js"></script>
 </body>
 </html>
 	

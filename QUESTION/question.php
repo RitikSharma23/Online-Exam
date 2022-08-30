@@ -47,9 +47,8 @@
 
     <button id="click">Click</button>
 
-    <script src="question.js"></script>
+    <script src="../javascript/question.js"></script>
 
-    <!-- <a href=></a> -->
     
 </body>
 </html>

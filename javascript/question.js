@@ -139,15 +139,11 @@ document.getElementById("sub").addEventListener("click",()=>{
     ss.onload=function(){
     res=this.responseText
     }
-    alert(res)
     ss.send()
     }
 
     tot=x-1
-
-
     
-        // document.getElementById("res").innerHTML="Questions has been added successfully"
         ss=new XMLHttpRequest
         ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total=2"+"&obj=2",true)
         ss.onload=function(){
@@ -156,12 +152,7 @@ document.getElementById("sub").addEventListener("click",()=>{
         ss.send()
 
 
-        // window.location.href = "../QUESTION/admin.php"; 
-
-
-        
-
-    
+        window.location.href = "PANEL/panel.php"; 
 
 
 })
