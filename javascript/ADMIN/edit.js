@@ -3,7 +3,7 @@ res={}
 qid=document.getElementById("quid").innerHTML
 
 ss=new XMLHttpRequest
-ss.open("GET","edit.php?id="+qid,true)
+ss.open("GET","../api/dashboard.php?id="+qid+"&obj=3",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 
@@ -164,7 +164,7 @@ document.getElementById("sub").addEventListener("click",()=>{
             }
     
     ss=new XMLHttpRequest
-    ss.open("GET","update.php?&id="+qid+"&no="+i+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
+    ss.open("GET","../api/dashboard.php?&id="+qid+"&no="+i+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=6",true)
     ss.onload=function(){
     res=this.responseText
     }

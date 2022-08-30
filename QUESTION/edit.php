@@ -21,7 +21,7 @@
 <br>
 <button id="sub">submit</button>
 
-<script src="edit.js"></script>
+<script src="../javascript/ADMIN/edit.js"></script>
 
     
 <style>
