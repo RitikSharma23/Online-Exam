@@ -145,14 +145,14 @@ document.getElementById("sub").addEventListener("click",()=>{
     tot=x-1
     
         ss=new XMLHttpRequest
-        ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total=2"+"&obj=2",true)
+        ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
         ss.onload=function(){
         res=this.responseText
         }
         ss.send()
 
 
-        window.location.href = "PANEL/panel.php"; 
+        window.location.href = "admin.html"; 
 
 
 })
