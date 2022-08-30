@@ -26,9 +26,9 @@
     echo "lname : <span id='lname'>".$lname."</span><br>";
     echo "email : <span id='email'>".$email."</span><br>";
     echo "phone : <span id='phone'>".$phone."</span><br>";
-    echo "sem : <span id='obj'>".$sem."</span><br>";
-    echo "subject : <span id='obj'>".$subject."</span><br>";
-    echo "unit : <span id='obj'>".$unit."</span><br>";
+    echo "sem : <span id='sem'>".$sem."</span><br>";
+    echo "subject : <span id='subject'>".$subject."</span><br>";
+    echo "unit : <span id='unit'>".$unit."</span><br>";
 
     ?>
 </div>

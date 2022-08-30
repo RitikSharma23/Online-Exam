@@ -26,7 +26,7 @@ details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+
 function column(){
   
     ss=new XMLHttpRequest
-    ss.open("GET","column.php",true)
+    ss.open("GET","../api/question.php?obj=3",true)
     ss.onload=function(){
         res=JSON.parse(this.responseText)
         var count = Object.keys(res['data']).length;
@@ -261,7 +261,7 @@ document.getElementById("submit").addEventListener("click",()=>{
 
     if(flag==0){
     ss=new XMLHttpRequest
-    ss.open("GET","addcol.php?column="+colname+"&pos="+c[pos-1],true)
+    ss.open("GET","../api/question.php?column="+colname+"&pos="+c[pos-1]+"&obj=4",true)
     ss.onload=function(){
         res=(this.responseText)
     }

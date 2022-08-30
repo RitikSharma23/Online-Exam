@@ -11,13 +11,10 @@ if ($conn->connect_error) {
 
 $number = $_REQUEST['number'];
 $password = $_REQUEST['password'];
-
 $result=array();
 $result['data']=array();
 $select="SELECT * FROM student WHERE phone='$number' AND pass='$password'";
 $responce=mysqli_query($conn,$select);
-
-
 while($row=mysqli_fetch_array($responce)){
 
 $index["roll"]=$row['0'];

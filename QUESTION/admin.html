@@ -29,13 +29,13 @@
 
     <script >
 
-var data=[[]];
-var obj=1;
-fname="";
-lname="";
-email="";
-phone="";
-var details="";
+    var data=[[]];
+    var obj=1;
+    fname="";
+    lname="";
+    email="";
+    phone="";
+    var details="";
         
     document.getElementById("submit").addEventListener("click",()=>{
 
@@ -43,7 +43,7 @@ var details="";
     ph=document.getElementById("password").value;
 
     ss=new XMLHttpRequest
-    ss.open("GET","admin.php?number="+num+"&password="+ph,true)
+    ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=1",true)
     ss.onload=function(){
     res=JSON.parse(this.responseText)
     fname=res['data'][0].fname;

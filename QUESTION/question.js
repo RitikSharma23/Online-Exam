@@ -129,13 +129,13 @@ document.getElementById("sub").addEventListener("click",()=>{
                 }
             }
     
-            nam=document.getElementById("name").innerHTML;
+            nam=document.getElementById("fname").innerHTML;
             sub=document.getElementById("subject").innerHTML;
             sem=document.getElementById("sem").innerHTML;
             unit=document.getElementById("unit").innerHTML;
             no=i-1
     ss=new XMLHttpRequest
-    ss.open("GET","insert_question.php?quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize,true)
+    ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
     ss.onload=function(){
     res=this.responseText
     }
@@ -149,7 +149,7 @@ document.getElementById("sub").addEventListener("click",()=>{
     
         // document.getElementById("res").innerHTML="Questions has been added successfully"
         ss=new XMLHttpRequest
-        ss.open("GET","question_detail.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total=2",true)
+        ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total=2"+"&obj=2",true)
         ss.onload=function(){
         res=this.responseText
         }
