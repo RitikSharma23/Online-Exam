@@ -11,16 +11,24 @@
 
 <div id="question">
     <?php
-
-    $name = $_REQUEST['name'];
+     $fname=$_REQUEST['fname'];
+     $lname=$_REQUEST['lname'];
+     $email=$_REQUEST['email'];
+     $phone=$_REQUEST['phone'];
+     $obj=$_REQUEST['obj'];
     $sem = $_REQUEST['sem'];
     $subject = $_REQUEST['subject'];
     $unit = $_REQUEST['unit'];
+    
+   
 
-    echo "<h1 id='name'>".$name."</h1>";
-    echo "<h1 id='sem'>".$sem."</h1>";
-    echo "<h1 id='subject'>".$subject."</h1>";
-    echo "<h1 id='unit'>".$unit."</h1>";
+    echo "fname : <span id='fname'>".$fname."</span><br>";
+    echo "lname : <span id='lname'>".$lname."</span><br>";
+    echo "email : <span id='email'>".$email."</span><br>";
+    echo "phone : <span id='phone'>".$phone."</span><br>";
+    echo "sem : <span id='obj'>".$sem."</span><br>";
+    echo "subject : <span id='obj'>".$subject."</span><br>";
+    echo "unit : <span id='obj'>".$unit."</span><br>";
 
     ?>
 </div>

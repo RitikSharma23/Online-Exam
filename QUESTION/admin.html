@@ -13,10 +13,11 @@
 
     <button id="submit">submit</button><br>
 
-    <span id="fname"></span><br>
-    <span id="email"></span><br>
-    <span id="phone"></span><br>
-    <span id="exam"></span><br>
+    fname : <span id="fname"></span><br>
+    lname : <span id="lname"></span><br>
+    email : <span id="email"></span><br>
+    phone : <span id="phone"></span><br>
+    <span id="pass"></span><br>
 
     <br><br>
     <br><br>
@@ -27,10 +28,14 @@
     
 
     <script >
-  
 
-  var data=[[]];
-fname=""
+var data=[[]];
+var obj=1;
+fname="";
+lname="";
+email="";
+phone="";
+var details="";
         
     document.getElementById("submit").addEventListener("click",()=>{
 
@@ -41,19 +46,31 @@ fname=""
     ss.open("GET","admin.php?number="+num+"&password="+ph,true)
     ss.onload=function(){
     res=JSON.parse(this.responseText)
-
-    document.getElementById("fname").innerHTML="Name : "+res['data'][0].fname+" "+res['data'][0].lname;
-    document.getElementById("email").innerHTML=res['data'][0].email;
-    document.getElementById("phone").innerHTML=res['data'][0].phone;
     fname=res['data'][0].fname;
+    lname=res['data'][0].lname;
+    email=res['data'][0].email;
+    phone=res['data'][0].phone;
+    pass=res['data'][0].pass;   
+
     
+    document.getElementById("fname").innerHTML=fname;
+    document.getElementById("lname").innerHTML=lname;
+    document.getElementById("email").innerHTML=email;
+    document.getElementById("phone").innerHTML=phone; 
+
+
+    details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;    
+  
     }
     ss.send()
 
+
 })
 
+
 document.getElementById("create").addEventListener("click",()=>{
-window.location.href = "select.php?fname="+fname;  
+    // console.log(details)
+window.location.href = "select.php?"+details; 
 
 })
 

@@ -10,7 +10,21 @@ function removeDuplicates(arr) {
 semester=sbj=uni=0
 var c = [];
 
+fname="";
+lname="";
+email="";
+phone="";
+var details="";
+fname=document.getElementById("fname").innerHTML;
+lname=document.getElementById("lname").innerHTML;
+email=document.getElementById("email").innerHTML;
+phone=document.getElementById("phone").innerHTML;
+details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;    
+
+
+
 function column(){
+  
     ss=new XMLHttpRequest
     ss.open("GET","column.php",true)
     ss.onload=function(){
@@ -53,8 +67,6 @@ function column(){
         semm=document.getElementById("sem")
         semm.appendChild(label)
         semm.appendChild(input)
-
-     
 
     }
     ss.send();
@@ -258,9 +270,8 @@ document.getElementById("submit").addEventListener("click",()=>{
   
 }
 
-
-nam=document.getElementById("fname").innerHTML;
-window.location.href = "question.php?name="+nam+"&sem="+semester+"&subject="+sbj+"&unit="+uni;  
+console.log(details)
+window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni;  
 
 })
 
