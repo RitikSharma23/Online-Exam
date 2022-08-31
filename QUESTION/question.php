@@ -19,6 +19,7 @@
     $sem = $_REQUEST['sem'];
     $subject = $_REQUEST['subject'];
     $unit = $_REQUEST['unit'];
+    $dev = $_REQUEST['dev'];
     
    
 
@@ -29,6 +30,7 @@
     echo "sem : <span id='sem'>".$sem."</span><br>";
     echo "subject : <span id='subject'>".$subject."</span><br>";
     echo "unit : <span id='unit'>".$unit."</span><br>";
+    echo "Division : <span id='dev'>".$dev."</span><br>";
 
     ?>
 </div>

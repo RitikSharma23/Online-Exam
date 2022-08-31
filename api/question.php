@@ -39,7 +39,7 @@ function insert_question($conn){
     $c = $_REQUEST['c'];
     $d = $_REQUEST['d'];
     $correct = $_REQUEST['correct'];
-    $division="B";
+    $division=$_REQUEST['dev'];;
     $select="INSERT INTO question(user,question_id,dat,sem,subject,unit,division,no,question,a,b,c,d,correct)VALUES ('$quid','$testid','$date','$sem','$subject','$unit','$division','$no','$question','$a','$b','$c','$d','$correct')";
 
     if ($conn->query($select) === TRUE) {
@@ -59,7 +59,7 @@ function insert_question_details($conn){
     $subject=$_REQUEST['subject'];
     $unit=$_REQUEST['unit'];
     $date=date('Y-m-d');
-    $division="B";
+    $division=$_REQUEST['dev'];;
     $status="stop";
 
     $select="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";

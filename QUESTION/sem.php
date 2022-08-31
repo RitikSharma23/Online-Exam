@@ -22,8 +22,18 @@ echo "phone : <span id='phone'>".$phone."</span><br>";
 echo "obj : <span id='obj'>".$obj."</span><br>";
 ?>
 
+<div id="division">
+        <br><br> Select Division : <br>
+        A : <input type="radio" name="dev" id="A" value="A">
+        B : <input type="radio" name="dev" id="B" value="B">
+        C : <input type="radio" name="dev" id="C" value="C">
+        D : <input type="radio" name="dev" id="D" value="D"><br><br>
+    </div>
+
+    <button id="devision">submit</button>
+
     <div id="sem">Select Sem : <br><br></div>
-    <button id="se">Submit</button>
+    <button id="se" disabled>Submit</button>
     
     <br><br>
     <br>

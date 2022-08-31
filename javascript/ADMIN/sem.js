@@ -73,6 +73,23 @@ function column(){
 
 }
 
+dev="";
+document.getElementById("devision").addEventListener("click",()=>{
+    for (const radioButton of document.querySelectorAll('input[name="dev"]')) {
+        if (radioButton.checked) {
+            dev = radioButton.value;
+            break;
+        }
+    }
+    console.log(dev);
+
+    if(dev==""){
+        document.getElementById("se").disabled=true;
+    }else{
+        document.getElementById("se").disabled=false;
+    }
+})
+
 
 document.getElementById("se").addEventListener("click",()=>{
     ele=document.getElementsByName("sem");
@@ -223,7 +240,7 @@ document.getElementById("uni").addEventListener("click",()=>{
     }else{
 
     colname="sem_"+semester+"_"+sbj+"_unit_"+uni;
-    document.getElementById("total").innerHTML="Semister : "+semester+"<br>Subject : "+sbj+"<br>Unit : "+uni;
+    document.getElementById("total").innerHTML="Semister : "+semester+"<br>Subject : "+sbj+"<br>Unit : "+uni+"<br>Division : "+dev;
 
     document.getElementById("submit").disabled=false}
 
@@ -271,7 +288,7 @@ document.getElementById("submit").addEventListener("click",()=>{
 }
 
 console.log(details)
-window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni;  
+window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni+"&dev="+dev;  
 
 })
 
