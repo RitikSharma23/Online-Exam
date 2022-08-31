@@ -1,0 +1,27 @@
+.pan{
+     
+    background-color: dimgrey;
+    color: white;
+    height: 50px;
+}
+.ho
+{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin-inline: 50px;
+    
+}
+.lo
+{
+    background-color: black;
+    color: grey;
+    border-radius: 5px;
+    float: right;
+    text-decoration: none;
+    height: 40px;
+    font-size: 15px;
+    line-height: 15px;
+    margin-top: 5px;
+    margin-inline: 15px;
+}
