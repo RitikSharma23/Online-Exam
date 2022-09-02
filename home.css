@@ -25,3 +25,16 @@
     margin-top: 5px;
     margin-inline: 15px;
 }
+
+.im
+{
+    margin-inline: 300px;
+    width: 250px;
+    height: 40px;
+}
+
+.ed{
+    background-color: lightgrey;
+    height: 200px;
+    width: 100%;
+}
