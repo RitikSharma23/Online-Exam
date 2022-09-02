@@ -1,4 +1,5 @@
 x=1;
+phone=document.getElementById("phone").innerHTML;
 
 document.getElementById("add").addEventListener("click",()=>{
     var field=document.createElement("fieldset")
@@ -108,6 +109,9 @@ document.getElementById("add").addEventListener("click",()=>{
 })
 
 
+
+
+
 document.getElementById("sub").addEventListener("click",()=>{
     
     function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
@@ -133,9 +137,10 @@ document.getElementById("sub").addEventListener("click",()=>{
             sub=document.getElementById("subject").innerHTML;
             sem=document.getElementById("sem").innerHTML;
             unit=document.getElementById("unit").innerHTML;
+            dev=document.getElementById("dev").innerHTML;
             no=i-1
     ss=new XMLHttpRequest
-    ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
+    ss.open("GET","../api/question.php?dev="+dev+"&quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
     ss.onload=function(){
     res=this.responseText
     }
@@ -145,7 +150,7 @@ document.getElementById("sub").addEventListener("click",()=>{
     tot=x-1
     
         ss=new XMLHttpRequest
-        ss.open("GET","../api/question.php?quid="+nam+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
+        ss.open("GET","../api/question.php?dev="+dev+"&quid="+phone+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
         ss.onload=function(){
         res=this.responseText
         }

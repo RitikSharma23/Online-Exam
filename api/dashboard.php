@@ -27,8 +27,9 @@ class Fruit {
   
 function dashboard($conn){
     $result=array();
+    $phone=$_REQUEST['phone'];
     $result['data']=array();
-    $select="SELECT * FROM `question_details`;";
+    $select="SELECT * FROM `question_details` WHERE user='$phone';";
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){
     $index["user"]=$row['0'];

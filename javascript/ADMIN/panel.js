@@ -1,7 +1,17 @@
+
+fname=document.getElementById("fname").innerHTML;
+lname=document.getElementById("lname").innerHTML;
+email=document.getElementById("email").innerHTML;
+phone=document.getElementById("phone").innerHTML;
+details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
+
+
+
+
 l=0;
 res={}
 ss=new XMLHttpRequest
-ss.open("GET","../api/dashboard.php?obj=1",true)
+ss.open("GET","../api/dashboard.php?phone="+phone+"&obj=1",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 

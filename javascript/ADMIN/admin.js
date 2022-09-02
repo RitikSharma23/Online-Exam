@@ -28,7 +28,7 @@ document.getElementById("email").innerHTML=email;
 document.getElementById("phone").innerHTML=phone; 
 
 
-details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;    
+details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;    
 
 }
 ss.send()
@@ -37,8 +37,14 @@ ss.send()
 })
 
 
+document.getElementById("panel").addEventListener("click",()=>{
+    window.location.href="panel.php?"+details;
+
+})
+
+
 document.getElementById("create").addEventListener("click",()=>{
-// console.log(details)
 window.location.href = "sem.php?"+details; 
 
 })
+
