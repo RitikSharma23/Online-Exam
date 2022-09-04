@@ -45,7 +45,17 @@
             </a>
 					</li>
 
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="test">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Create Test</span>
+            		</a>
+					</li>
 
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="panel">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">View Panel</span>
+            		</a>
+					</li>
 					
 				</ul>
 
@@ -127,8 +137,16 @@
             document.getElementById("profilepage").href="profile.php?"+details
         })
 
-        document.getElementById("adminpage").addEventListener("click",()=>{
-            document.getElementById("adminpage").href="admin.php?"+details
+        document.getElementById("homepage").addEventListener("click",()=>{
+            document.getElementById("homepage").href="admin.php?"+details
+        })
+
+        document.getElementById("test").addEventListener("click",()=>{
+            document.getElementById("test").href="sem.php?"+details+"&obj=1"
+        })
+
+        document.getElementById("panel").addEventListener("click",()=>{
+            document.getElementById("panel").href="panel.php?"+details+"&obj=1"
         })
 
     </script>

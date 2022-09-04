@@ -45,6 +45,18 @@
             </a>
 					</li>
 
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="test">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Create Test</span>
+            		</a>
+					</li>
+
+					<li class="sidebar-item " >
+						<a class="sidebar-link" id="panel">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">View Panel</span>
+            		</a>
+					</li>
+
 				</ul>
 
 			</div>
@@ -114,8 +126,6 @@
 									<h5 class="card-title mb-0" id="n_nam" style="text-transform: capitalize;">user name</h5><br>
 									<h5 class="card-title mb-0" id="n_email" style="text-transform: capitalize;">user email</h5><br>
 									<h5 class="card-title mb-0" id="n_phone" style="text-transform: capitalize;">user phone</h5><br>
-									
-
 									
 								</div>
 		

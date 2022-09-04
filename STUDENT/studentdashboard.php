@@ -45,6 +45,18 @@
             </a>
 					</li>
 
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="exam">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Exam</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="marks">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Marks</span>
+            </a>
+					</li>
+
 
 					
 				</ul>
@@ -111,14 +123,30 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Your</strong> Dashboard</h1>
+					<h1 class="h3 mb-3">Your Pending Tests</h1>
 
+					<div class="row">
+						<div class="col-12">
+							<div class="card" style="height: 80vh;" >
+								<div class="card-header">
+									<h5 class="card-title mb-0" id="div1">No Test Found</h5>
+								</div>
+								<div class="card-body">
+									
+								</div>
+							</div>
+						</div>
+					</div>
 
 				</div>
 			</main>
 
 		</div>
 	</div>
+
+
+	<script src="studentdashboard.js"></script>
+
 
 	<script src="../js/app.js"></script>
     <script>
@@ -140,42 +168,35 @@
             document.getElementById("profilepage").href="profile.php?"+details
         })
 
-        document.getElementById("adminpage").addEventListener("click",()=>{
-            document.getElementById("adminpage").href="admin.php?"+details
+        document.getElementById("homepage").addEventListener("click",()=>{
+            document.getElementById("homepage").href="admin.php?"+details
         })
+
+        document.getElementById("exam").addEventListener("click",()=>{
+            document.getElementById("exam").href="loadsubjet.php?"+details
+        })
+
 
     </script>
 
 
+<style>
+	table{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 2%;
+	}
+	td{
+		border: solid grey;
+		padding: 1%;
+		font-size: 20px;
+		color: black;
+		border-radius: 10px;
+		text-align: center;
+		text-transform: capitalize;
+	}
+</style>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-<!-- 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin login</title>
-</head>
-<body>
-
-  
-<a href="../panel.php"><button id="panel">PANEL</button></a>
-
-    <button id="create">Create Questions</button>
-
-
-</body>
-</html> -->

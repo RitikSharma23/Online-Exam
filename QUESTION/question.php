@@ -49,7 +49,7 @@
 
     <button id="click">Click</button>
 
-    <script src="../javascript/ADMIN/question.js"></script>
+    <script src="../js/ADMIN/question.js"></script>
 
     
 </body>

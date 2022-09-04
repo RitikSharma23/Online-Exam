@@ -6,8 +6,6 @@ phone=document.getElementById("phone").innerHTML;
 details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
 
 
-
-
 l=0;
 res={}
 ss=new XMLHttpRequest
@@ -19,10 +17,84 @@ console.log(res['data'][1]);
 l=res['data'].length;
 
 
-
 div=document.getElementById("div1")
+if(l>=1){
+    div.innerHTML=""
+}
 table=document.createElement('table')
 table.border="1"
+
+i=0;
+
+
+
+
+
+var check=document.createElement("input");
+check.type = "checkbox";
+check.id=i
+check.value=i
+check.name=i
+check.classList="messageCheckbox"
+
+row=document.createElement('tr')
+td=document.createElement('td')
+// td.appendChild(check)
+row.appendChild(td)
+
+td1=document.createElement('td')
+text1=document.createTextNode("Date")
+td1.appendChild(text1)
+
+td3=document.createElement('td')
+text3=document.createTextNode("SEM")
+td3.appendChild(text3)
+
+td4=document.createElement('td')
+text4=document.createTextNode("DIV")
+td4.appendChild(text4)
+
+td5=document.createElement('td')
+text5=document.createTextNode("Subject")
+td5.appendChild(text5)
+
+td6=document.createElement('td')
+text6=document.createTextNode("Unit")
+td6.appendChild(text6)
+
+td7=document.createElement('td')
+text7=document.createTextNode("Total Que.")
+td7.appendChild(text7)
+
+td8=document.createElement('td')
+text8=document.createTextNode("Curr. Status")
+td8.appendChild(text8)
+
+td9=document.createElement('td')
+var a=document.createElement('a')
+a.href="edit.php?id="+res['data'][i]['question_id']
+text9=document.createTextNode('')
+a.appendChild(text9)
+td9.appendChild(a)
+
+
+// row.appendChild(td0)
+row.appendChild(td1)
+// row.appendChild(td2)
+row.appendChild(td3)
+row.appendChild(td4)
+row.appendChild(td5)
+row.appendChild(td6)
+row.appendChild(td7)
+row.appendChild(td8)
+row.appendChild(td9)
+table.appendChild(row)
+div.appendChild(table)
+
+
+
+
+
 
 
 
@@ -89,9 +161,9 @@ a.appendChild(text9)
 td9.appendChild(a)
 
 
-row.appendChild(td0)
+// row.appendChild(td0)
 row.appendChild(td1)
-row.appendChild(td2)
+// row.appendChild(td2)
 row.appendChild(td3)
 row.appendChild(td4)
 row.appendChild(td5)

@@ -157,7 +157,7 @@ document.getElementById("sub").addEventListener("click",()=>{
         ss.send()
 
 
-        window.location.href = "admin.html"; 
+        window.location.href = "admin.php"; 
 
 
 })
