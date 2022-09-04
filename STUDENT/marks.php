@@ -25,7 +25,7 @@ $marks=$_REQUEST['marks'];
 $select="UPDATE `student` SET `$subcol` = '$marks' WHERE `student`.`uid` = '$uid';";
 
 if ($conn->query($select) === TRUE) {
-    echo "New record created successfully";
+    echo "<h1 align='center'><pre>FEEDBACK DE AUR NIKAL YAHA SE <h1><pre><textarea style='width:100%;height:500px;border:4px solid;font'></textarea>";
   } else {
     echo "Error: <br>" . $conn->error;
   }
