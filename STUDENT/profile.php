@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="../https://demo-basic.adminkit.io/" />
 
-	<title>Dashboard</title>
+	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,55 +22,54 @@
 
 <body>
 	<div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar">
+        <nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="../index.html">
-            <span class="align-middle">Faculty</span>
-            </a>
+				<a class="sidebar-brand" href="index.html">
+				<span class="align-middle">Student</span>
+				</a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Pages
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" id="homepage">
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="adminpage">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" id="profilepage">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
 					</li>
 
-
-					
 				</ul>
 
 			</div>
-		</nav>
+	    </nav>
+
         <div style="display: none">
 
                 <?php
                 $roll=$_REQUEST['roll'];
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $phone=$_REQUEST['phone'];
-                $email=$_REQUEST['email'];
-                $sem=$_REQUEST['sem'];
-                $dev=$_REQUEST['dev'];
-                $uid=$_REQUEST['uid'];
-                
-                echo "roll : <span id='roll'>".$roll."</span><br>";
-                echo "fname : <span id='fname'>".$fname."</span><br>";
-                echo "lname : <span id='lname'>".$lname."</span><br>";
-                echo "phone : <span id='phone'>".$phone."</span><br>";
-                echo "email : <span id='email'>".$email."</span><br>";
-                echo "sem : <span id='sem'>".$sem."</span><br>";
-                echo "dev : <span id='dev'>".$dev."</span><br>";
-                echo "uid : <span id='uid'>".$uid."</span><br>";
+				$fname=$_REQUEST['fname'];
+				$lname=$_REQUEST['lname'];
+				$phone=$_REQUEST['phone'];
+				$email=$_REQUEST['email'];
+				$sem=$_REQUEST['sem'];
+				$dev=$_REQUEST['dev'];
+				$uid=$_REQUEST['uid'];
+				
+				echo "roll : <span id='roll'>".$roll."</span><br>";
+				echo "fname : <span id='fname'>".$fname."</span><br>";
+				echo "lname : <span id='lname'>".$lname."</span><br>";
+				echo "phone : <span id='phone'>".$phone."</span><br>";
+				echo "email : <span id='email'>".$email."</span><br>";
+				echo "sem : <span id='sem'>".$sem."</span><br>";
+				echo "dev : <span id='dev'>".$dev."</span><br>";
+				echo "uid : <span id='uid'>".$uid."</span><br>";
 
                 ?>
 
@@ -95,10 +94,10 @@
                 <img src="../img/avatars/profile.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="../pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="profile.php"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="../home.html">Log out</a>
@@ -111,8 +110,30 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Your</strong> Dashboard</h1>
+					<div class="row">
+						<div class="col-md-4 col-xl-3" style="border: solid;width: 100%;">
+							<div class="card mb-3">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Profile Details</h5>
+								</div>
+								<div class="card-body text-center">
+									<img src="../img/avatars/profile.png" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<h5 class="card-title mb-0" id="n_nam" style="text-transform: capitalize;">user name</h5><br>
+									<h5 class="card-title mb-0" id="n_uid" style="text-transform: capitalize;">user uid</h5><br>
+									<h5 class="card-title mb-0" id="n_sem" style="text-transform: capitalize;">user sem</h5><br>
+									<h5 class="card-title mb-0" id="n_email" style="text-transform: capitalize;">user email</h5><br>
+									<h5 class="card-title mb-0" id="n_phone" style="text-transform: capitalize;">user phone</h5><br>
+									
 
+									
+								</div>
+		
+					
+							</div>
+						</div>
+
+					
+					</div>
 
 				</div>
 			</main>
@@ -122,7 +143,7 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        roll=document.getElementById("roll").innerHTML
+                roll=document.getElementById("roll").innerHTML
         fname=document.getElementById("fname").innerHTML
         lname=document.getElementById("lname").innerHTML
         uid=document.getElementById("uid").innerHTML
@@ -133,17 +154,20 @@
 
         details="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
         
-
         document.getElementById("n_name").innerHTML=fname+" "+lname
+        document.getElementById("n_nam").innerHTML=fname+" "+lname
+        document.getElementById("n_email").innerHTML="Email : "+email
+        document.getElementById("n_uid").innerHTML="En no.: "+uid
+        document.getElementById("n_sem").innerHTML="Sem : "+sem
+        document.getElementById("n_phone").innerHTML="No +91 "+phone
 
         document.getElementById("profilepage").addEventListener("click",()=>{
             document.getElementById("profilepage").href="profile.php?"+details
         })
 
         document.getElementById("adminpage").addEventListener("click",()=>{
-            document.getElementById("adminpage").href="admin.php?"+details
+            document.getElementById("adminpage").href="studentdashboard.php?"+details
         })
-
     </script>
 
 

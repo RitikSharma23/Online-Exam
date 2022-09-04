@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 
-	<title>Sign In | AdminKit Demo</title>
+	<title>Student Login</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
 <div class="d-table-cell align-middle">
 
 <div class="text-center mt-4">
-<h1 class="h2">Faculty Login</h1>
+<h1 class="h2">Student Login</h1>
 <p class="lead">
 Sign in to your account to continue
 </p>
@@ -49,20 +49,11 @@ Sign in to your account to continue
 			<label class="form-label">Password</label>
 			<input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Enter your password" />
 			<small>
-	<a href="index.html">Forgot password?</a>
 </small>
 		</div>
-		<div>
-			<label class="form-check">
-	<input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
-	<span class="form-check-label">
-	Remember me next time
-	</span>
-</label>
-		</div>
+
 		<div class="text-center mt-3">
 			<button class="btn btn-lg btn-primary" id="submit"> Sign-in</button>
-			<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
 		</div>
 
 </div>
@@ -90,19 +81,26 @@ num=document.getElementById("number").value;
 ph=document.getElementById("password").value;
 
 ss=new XMLHttpRequest
-ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=1",true)
+ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=2",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 succ=res['success']
 
 if(succ==1){
-    fname=res['data'][0].fname;
-    lname=res['data'][0].lname;
-    email=res['data'][0].email;
-    phone=res['data'][0].phone;
-    pass=res['data'][0].pass;
-    details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;   
-    window.location.href="admin.php?"+details
+	roll=res['data'][0].roll
+        fname=res['data'][0].fname
+        lname=res['data'][0].lname
+        phone=res['data'][0].phone
+        email=res['data'][0].email
+        sem=res['data'][0].semester
+        dev=res['data'][0].dev
+        uid=res['data'][0].uid
+
+
+
+        data="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
+
+        window.location.href = "studentdashboard.php"+data; 
 
 }else{
     alert("No UserId Or Password Found")
