@@ -102,7 +102,7 @@ if(succ==1){
     phone=res['data'][0].phone;
     pass=res['data'][0].pass;
     details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;   
-    window.location.href="admin.php?"+details
+    location.replace("admin.php?"+details)
 
 }else{
     alert("No UserId Or Password Found")

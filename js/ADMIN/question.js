@@ -1,3 +1,9 @@
+
+fname=document.getElementById("fname").innerHTML;
+lname=document.getElementById("lname").innerHTML;
+email=document.getElementById("email").innerHTML;
+phone=document.getElementById("phone").innerHTML;
+details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
 x=1;
 phone=document.getElementById("phone").innerHTML;
 
@@ -15,7 +21,7 @@ document.getElementById("add").addEventListener("click",()=>{
     input.name = "member";
 
     var A=document.createElement("span")
-    A.appendChild(document.createTextNode("(A). "))
+    A.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0(A). "))
     var IA=document.createElement("input");
     IA.type = "text";
     IA.id="optiona"+x
@@ -23,7 +29,7 @@ document.getElementById("add").addEventListener("click",()=>{
     IA.name = "member";
 
     var B=document.createElement("span")
-    B.appendChild(document.createTextNode("(B). "))
+    B.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0(B). "))
     var IB=document.createElement("input");
     IB.type = "text";
     IB.id="optionb"+x
@@ -31,7 +37,7 @@ document.getElementById("add").addEventListener("click",()=>{
     IB.name = "member";
 
     var C=document.createElement("span")
-    C.appendChild(document.createTextNode("(C). "))
+    C.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0(C). "))
     var IC=document.createElement("input");
     IC.type = "text";
     IC.id="optionc"+x
@@ -39,33 +45,33 @@ document.getElementById("add").addEventListener("click",()=>{
     IC.name = "member";
 
     var D=document.createElement("span")
-    D.appendChild(document.createTextNode("(D). "))
+    D.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0(D). "))
     var ID=document.createElement("input");
     ID.type = "text";
     ID.id="optiond"+x
     ID.placeholder="Option D "
     ID.name = "member";
 
-    var t=document.createElement("span").appendChild(document.createTextNode("Correct Option : "))
-    var zz1=document.createElement("span").appendChild(document.createTextNode(" A:"))
+    var t=document.createElement("span").appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Correct Option : "))
+    var zz1=document.createElement("span").appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 A:"))
     var ans1=document.createElement("input")
     ans1.type="radio"
     ans1.name="o"+x
     ans1.value="a"
 
-    var zz2=document.createElement("span").appendChild(document.createTextNode(" B:"))
+    var zz2=document.createElement("span").appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 B:"))
     var ans2=document.createElement("input")
     ans2.type="radio"
     ans2.name="o"+x
     ans2.value="b"
 
-    var zz3=document.createElement("span").appendChild(document.createTextNode(" C:"))
+    var zz3=document.createElement("span").appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 C:"))
     var ans3=document.createElement("input")
     ans3.type="radio"
     ans3.name="o"+x
     ans3.value="c"
 
-    var zz4=document.createElement("span").appendChild(document.createTextNode(" D:"))
+    var zz4=document.createElement("span").appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 D:"))
     var ans4=document.createElement("input")
     ans4.type="radio"
     ans4.name="o"+x
@@ -98,7 +104,7 @@ document.getElementById("add").addEventListener("click",()=>{
 
     var div=document.createElement("div")
     div.id="d1"
-    div.style="border:solid;"
+    div.style="border:solid;padding-bottom:10px;font-size:15px;border-radius:10px"
     div.appendChild(field)
 
     const element = document.getElementById("div1");
@@ -157,7 +163,7 @@ document.getElementById("sub").addEventListener("click",()=>{
         ss.send()
 
 
-        window.location.href = "admin.php"; 
+        window.location.href = "panel.php?"+details+"&obj=1"; 
 
 
 })

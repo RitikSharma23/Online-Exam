@@ -105,7 +105,7 @@
 								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../home.html">Log out</a>
+								<a class="dropdown-item" ><button style="border: none;background-color: transparent;" id="logout"> Log out</button></a>
 							</div>
 						</li>
 					</ul>
@@ -156,11 +156,23 @@
         document.getElementById("n_phone").innerHTML="+91 "+phone
 
         document.getElementById("profilepage").addEventListener("click",()=>{
-            document.getElementById("profilepage").href="profile.php?"+details
+            location.replace("profile.php?"+details)
         })
 
         document.getElementById("adminpage").addEventListener("click",()=>{
-            document.getElementById("adminpage").href="admin.php?"+details
+            location.replace("admin.php?"+details)
+        })
+		document.getElementById("test").addEventListener("click",()=>{
+            location.replace("sem.php?"+details+"&obj=1")
+        })
+
+        document.getElementById("panel").addEventListener("click",()=>{
+            location.replace("panel.php?"+details+"&obj=1")
+            // document.getElementById("panel").href=
+        })
+        document.getElementById("logout").addEventListener("click",()=>{
+            location.replace("../home.html")
+			// window.close();
         })
     </script>
 

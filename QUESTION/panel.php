@@ -104,7 +104,7 @@
 								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../home.html">Log out</a>
+								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -151,20 +151,41 @@
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
 
+        // document.getElementById("profilepage").addEventListener("click",()=>{
+        //     document.getElementById("profilepage").href="profile.php?"+details
+        // })
+
+        // document.getElementById("homepage").addEventListener("click",()=>{
+        //     document.getElementById("homepage").href="admin.php?"+details
+        // })
+
+        // document.getElementById("test").addEventListener("click",()=>{
+        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
+        // })
+
+        // document.getElementById("panel").addEventListener("click",()=>{
+        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
+        // })
+
+		
         document.getElementById("profilepage").addEventListener("click",()=>{
-            document.getElementById("profilepage").href="profile.php?"+details
+            location.replace("profile.php?"+details)
         })
 
         document.getElementById("homepage").addEventListener("click",()=>{
-            document.getElementById("homepage").href="admin.php?"+details
+            location.replace("admin.php?"+details)
         })
-
-        document.getElementById("test").addEventListener("click",()=>{
-            document.getElementById("test").href="sem.php?"+details+"&obj=1"
+		document.getElementById("test").addEventListener("click",()=>{
+            location.replace("sem.php?"+details+"&obj=1")
         })
 
         document.getElementById("panel").addEventListener("click",()=>{
-            document.getElementById("panel").href="panel.php?"+details+"&obj=1"
+            location.replace("panel.php?"+details+"&obj=1")
+            // document.getElementById("panel").href=
+        })
+        document.getElementById("logout").addEventListener("click",()=>{
+            location.replace("../home.html")
+			// window.close();
         })
 
     </script>
