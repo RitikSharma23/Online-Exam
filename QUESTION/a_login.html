@@ -42,24 +42,18 @@ Sign in to your account to continue
 	</div>
 
 		<div class="mb-3">
-			<label class="form-label">Phone</label>
-			<input class="form-control form-control-lg" type="phone" name="number" id="number" placeholder="Enter your phone" />
+			<label class="form-label">User-Id</label>
+			<input class="form-control form-control-lg" type="phone" name="number" id="number" placeholder="Enter your phone" required/>
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Password</label>
-			<input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Enter your password" />
+			<input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Enter your password" required/>
 			<small>
-	<a href="index.html">Forgot password?</a>
+				<br>
+	<a href="index.html">&nbsp;&nbsp; Forgot password?</a>
 </small>
 		</div>
-		<div>
-			<label class="form-check">
-	<input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
-	<span class="form-check-label">
-	Remember me next time
-	</span>
-</label>
-		</div>
+		
 		<div class="text-center mt-3">
 			<button class="btn btn-lg btn-primary" id="submit"> Sign-in</button>
 			<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
@@ -95,7 +89,14 @@ ss.onload=function(){
 res=JSON.parse(this.responseText)
 succ=res['success']
 
-if(succ==1){
+
+if(num==""){
+	alert("Please enter userid")
+}else if(num.match(/[0-9]/)==null){
+	alert("Please enter userid in proper format only")
+}else if(ph==""){
+	alert("Please enter password")
+}else if(succ==1){
     fname=res['data'][0].fname;
     lname=res['data'][0].lname;
     email=res['data'][0].email;
@@ -105,7 +106,7 @@ if(succ==1){
     location.replace("admin.php?"+details)
 
 }else{
-    alert("No UserId Or Password Found")
+    alert("User-ID or Password not found")
 }
 
 }

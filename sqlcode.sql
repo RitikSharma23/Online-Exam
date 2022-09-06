@@ -112,17 +112,17 @@ CREATE TABLE `student` (
   `lname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dob` date COLLATE utf8_unicode_ci DEFAULT NULL,
   `semester` int(11) DEFAULT NULL,
   `dev` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `uid` char(20) COLLATE utf8_unicode_ci NOT NULL,
-  `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `sem_1_cpp_unit_1` int(11) NOT NULL,
-  `sem_1_cpp_unit_2` int(11) NOT NULL,
-  `sem_1_fco_unit_1` int(11) NOT NULL,
-  `sem_1_html_unit_1` int(11) NOT NULL,
-  `sem_1_sdot_unit_1` int(11) NOT NULL,
-  `sem_2_cpp_unit_1` int(11) NOT NULL,
-  `sem_3_php_unit_1` int(11) NOT NULL
+  `ayear` year COLLATE utf8_unicode_ci NOT NULL,
+  `flat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `pin` int COLLATE utf8_unicode_ci NOT NULL,
+  `area` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `state` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
