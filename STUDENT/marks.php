@@ -25,7 +25,7 @@ $marks=$_REQUEST['marks'];
 $select="UPDATE `student` SET `$subcol` = '$marks' WHERE `student`.`uid` = '$uid';";
 
 if ($conn->query($select) === TRUE) {
-    echo "<h1 align='center'><pre>FEEDBACK DE <h1><pre><textarea style='width:80%;height:500px;border:4px solid #b865ae;font'></textarea>
+    echo "<h1 align='center'><pre>FEEDBACK<h1><pre><textarea style='width:80%;height:500px;border:4px solid #b865ae;font'></textarea>
     <a href='../home.html'><button>Submit</button></a>";
   } else {
     echo "Error: <br>" . $conn->error;
