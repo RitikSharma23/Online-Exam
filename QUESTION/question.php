@@ -222,7 +222,7 @@
     }
     input[type='text']{
         margin-left: 10px;
-        width: 40%;
+        width: 30%;
     }
 </style>
 
