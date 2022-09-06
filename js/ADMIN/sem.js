@@ -19,7 +19,7 @@ fname=document.getElementById("fname").innerHTML;
 lname=document.getElementById("lname").innerHTML;
 email=document.getElementById("email").innerHTML;
 phone=document.getElementById("phone").innerHTML;
-details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;    
+details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj=1";    
 
 
 
@@ -43,8 +43,10 @@ function column(){
         }
         sem=removeDuplicates(sem)
 
+        console.log(sem)
+
     
-        for(i=0;i<sem.length;i++){
+        for(i=1;i<sem.length;i++){
         input=document.createElement("input");
         input.type="radio";
         input.name="sem";
@@ -58,6 +60,7 @@ function column(){
         }
 
         input=document.createElement("input");
+        br=document.createElement("br");
         input.type="number";
         input.name="sem";
         input.value="othersem";
@@ -65,6 +68,8 @@ function column(){
         label=document.createTextNode(" Other : ")
         input.appendChild(label)
         semm=document.getElementById("sem")
+        semm.appendChild(br)
+
         semm.appendChild(label)
         semm.appendChild(input)
 
@@ -128,29 +133,31 @@ document.getElementById("se").addEventListener("click",()=>{
         input.id=subject[i];
         input.value=subject[i];
         label=document.createTextNode(subject[i])
+        space=document.createTextNode("\n")
         input.appendChild(label)
         sem=document.getElementById("sub")
+        sem.appendChild(space)
         sem.appendChild(input)
         sem.appendChild(label)
         }
-    
+
         input=document.createElement("input");
         input.type="text";
         input.name="subjects";
         input.id="othersub";
+        brr=document.createElement("br");
        
         label=document.createTextNode(" Other : ")
+        // input.appendChild(brr)
         input.appendChild(label)
         sem=document.getElementById("sub")
+        sem.appendChild(brr)
         sem.appendChild(label)
         sem.appendChild(input)
-
 
         document.getElementById("su").disabled=false
 
     }
-
-      
 
 })
 
@@ -288,7 +295,7 @@ document.getElementById("submit").addEventListener("click",()=>{
 }
 
 console.log(details)
-window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni+"&dev="+dev;  
+window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni+"&dev="+dev+"&obj=1";  
 
 })
 

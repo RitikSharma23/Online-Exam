@@ -33,7 +33,7 @@
 						Pages
 					</li>
 
-					<li class="sidebar-item ">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" id="homepage">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
@@ -51,7 +51,7 @@
             		</a>
 					</li>
 
-					<li class="sidebar-item active" >
+					<li class="sidebar-item">
 						<a class="sidebar-link" id="panel">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">View Panel</span>
             		</a>
@@ -114,32 +114,14 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Your Pending Tests</h1>
+					<h1 class="h3 mb-3"><strong>Your</strong> Dashboard</h1>
 
-					<div class="row">
-						<div class="col-12">
-							<div class="card" style="height: 80vh;" >
-								<div class="card-header">
-									<h5 class="card-title mb-0" id="div1">No Test Found</h5>
-								</div>
-								<div class="card-body">
-                                    <p align="center">
-                                <button id="start" class="btn btn-success">start</button>
-                                <button id="stop" class="btn btn-danger">stop</button>
-                                <button id="delete" class="btn btn-warning">delete</button>
-                                </p>
-								</div>
-							</div>
-						</div>
-					</div>
 
 				</div>
 			</main>
 
 		</div>
 	</div>
-
-    <script src="../js/ADMIN/panel.js"></script>
 
 	<script src="../js/app.js"></script>
     <script>
@@ -191,35 +173,15 @@
     </script>
 
 
-<style>
-	table{
-		width: 90%;
-		margin-left: 5%;
-		margin-top: 2%;
-	}
-	td{
-		border: solid grey;
-		padding: 1%;
-		font-size: 20px;
-		color: black;
-		border-radius: 10px;
-		text-align: center;
-		text-transform: capitalize;
-	}
-    button{
-        width: 9%;
-        margin:0% 3%;
-    }
-    input{
-        margin: 6px;
-    }
-</style>
-
-
 
 </body>
 
 </html>
+
+
+
+
+
 
 
 
@@ -231,14 +193,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PANEL</title>
+    <title>Admin login</title>
 </head>
 <body>
 
-    <div id="div1"></div>
+  
+<a href="../panel.php"><button id="panel">PANEL</button></a>
 
-   
+    <button id="create">Create Questions</button>
 
-    
+
 </body>
 </html> -->

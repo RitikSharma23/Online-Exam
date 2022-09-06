@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="../https://demo-basic.adminkit.io/" />
 
-	<title>Dashboard</title>
+	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,24 +22,24 @@
 
 <body>
 	<div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar">
+        <nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="../index.html">
-            <span class="align-middle">Faculty</span>
-            </a>
+				<a class="sidebar-brand" href="index.html">
+				<span class="align-middle">Faculty</span>
+				</a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Pages
 					</li>
 
-					<li class="sidebar-item ">
-						<a class="sidebar-link" id="homepage">
+					<li class="sidebar-item">
+						<a class="sidebar-link" id="adminpage">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" id="profilepage">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
@@ -51,16 +51,17 @@
             		</a>
 					</li>
 
-					<li class="sidebar-item active" >
+					<li class="sidebar-item " >
 						<a class="sidebar-link" id="panel">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">View Panel</span>
             		</a>
 					</li>
-					
+
 				</ul>
 
 			</div>
-		</nav>
+	    </nav>
+
         <div style="display: none">
 
                 <?php
@@ -98,13 +99,13 @@
                 <img src="../img/avatars/profile.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="../pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="profile.php"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" id="logout">Log out</a>
+								<a class="dropdown-item" ><button style="border: none;background-color: transparent;" id="logout"> Log out</button></a>
 							</div>
 						</li>
 					</ul>
@@ -114,23 +115,25 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Your Pending Tests</h1>
-
 					<div class="row">
-						<div class="col-12">
-							<div class="card" style="height: 80vh;" >
+						<div class="col-md-4 col-xl-3" style="border: solid;width: 100%;">
+							<div class="card mb-3">
 								<div class="card-header">
-									<h5 class="card-title mb-0" id="div1">No Test Found</h5>
+									<h5 class="card-title mb-0">Profile Details</h5>
 								</div>
-								<div class="card-body">
-                                    <p align="center">
-                                <button id="start" class="btn btn-success">start</button>
-                                <button id="stop" class="btn btn-danger">stop</button>
-                                <button id="delete" class="btn btn-warning">delete</button>
-                                </p>
+								<div class="card-body text-center">
+									<img src="../img/avatars/profile.png" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<h5 class="card-title mb-0" id="n_nam" style="text-transform: capitalize;">user name</h5><br>
+									<h5 class="card-title mb-0" id="n_email" style="text-transform: capitalize;">user email</h5><br>
+									<h5 class="card-title mb-0" id="n_phone" style="text-transform: capitalize;">user phone</h5><br>
+									
 								</div>
+		
+					
 							</div>
 						</div>
+
+					
 					</div>
 
 				</div>
@@ -138,8 +141,6 @@
 
 		</div>
 	</div>
-
-    <script src="../js/ADMIN/panel.js"></script>
 
 	<script src="../js/app.js"></script>
     <script>
@@ -150,29 +151,15 @@
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
+        document.getElementById("n_nam").innerHTML=fname+" "+lname
+        document.getElementById("n_email").innerHTML=email
+        document.getElementById("n_phone").innerHTML="+91 "+phone
 
-        // document.getElementById("profilepage").addEventListener("click",()=>{
-        //     document.getElementById("profilepage").href="profile.php?"+details
-        // })
-
-        // document.getElementById("homepage").addEventListener("click",()=>{
-        //     document.getElementById("homepage").href="admin.php?"+details
-        // })
-
-        // document.getElementById("test").addEventListener("click",()=>{
-        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
-        // })
-
-        // document.getElementById("panel").addEventListener("click",()=>{
-        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
-        // })
-
-		
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
         })
 
-        document.getElementById("homepage").addEventListener("click",()=>{
+        document.getElementById("adminpage").addEventListener("click",()=>{
             location.replace("admin.php?"+details)
         })
 		document.getElementById("test").addEventListener("click",()=>{
@@ -187,39 +174,18 @@
             location.replace("../home.html")
 			// window.close();
         })
-
     </script>
-
-
-<style>
-	table{
-		width: 90%;
-		margin-left: 5%;
-		margin-top: 2%;
-	}
-	td{
-		border: solid grey;
-		padding: 1%;
-		font-size: 20px;
-		color: black;
-		border-radius: 10px;
-		text-align: center;
-		text-transform: capitalize;
-	}
-    button{
-        width: 9%;
-        margin:0% 3%;
-    }
-    input{
-        margin: 6px;
-    }
-</style>
 
 
 
 </body>
 
 </html>
+
+
+
+
+
 
 
 
@@ -231,14 +197,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PANEL</title>
+    <title>Admin login</title>
 </head>
 <body>
 
-    <div id="div1"></div>
+  
+<a href="../panel.php"><button id="panel">PANEL</button></a>
 
-   
+    <button id="create">Create Questions</button>
 
-    
+
 </body>
 </html> -->
