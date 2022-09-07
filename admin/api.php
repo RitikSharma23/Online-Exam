@@ -29,7 +29,7 @@ function dashboardenuser($conn){
     $result=array();
     $userid=$_REQUEST['userid'];
     $result['data']=array();
-    $select="SELECT * FROM `admin` where userid='$userid' ;";
+    $select="SELECT * FROM `faculty` where userid='$userid' ;";
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){
       $index["ind"]=$row['0'];
@@ -88,7 +88,7 @@ function dashboardenroll($conn){
 function fdashboard($conn){
     $result=array();
     $result['data']=array();
-    $select="SELECT * FROM `admin`;";
+    $select="SELECT * FROM `faculty`;";
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){
     $index["ind"]=$row['0'];
@@ -151,7 +151,7 @@ function facultyreg($conn){
     $email=$_REQUEST['email'];
     $pass=$phone;
    
-    $select="INSERT INTO admin (userid, fname, lname, phone,  email, pass) VALUES ('$userid', '$fname', '$lname', '$phone', '$email', '$pass') ;";
+    $select="INSERT INTO faculty (userid, fname, lname, phone,  email, pass) VALUES ('$userid', '$fname', '$lname', '$phone', '$email', '$pass') ;";
        
        if ($conn->query($select) === TRUE) {
            echo "New record created successfully";
@@ -199,7 +199,7 @@ function facultyreg($conn){
     $email=$_REQUEST['email'];
     $pass=$_REQUEST['pass'];
    
-    $select="update admin set fname='$fname', lname='$lname',phone='$phone',email='$email',pass='$pass' where userid='$userid';";
+    $select="update faculty set fname='$fname', lname='$lname',phone='$phone',email='$email',pass='$pass' where userid='$userid';";
        
        if ($conn->query($select) === TRUE) {
            echo "New record created successfully";
@@ -276,7 +276,7 @@ function facultyreg($conn){
    function facdelete($conn){
      $uid=$_REQUEST['uid'];
     
-     $select="delete from admin where userid='$uid' ;";
+     $select="delete from faculty where userid='$uid' ;";
         
        if ($conn->query($select) === TRUE) {
            echo "New record deleted successfully";

@@ -58,7 +58,7 @@ function superuser($conn){
     $password = $_REQUEST['password'];
     $result=array();
     $result['data']=array();
-    $select="SELECT * FROM superuser WHERE userid='$number' AND pass='$password'";
+    $select="SELECT * FROM admin WHERE userid='$number' AND pass='$password'";
     // $select="SELECT * FROM admin WHERE phone='11' AND pass='22';";
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){

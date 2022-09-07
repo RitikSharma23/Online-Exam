@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2022 at 06:16 AM
+-- Generation Time: Sep 07, 2022 at 06:35 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `faculty`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE `faculty` (
   `ind` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `fname` varchar(20) NOT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin`
+-- Dumping data for table `faculty`
 --
 
-INSERT INTO `admin` (`ind`, `userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
+INSERT INTO `faculty` (`ind`, `userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
 (10, 4310, 'ritik', 'sharma', 'ritikss748@gmail.com', '8866892314', '8866892314');
 
 -- --------------------------------------------------------
@@ -135,15 +135,16 @@ CREATE TABLE `student_result` (
 
 INSERT INTO `student_result` (`uid`, `sem_1_cpp_unit_1`, `sem_1_cpp_unit_2`) VALUES
 ('21004500210048', 0, -1),
-('21004500210167', 0, -1);
+('21004500210167', 0, -1),
+('786785765875', 0, -1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `superuser`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `superuser` (
+CREATE TABLE `admin` (
   `userid` int(11) NOT NULL,
   `fname` varchar(20) NOT NULL,
   `lname` varchar(20) NOT NULL,
@@ -153,10 +154,10 @@ CREATE TABLE `superuser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `superuser`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `superuser` (`userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
+INSERT INTO `admin` (`userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
 (1123, 'Ritik', 'Sharma', 'ritikss748@gmail.com', '8866892314', 'admin123');
 
 --
@@ -164,9 +165,9 @@ INSERT INTO `superuser` (`userid`, `fname`, `lname`, `email`, `phone`, `pass`) V
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `faculty`
 --
-ALTER TABLE `admin`
+ALTER TABLE `faculty`
   ADD PRIMARY KEY (`ind`);
 
 --
@@ -187,10 +188,10 @@ ALTER TABLE `student_result`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `faculty`
 --
-ALTER TABLE `admin`
-  MODIFY `ind` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `faculty`
+  MODIFY `ind` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
