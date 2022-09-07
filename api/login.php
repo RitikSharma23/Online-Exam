@@ -36,11 +36,12 @@ function adminlogin($conn){
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){
     $index["ind"]=$row['0'];
-    $index["fname"]=$row['1'];
-    $index["lname"]=$row['2'];
-    $index["email"]=$row['3'];
-    $index["phone"]=$row['4'];
-    $index["pass"]=$row['5'];
+    $index["userid"]=$row['1'];
+    $index["fname"]=$row['2'];
+    $index["lname"]=$row['3'];
+    $index["email"]=$row['4'];
+    $index["phone"]=$row['5'];
+    $index["pass"]=$row['6'];
     array_push($result['data'],$index);}
     if($result['data']==null){
       $result['success']="0";

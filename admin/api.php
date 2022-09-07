@@ -260,6 +260,33 @@ function facultyreg($conn){
          $conn->close();
    }
    
+   function studentdelete($conn){
+     $uid=$_REQUEST['uid'];
+    
+     $select="delete from student where uid='$uid' ;";
+        
+       if ($conn->query($select) === TRUE) {
+           echo "New record deleted successfully";
+         } else {
+           echo "Error: <br>" . $conn->error;
+         }
+         
+         $conn->close();
+   }
+   function facdelete($conn){
+     $uid=$_REQUEST['uid'];
+    
+     $select="delete from admin where userid='$uid' ;";
+        
+       if ($conn->query($select) === TRUE) {
+           echo "New record deleted successfully";
+         } else {
+           echo "Error: <br>" . $conn->error;
+         }
+         
+         $conn->close();
+   }
+   
    }
 
 
@@ -276,6 +303,8 @@ switch($choice){
   case 6:$apple->dashboardenuser($conn);break;
   case 7:$apple->facultyedit($conn);break;
   case 8:$apple->facultyreg($conn);break;
+  case 9:$apple->studentdelete($conn);break;
+  case 10:$apple->facdelete($conn);break;
 
 }
 
