@@ -21,46 +21,31 @@
 </head>
 
 <body>
-	<div>
-		<?php
-		$fname=$_REQUEST['fname'];
-		$lname=$_REQUEST['lname'];
-		$email=$_REQUEST['email'];
-		$dob=$_REQUEST['dob'];
-		$phone=$_REQUEST['phone'];
-		$enroll=$_REQUEST['enroll'];
-		$roll=$_REQUEST['roll'];
-		$sem=$_REQUEST['sem'];
-		$div=$_REQUEST['div'];
-		$year=$_REQUEST['year'];
-
-		echo "<span id='fname'>".$fname."</span";
-		echo "<span id='lname'>".$lname."</span";
-		echo "<span id='email'>".$email."</span";
-		echo "<span id='dob'>".$dob."</span";
-		echo "<span id='phone'>".$phone."</span";
-		echo "<span id='enroll'>".$enroll."</span";
-		echo "<span id='roll'>".$roll."</span";
-		echo "<span id='sem'>".$sem."</span";
-		echo "<span id='div'>".$div."</span";
-		echo "<span id='year'>".$year."</span";
-		
-		?>
-	</div>
+	<?php $uid=$_REQUEST['uid'];
+	echo "<span id='uid'>".$uid."</span>";
+	?>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
+
 						<div class="text-center mt-4">
-							<h1 class="h2">Residencial Details</h1>
-							
+							<h1 class="h2">Get started</h1>
+							<p class="lead">
+								With Basic Details
+							</p>
 						</div>
 
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form>
+									<form >
+										
+										<div class="mb-3">
+											<label class="form-label">Email Id</label>
+											<input class="form-control form-control-lg" type="email" id="email" placeholder="Email Id" required/>
+										</div>
 										<div class="mb-3">
 											<label class="form-label">Flat/House-No</label>
 											<input class="form-control form-control-lg" type="text" id="flat" placeholder="Flat / House-No" required/>
@@ -81,13 +66,17 @@
 											<label class="form-label">State</label>
 											<input class="form-control form-control-lg" type="text" id="state" placeholder="State" required/>
 										</div>
+										<div class="mb-3">
+											<label class="form-label">Pasword</label>
+											<input class="form-control form-control-lg" type="text" id="password" placeholder="Passcord" required/>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Confirm Pasword</label>
+											<input class="form-control form-control-lg" type="text" id="cpassword" placeholder=" Confirm Passcord" required/>
+										</div>
 										<div class="text-center mt-3">
-											<!-- <a href="index.html" class="btn btn-lg btn-primary">Next</a> -->
-											<!-- <a href="student_reg1.html"><input type="submit" class="btn btn-lg btn-primary" value="submit"></a> -->
-											<button id="submit" class="btn btn-lg btn-primary">Next</button>
-
+											<button id="submit" class="btn btn-lg btn-primary">Submit</button>
 											
-											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 										</div>
 									</form>
 								</div>
@@ -101,30 +90,25 @@
 	</main>
 
 	<script src="../js/app.js"></script>
+
 	<script>
 		document.getElementById("submit").addEventListener("click",()=>{
-		fname=document.getElementById("fname").innerHTML;
-		lname=document.getElementById("lname").innerHTML;
-		email=document.getElementById("email").innerHTML;
-		dob=document.getElementById("dob").innerHTML;
-		phone=document.getElementById("phone").innerHTML;
-		enroll=document.getElementById("enroll").innerHTML;
-		roll=document.getElementById("roll").innerHTML;
-		sem=document.getElementById("sem").innerHTML;
-		div=document.getElementById("div").innerHTML;
-		year=document.getElementById("year").innerHTML;
-		flat=document.getElementById("flat").innerHTML;
-		pin=document.getElementById("pin").innerHTML;
-		area=document.getElementById("area").innerHTML;
-		city=document.getElementById("city").innerHTML;
-		state=document.getElementById("state").innerHTML;
+		email=document.getElementById("email").value;
+		flat=document.getElementById("flat").value;
+		pin=document.getElementById("pin").value;
+		area=document.getElementById("area").value;
+		city=document.getElementById("city").value;
+		state=document.getElementById("state").value;
+		pass=document.getElementById("password").value;
+		cpass=document.getElementById("cpassword").value;
 
 
 
 
-		details="&fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&enroll="+enroll+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state;
+		details="email="+email+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid=21004500210167&obj=5";
 
-		location.href="student_reg4.php?"+details;
+		console.log(details)
+		location.href="../api/login.php?"+details;
 		})
 	</script>
 

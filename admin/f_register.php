@@ -21,6 +21,18 @@
 </head>
 
 <body>
+	<div style="display: none;">
+		<?php
+		$fname=$_REQUEST['fname'];
+		$lname=$_REQUEST['lname'];
+		$email=$_REQUEST['email'];
+		$phone=$_REQUEST['phone'];
+		echo "<span id='fname'>".$fname."</span>";
+		echo "<span id='lname'>".$lname."</span>";
+		echo "<span id='email'>".$email."</span>";
+		echo "<span id='phone'>".$phone."</span>";
+		?>
+</div>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -40,23 +52,23 @@
 									
 										<div class="mb-3">
 											<label class="form-label">User-Id</label>
-											<input class="form-control form-control-lg" type="text" id="userid" placeholder=" First name" required/>
+											<input class="form-control form-control-lg" type="text" id="userid" placeholder="User Id" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">First Name</label>
-											<input class="form-control form-control-lg" type="text" id="fname" placeholder=" First name" required/>
+											<input class="form-control form-control-lg" type="text" id="fn" placeholder=" First name" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Last Name</label>
-											<input class="form-control form-control-lg" type="text" id="lname" placeholder=" Last name" required/>
+											<input class="form-control form-control-lg" type="text" id="ln" placeholder=" Last name" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Phone </label>
-											<input class="form-control form-control-lg" type="phone" id="phone" placeholder=" Phone Number" required/>
+											<input class="form-control form-control-lg" type="phone" id="ph" placeholder=" Phone Number" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Email </label>
-											<input class="form-control form-control-lg" type="email" id="email" placeholder="Email"  required/>
+											<input class="form-control form-control-lg" type="email" id="em" placeholder="Email"  required/>
 										</div>
 										
 										
@@ -77,19 +89,33 @@
 	<script src="../js/app.js"></script>
 
 	<script>
+		fname=document.getElementById("fname").innerHTML;
+        lname=document.getElementById("lname").innerHTML;
+        email=document.getElementById("email").innerHTML;
+        phone=document.getElementById("phone").innerHTML;
+        details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+
 		document.getElementById("submit").addEventListener("click",()=>{
 		userid=document.getElementById("userid").value;
-		fname=document.getElementById("fname").value;
-		lname=document.getElementById("lname").value;
-		email=document.getElementById("email").value;
-		phone=document.getElementById("phone").value;
+		fn=document.getElementById("fn").value;
+		ln=document.getElementById("ln").value;
+		em=document.getElementById("em").value;
+		ph=document.getElementById("ph").value;
 
 
 
-		details="&userid="+userid+"&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj=4";
+		data="userid="+userid+"&fname="+fn+"&lname="+ln+"&email="+em+"&phone="+ph+"&obj=8";
 
 		console.log(details)
-		location.href="../api/login.php?"+details;
+
+		ss=new XMLHttpRequest
+		ss.open("GET","api.php?"+data,true)
+		ss.onload=function(){
+		res=JSON.parse(this.responseText)
+		}
+		ss.send();
+
+		location.href="faculty.php?"+details;
 		})
 	</script>
 

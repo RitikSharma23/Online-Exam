@@ -21,6 +21,18 @@
 </head>
 
 <body>
+<div style="display: none;">
+		<?php
+		$fname=$_REQUEST['fname'];
+		$lname=$_REQUEST['lname'];
+		$email=$_REQUEST['email'];
+		$phone=$_REQUEST['phone'];
+		echo "<span id='fn'>".$fname."</span>";
+		echo "<span id='ln'>".$lname."</span>";
+		echo "<span id='em'>".$email."</span>";
+		echo "<span id='ph'>".$phone."</span>";
+		?>
+</div>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -92,6 +104,12 @@
 	<script src="../js/app.js"></script>
 
 	<script>
+		fn=document.getElementById("fn").innerHTML;
+        ln=document.getElementById("ln").innerHTML;
+        em=document.getElementById("em").innerHTML;
+        ph=document.getElementById("ph").innerHTML;
+        details="&fname="+fn+"&lname="+ln+"&email="+em+"&phone="+ph;  
+
 		document.getElementById("submit").addEventListener("click",()=>{
 		fname=document.getElementById("fname").value;
 		lname=document.getElementById("lname").value;
@@ -104,12 +122,19 @@
 		year=document.getElementById("year").value;
 
 
-
-
-		details="&fname="+fname+"&lname="+lname+"&dob="+dob+"&phone="+phone+"&uid="+enroll+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&obj=3";
+		data="fname="+fname+"&lname="+lname+"&dob="+dob+"&phone="+phone+"&uid="+enroll+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&obj=4";
 
 		console.log(details)
-		location.href="../api/login.php?"+details;
+
+		ss=new XMLHttpRequest
+		ss.open("GET","api.php?"+data,true)
+		ss.onload=function(){
+		res=JSON.parse(this.responseText)
+		}
+		ss.send();
+
+		location.href="student.php?"+details;
+
 		})
 	</script>
 
