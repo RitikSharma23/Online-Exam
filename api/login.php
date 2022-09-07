@@ -31,7 +31,34 @@ function adminlogin($conn){
     $password = $_REQUEST['password'];
     $result=array();
     $result['data']=array();
-    $select="SELECT * FROM admin WHERE phone='$number' AND pass='$password'";
+    $select="SELECT * FROM admin WHERE userid='$number' AND pass='$password'";
+    // $select="SELECT * FROM admin WHERE phone='11' AND pass='22';";
+    $responce=mysqli_query($conn,$select);
+    while($row=mysqli_fetch_array($responce)){
+    $index["ind"]=$row['0'];
+    $index["userid"]=$row['1'];
+    $index["fname"]=$row['2'];
+    $index["lname"]=$row['3'];
+    $index["email"]=$row['4'];
+    $index["phone"]=$row['5'];
+    $index["pass"]=$row['6'];
+    array_push($result['data'],$index);}
+    if($result['data']==null){
+      $result['success']="0";
+    }else{
+      $result['success']="1";
+    }
+    echo json_encode($result);
+    mysqli_close($conn);  
+}
+  
+function superuser($conn){
+
+    $number = $_REQUEST['number'];
+    $password = $_REQUEST['password'];
+    $result=array();
+    $result['data']=array();
+    $select="SELECT * FROM superuser WHERE userid='$number' AND pass='$password'";
     // $select="SELECT * FROM admin WHERE phone='11' AND pass='22';";
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){
@@ -83,7 +110,6 @@ function studentlogin($conn){
 
 }
 
-
 $apple = new Fruit();
 // $apple->login($conn);
 
@@ -91,6 +117,7 @@ $apple = new Fruit();
 switch($choice){
   case 1:$apple->adminlogin($conn);break;
   case 2:$apple->studentlogin($conn);break;
+  case 7:$apple->superuser($conn);break;
 }
 
 

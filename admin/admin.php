@@ -28,7 +28,7 @@
 <div class="d-table-cell align-middle">
 
 <div class="text-center mt-4">
-<h1 class="h2">Faculty Login</h1>
+<h1 class="h2">Admin Login</h1>
 <p class="lead">
 Sign in to your account to continue
 </p>
@@ -56,7 +56,6 @@ Sign in to your account to continue
 		
 		<div class="text-center mt-3">
 			<button class="btn btn-lg btn-primary" id="submit"> Sign-in</button>
-			<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
 		</div>
 
 </div>
@@ -84,7 +83,7 @@ num=document.getElementById("number").value;
 ph=document.getElementById("password").value;
 
 ss=new XMLHttpRequest
-ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=1",true)
+ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=7",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 succ=res['success']
@@ -103,7 +102,7 @@ if(num==""){
     phone=res['data'][0].phone;
     pass=res['data'][0].pass;
     details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;   
-    location.replace("admin.php?"+details)
+    location.replace("student.php?"+details)
 
 }else{
     alert("User-ID or Password not found")

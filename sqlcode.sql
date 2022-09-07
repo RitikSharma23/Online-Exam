@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2022 at 04:55 AM
+-- Generation Time: Sep 07, 2022 at 06:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `ind` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
   `fname` varchar(20) NOT NULL,
   `lname` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -40,9 +41,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`ind`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
-(1, 'ritik', 'sharma', 'ritikss748@gmail.com', '11', '22'),
-(2, 'shanu', 'pandey', 'shanu1@gmail.com', '33', '44');
+INSERT INTO `admin` (`ind`, `userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
+(10, 4310, 'ritik', 'sharma', 'ritikss748@gmail.com', '8866892314', '8866892314');
 
 -- --------------------------------------------------------
 
@@ -67,14 +67,6 @@ CREATE TABLE `question` (
   `correct` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `question`
---
-
-INSERT INTO `question` (`user`, `question_id`, `dat`, `sem`, `subject`, `unit`, `division`, `no`, `question`, `a`, `b`, `c`, `d`, `correct`) VALUES
-('ritik', 8060809, '2022-09-06', 1, 'cpp', 2, 'A', 0, 'jj', 'j', 'j', 'j', 'j', 'a'),
-('ritik', 8060809, '2022-09-06', 1, 'cpp', 2, 'A', 1, 'l', 'l', 'l', 'l', 'l', 'b');
-
 -- --------------------------------------------------------
 
 --
@@ -93,13 +85,6 @@ CREATE TABLE `question_details` (
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `question_details`
---
-
-INSERT INTO `question_details` (`user`, `date`, `question_id`, `sem`, `dev`, `subject`, `unit`, `total`, `status`) VALUES
-('11', '2022-09-06', 8060809, 1, 'A', 'cpp', 2, 2, 'start');
-
 -- --------------------------------------------------------
 
 --
@@ -112,33 +97,67 @@ CREATE TABLE `student` (
   `lname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
   `semester` int(11) DEFAULT NULL,
   `dev` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `uid` char(20) COLLATE utf8_unicode_ci NOT NULL,
-  `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `sem_1_cpp_unit_1` int(11) NOT NULL,
-  `sem_1_cpp_unit_2` int(11) NOT NULL,
-  `sem_1_fco_unit_1` int(11) NOT NULL,
-  `sem_1_html_unit_1` int(11) NOT NULL,
-  `sem_1_sdot_unit_1` int(11) NOT NULL,
-  `sem_2_cpp_unit_1` int(11) NOT NULL,
-  `sem_3_php_unit_1` int(11) NOT NULL
+  `ayear` year(4) NOT NULL,
+  `flat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `pin` int(11) NOT NULL,
+  `area` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `state` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `semester`, `dev`, `uid`, `pass`, `sem_1_cpp_unit_1`, `sem_1_cpp_unit_2`, `sem_1_fco_unit_1`, `sem_1_html_unit_1`, `sem_1_sdot_unit_1`, `sem_2_cpp_unit_1`, `sem_3_php_unit_1`) VALUES
-(8, 'gh', 'shah', '456', 'www', 2, 'B', '111', 'raj5', 0, 0, 0, 0, 0, 0, 0),
-(3, 'vrutik', 'jagad', '9004365963', 'vrutikjagad1@gmail.com', 3, 'A', '21004500210048', 'vrutik123', 0, 0, 0, 0, 0, 0, 0),
-(2, 'Shanu', 'Pandey', '9106692865', 'shanukumarpandey2003@gmail.com', 3, 'B', '21004500210088', 'shanu123', 0, 0, 0, 0, 0, 0, 3),
-(1, 'Ritik', 'Sharma', '8866892314', 'ritikss748@gmail.com', 1, 'A', '21004500210167', 'ritik123', 1, 2, 2, 0, 0, 0, 0),
-(9, 'nmv', 'shah', '789', 'eee', 3, 'A', '222', 'raj8', 0, 0, 0, 0, 0, 0, 0),
-(6, 'chuna', 'shah', '2379', 'iouyre', 3, 'A', '598988', 'raj8', 0, 0, 0, 0, 0, 0, 0),
-(5, 'kathan', 'shah', '77787658', 'iouykj', 2, 'B', '798987', 'raj5', 0, 0, 0, 0, 0, 0, 0),
-(7, 'ert', 'shah', '123', 'qqq', 1, 'A', '986', 'raj1', 0, 0, 0, 0, 0, 0, 0),
-(4, 'raj', 'shah', '7777', 'iouy', 1, 'A', '98986', 'raj1', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `dob`, `semester`, `dev`, `uid`, `ayear`, `flat`, `pin`, `area`, `city`, `state`, `pass`) VALUES
+(62, 'Ritik', 'Sharma', '8866892314', 'ritikss748@gmail.com', '2003-07-23', 3, 'A', '21004500210167', 2021, 'naiya apartment', 380026, 'vastral', 'ahmedabad', 'gujarat', 'ritik123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_result`
+--
+
+CREATE TABLE `student_result` (
+  `uid` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `sem_1_cpp_unit_1` int(11) NOT NULL,
+  `sem_1_cpp_unit_2` int(11) NOT NULL DEFAULT -1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `student_result`
+--
+
+INSERT INTO `student_result` (`uid`, `sem_1_cpp_unit_1`, `sem_1_cpp_unit_2`) VALUES
+('21004500210048', 0, -1),
+('21004500210167', 0, -1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `superuser`
+--
+
+CREATE TABLE `superuser` (
+  `userid` int(11) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `pass` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `superuser`
+--
+
+INSERT INTO `superuser` (`userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
+(1123, 'Ritik', 'Sharma', 'ritikss748@gmail.com', '8866892314', 'admin123');
 
 --
 -- Indexes for dumped tables
@@ -148,18 +167,19 @@ INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `semester`, `
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD UNIQUE KEY `ind` (`ind`);
-
---
--- Indexes for table `question_details`
---
-ALTER TABLE `question_details`
-  ADD UNIQUE KEY `question_id` (`question_id`);
+  ADD PRIMARY KEY (`ind`);
 
 --
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
+  ADD PRIMARY KEY (`uid`),
+  ADD UNIQUE KEY `phone` (`phone`,`email`);
+
+--
+-- Indexes for table `student_result`
+--
+ALTER TABLE `student_result`
   ADD UNIQUE KEY `uid` (`uid`);
 
 --
@@ -170,7 +190,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ind` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ind` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
