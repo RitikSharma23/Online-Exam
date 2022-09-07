@@ -182,7 +182,7 @@
         phone=document.getElementById("phone").innerHTML;
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
 
-        document.getElementById("n_name").innerHTML="ADMIN"
+        document.getElementById("n_name").innerHTML="ADMIN";
 
 
         document.getElementById("mstudent").addEventListener("click",()=>{
@@ -194,12 +194,10 @@
 
         document.getElementById("mfaculty").addEventListener("click",()=>{
             location.replace("faculty.php?"+details)
-            // document.getElementById("panel").href=
         })
 
         document.getElementById("afaculty").addEventListener("click",()=>{
             location.href=("f_register.php?"+details)
-            // document.getElementById("panel").href=
         })
      
 
