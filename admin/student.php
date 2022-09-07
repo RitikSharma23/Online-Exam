@@ -182,7 +182,7 @@
         phone=document.getElementById("phone").innerHTML;
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
 
-        document.getElementById("n_name").innerHTML=fname+" "+lname
+        document.getElementById("n_name").innerHTML="ADMIN"
 
 
         document.getElementById("mstudent").addEventListener("click",()=>{

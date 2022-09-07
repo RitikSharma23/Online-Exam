@@ -83,11 +83,19 @@ for(i=0;i<res['data'].length;i++){
     text6=document.createTextNode("Edit Profile")
     a.appendChild(text6)
     td6.appendChild(a)
+
+    td7=document.createElement('td')
+    a=document.createElement("a")
+    a.href="api.php?uid="+res['data'][i]['userid']+"&obj=10"
+    text7=document.createTextNode("Delete")
+    a.appendChild(text7)
+    td7.appendChild(a)
     
     row.appendChild(td1)
     row.appendChild(td2)
     row.appendChild(td3)
     row.appendChild(td6)
+    row.appendChild(td7)
     table.appendChild(row)
     div.appendChild(table)
     
