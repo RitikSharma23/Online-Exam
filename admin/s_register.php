@@ -40,10 +40,8 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
-							<p class="lead">
-								With Basic Details
-							</p>
+							<h1 class="h2">Student Registration</h1>
+							<br>
 						</div>
 
 						<div class="card">

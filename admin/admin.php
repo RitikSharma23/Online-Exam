@@ -38,7 +38,7 @@ Sign in to your account to continue
 <div class="card-body">
 <div class="m-sm-4">
 	<div class="text-center">
-		<img src="../img/avatars/profile.png" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+		<img src="../img/avatars/profile.png" class="img-fluid rounded-circle" width="132" height="132" />
 	</div>
 
 		<div class="mb-3">
@@ -48,10 +48,7 @@ Sign in to your account to continue
 		<div class="mb-3">
 			<label class="form-label">Password</label>
 			<input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Enter your password" required/>
-			<small>
-				<br>
-	<a href="index.html">&nbsp;&nbsp; Forgot password?</a>
-</small>
+			
 		</div>
 		
 		<div class="text-center mt-3">
