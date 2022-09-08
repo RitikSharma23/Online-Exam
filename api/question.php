@@ -76,7 +76,7 @@ function insert_column($conn){
     $column = $_REQUEST['column'];
     $pos = $_REQUEST['pos'];
     
-    $select="ALTER TABLE `student` ADD `$column` INT NOT NULL AFTER `$pos`;";
+    $select="ALTER TABLE `student_result` ADD `$column` INT NOT NULL DEFAULT '-1' AFTER `$pos`;";
     
     if ($conn->query($select) === TRUE) {
         echo "New record created successfully";
@@ -89,7 +89,7 @@ function insert_column($conn){
 function display_column($conn){
       $result=array();
       $result['data']=array();
-      $select="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'student' ORDER BY ORDINAL_POSITION;";
+      $select="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'student_result' ORDER BY ORDINAL_POSITION;";
       $responce=mysqli_query($conn,$select);
       $i=0;
       while($row=mysqli_fetch_array($responce)){

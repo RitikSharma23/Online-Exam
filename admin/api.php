@@ -180,7 +180,7 @@ function facultyreg($conn){
          } else {
            echo "Error: <br>" . $conn->error;
          }
-    $select2="INSERT INTO student_result (uid) VALUES ('$uid') ;";
+    $select2="INSERT INTO student_result (uid,sem,dev) VALUES ('$uid','$semester','$dev') ;";
        
        if ($conn->query($select2) === TRUE) {
            echo "New record created successfully";
@@ -264,8 +264,14 @@ function facultyreg($conn){
      $uid=$_REQUEST['uid'];
     
      $select="delete from student where uid='$uid' ;";
+     $select1="delete from student_result where uid='$uid' ;";
         
        if ($conn->query($select) === TRUE) {
+           echo "New record deleted successfully";
+         } else {
+           echo "Error: <br>" . $conn->error;
+         }
+       if ($conn->query($select1) === TRUE) {
            echo "New record deleted successfully";
          } else {
            echo "Error: <br>" . $conn->error;

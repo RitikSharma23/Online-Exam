@@ -14,38 +14,38 @@
 
 	<link rel="canonical" href="../https://demo-basic.adminkit.io/" />
 
-	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+	<title>Dashboard</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body  onload="column()">
 	<div class="wrapper">
-        <nav id="sidebar" class="sidebar js-sidebar">
+		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-				<span class="align-middle">Faculty</span>
-				</a>
+				<a class="sidebar-brand" href="../index.html">
+            <span class="align-middle">Faculty</span>
+            </a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Pages
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" id="adminpage">
+					<li class="sidebar-item ">
+						<a class="sidebar-link" id="homepage">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" id="profilepage">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" id="test">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Create Test</span>
             		</a>
@@ -56,29 +56,34 @@
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">View Panel</span>
             		</a>
 					</li>
-
+					
 				</ul>
 
 			</div>
-	    </nav>
-
+		</nav>
         <div style="display: none">
 
-                <?php
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $email=$_REQUEST['email'];
-                $phone=$_REQUEST['phone'];
-                $userid=$_REQUEST['userid'];
-                $obj=$_REQUEST['obj'];
+        <?php
+     $fname=$_REQUEST['fname'];
+     $lname=$_REQUEST['lname'];
+     $email=$_REQUEST['email'];
+     $phone=$_REQUEST['phone'];
+     $obj=$_REQUEST['obj'];
+    $sem = $_REQUEST['sem'];
+    $subject = $_REQUEST['subject'];
+    $unit = $_REQUEST['unit'];
+    $dev = $_REQUEST['dev'];
 
-                echo "fname : <span id='fname'>".$fname."</span><br>";
-                echo "lname : <span id='lname'>".$lname."</span><br>";
-                echo "email : <span id='email'>".$email."</span><br>";
-                echo "phone : <span id='phone'>".$phone."</span><br>";
-                echo "phone : <span id='userid'>".$userid."</span><br>";
+    echo "fname : <span id='fname'>".$fname."</span><br>";
+    echo "lname : <span id='lname'>".$lname."</span><br>";
+    echo "email : <span id='email'>".$email."</span><br>";
+    echo "phone : <span id='phone'>".$phone."</span><br>";
+    echo "sem : <span id='sem'>".$sem."</span><br>";
+    echo "subject : <span id='subject'>".$subject."</span><br>";
+    echo "unit : <span id='unit'>".$unit."</span><br>";
+    echo "Division : <span id='dev'>".$dev."</span><br>";
 
-                ?>
+    ?>
 
         </div>
 
@@ -101,50 +106,61 @@
                 <img src="../img/avatars/profile.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="profile.php"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="../pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" ><button style="border: none;background-color: transparent;" id="logout"> Log out</button></a>
+								<a class="dropdown-item" href="../home.html">Log out</a>
 							</div>
 						</li>
 					</ul>
 				</div>
 			</nav>
 
-			<main class="content">
+			<main class="content" style="overflow-y: scroll;">
 				<div class="container-fluid p-0">
 
-					<div class="row">
-						<div class="col-md-4 col-xl-3" style="border: solid;width: 100%;">
-							<div class="card mb-3">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Profile Details</h5>
-								</div>
-								<div class="card-body text-center">
-									<img src="../img/avatars/profile.png" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
-									<h5 class="card-title mb-0" id="n_id" style="text-transform: capitalize;">user id</h5><br>
-									<h5 class="card-title mb-0" id="n_nam" style="text-transform: capitalize;">user name</h5><br>
-									<h5 class="card-title mb-0" id="n_email" style="text-transform: capitalize;">user email</h5><br>
-									<h5 class="card-title mb-0" id="n_phone" style="text-transform: capitalize;">user phone</h5><br>
-									<br>
-									<button id="editprofile">Edit Profile</button>
-								</div>
-		
-					
-							</div>
-						</div>
+					<h1 class="h3 mb-3">Your Pending Tests</h1>
 
-					
+					<div class="row">
+						<div class="col-12">
+							<div class="card" style="height: 80vh;" >
+								<div class="card-header">
+                                <div id="div1">
+
+                                </div>  
+
+                                <br><br>
+
+                                <form action="../excel.php"  method="post" enctype="multipart/form-data">
+                                <input type="file" name="image" class="btn btn-success" id="file" required> <br><br>
+                                <input type="submit" value="submit" class="btn btn-success" >
+                                </form>
+								</div>
+								
+							</div>
+							
+
+							
+							
+						</div>
+                        
 					</div>
+                    
 
 				</div>
+                
+	
 			</main>
+
 
 		</div>
 	</div>
+
+    <script src="../js/ADMIN/question.js"></script>
+
 
 	<script src="../js/app.js"></script>
     <script>
@@ -152,15 +168,27 @@
         lname=document.getElementById("lname").innerHTML;
         email=document.getElementById("email").innerHTML;
         phone=document.getElementById("phone").innerHTML;
-        userid=document.getElementById("userid").innerHTML;
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
-        document.getElementById("n_id").innerHTML="User id : "+userid
-        document.getElementById("n_nam").innerHTML="Name : "+fname+" "+lname
-        document.getElementById("n_email").innerHTML="Email : "+email
-        document.getElementById("n_phone").innerHTML="Phone : +91 "+phone
 
+        // document.getElementById("profilepage").addEventListener("click",()=>{
+        //     document.getElementById("profilepage").href="profile.php?"+details
+        // })
+
+        // document.getElementById("homepage").addEventListener("click",()=>{
+        //     document.getElementById("homepage").href="admin.php?"+details
+        // })
+
+        // document.getElementById("test").addEventListener("click",()=>{
+        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
+        // })
+
+        // document.getElementById("panel").addEventListener("click",()=>{
+        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
+        // })
+
+        
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
         })
@@ -180,42 +208,25 @@
             location.replace("../home.html")
 			// window.close();
         })
-        document.getElementById("editprofile").addEventListener("click",()=>{
-            location.href=("f_edit.php?userid="+userid)
-			// window.close();
-        })
+
     </script>
 
 
+<style>
+    #div1{
+        padding: 40px;
+    }
+    legend{
+        color: black;
+        padding: 10px;
+    }
+    input[type='text']{
+        margin-left: 10px;
+        width: 30%;
+    }
+</style>
+
+
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-<!-- 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin login</title>
-</head>
-<body>
-
-  
-<a href="../panel.php"><button id="panel">PANEL</button></a>
-
-    <button id="create">Create Questions</button>
-
-
-</body>
-</html> -->

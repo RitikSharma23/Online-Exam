@@ -33,10 +33,13 @@ function column(){
 
         c = [];
 
-        for(i=8;i<count;i++){
+
+        for(i=0;i<count;i++){
                 c.push(res['data'][i].col);
-                data[i-8]= c[i-8].split("_");
+                data[i]= c[i].split("_");
         }
+        console.log(res['data'][0])
+        console.log(data)
 
         for(i=0;i<data.length;i++){
             sem[i]=data[i][1]

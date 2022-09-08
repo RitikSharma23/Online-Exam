@@ -186,23 +186,6 @@
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
-
-        // document.getElementById("profilepage").addEventListener("click",()=>{
-        //     document.getElementById("profilepage").href="profile.php?"+details
-        // })
-
-        // document.getElementById("homepage").addEventListener("click",()=>{
-        //     document.getElementById("homepage").href="admin.php?"+details
-        // })
-
-        // document.getElementById("test").addEventListener("click",()=>{
-        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
-        // })
-
-        // document.getElementById("panel").addEventListener("click",()=>{
-        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
-        // })
-
         
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
@@ -217,11 +200,9 @@
 
         document.getElementById("panel").addEventListener("click",()=>{
             location.replace("panel.php?"+details+"&obj=1")
-            // document.getElementById("panel").href=
         })
         document.getElementById("logout").addEventListener("click",()=>{
             location.replace("../home.html")
-			// window.close();
         })
 
     </script>

@@ -187,27 +187,35 @@ ss.send()
 
 document.getElementById("start").addEventListener("click",()=>{
     window.location.reload()
-
-    chec=[]
+    chec=[];
+    sem=[];
+    div=[];
+    subject=[];
+    unit=[];
     var checkedValue = null; 
     var inputElements = document.getElementsByClassName('messageCheckbox');
     for(var i=0; inputElements[i]; ++i){
           if(inputElements[i].checked){
             //    chec.push(inputElements[i].value);
                chec.push(res['data'][i]['question_id']);
+               sem.push(res['data'][i]['sem']);
+               div.push(res['data'][i]['dev']);
+               subject.push(res['data'][i]['subject']);
+               unit.push(res['data'][i]['unit']);
           }
     }
 
     for(i=0;i<chec.length;i++){
         // alert(chec[i])
             ss=new XMLHttpRequest
-            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&obj=4",true)
+            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&sem="+sem[i]+"&dev="+div[i]+"&sub="+subject[i]+"&unit="+unit[i]+"&obj=4",true)
             ss.onload=function(){
             res=this.responseText
         }
         ss.send()
     }
     window.location.reload()
+
 
     
 })

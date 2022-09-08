@@ -73,8 +73,6 @@
     $subject = $_REQUEST['subject'];
     $unit = $_REQUEST['unit'];
     $dev = $_REQUEST['dev'];
-    
-   
 
     echo "fname : <span id='fname'>".$fname."</span><br>";
     echo "lname : <span id='lname'>".$lname."</span><br>";
@@ -137,14 +135,16 @@
                                 <button id="add" class="btn btn-primary" style="float: left;">Add new</button>
                                     <br><br>
                                 <button id="sub" class="btn btn-success" style="float: right;">Submit</button>
-                               
+
+                                <br><br>
+
+                                <form name="myform"  method="post" enctype="multipart/form-data">
+                                <input type="file" name="image" class="btn btn-success" id="file" required> <br><br>
+                                <input type="submit" value="submit" class="btn btn-success" onclick="return fun()">
+                                </form>
 								</div>
 								
 							</div>
-							
-
-							
-							
 						</div>
                         
 					</div>
@@ -171,23 +171,6 @@
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
-
-        // document.getElementById("profilepage").addEventListener("click",()=>{
-        //     document.getElementById("profilepage").href="profile.php?"+details
-        // })
-
-        // document.getElementById("homepage").addEventListener("click",()=>{
-        //     document.getElementById("homepage").href="admin.php?"+details
-        // })
-
-        // document.getElementById("test").addEventListener("click",()=>{
-        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
-        // })
-
-        // document.getElementById("panel").addEventListener("click",()=>{
-        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
-        // })
-
         
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
@@ -208,6 +191,10 @@
             location.replace("../home.html")
 			// window.close();
         })
+
+        function fun(){
+            document.myform.action = "../excel.php";
+        }
 
     </script>
 
