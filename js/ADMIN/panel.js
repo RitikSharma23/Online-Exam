@@ -77,10 +77,16 @@ text9=document.createTextNode('')
 a.appendChild(text9)
 td9.appendChild(a)
 
+td2=document.createElement('td')
+var a=document.createElement('a')
+a.href="edit.php?id="+res['data'][i]['question_id']
+text2=document.createTextNode('')
+a.appendChild(text2)
+td2.appendChild(a)
+
 
 // row.appendChild(td0)
 row.appendChild(td1)
-// row.appendChild(td2)
 row.appendChild(td3)
 row.appendChild(td4)
 row.appendChild(td5)
@@ -88,6 +94,7 @@ row.appendChild(td6)
 row.appendChild(td7)
 row.appendChild(td8)
 row.appendChild(td9)
+row.appendChild(td2)
 table.appendChild(row)
 div.appendChild(table)
 
@@ -155,10 +162,17 @@ td8.appendChild(text8)
 
 td9=document.createElement('td')
 var a=document.createElement('a')
-a.href="edit.php?id="+res['data'][i]['question_id']
+a.href="edit.php?id="+res['data'][i]['question_id']+details
 text9=document.createTextNode('Edit')
 a.appendChild(text9)
 td9.appendChild(a)
+
+td2=document.createElement('td')
+var a=document.createElement('a')
+a.href="result.php?sem="+res['data'][i]['sem']+"&dev="+res['data'][i]['dev']+"&col=sem_"+res['data'][i]['sem']+"_"+res['data'][i]['subject']+"_unit_"+res['data'][i]['unit']
+text2=document.createTextNode('View Result')
+a.appendChild(text2)
+td2.appendChild(a)
 
 
 // row.appendChild(td0)
@@ -171,6 +185,7 @@ row.appendChild(td6)
 row.appendChild(td7)
 row.appendChild(td8)
 row.appendChild(td9)
+row.appendChild(td2)
 table.appendChild(row)
 div.appendChild(table)
 

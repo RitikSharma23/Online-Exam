@@ -45,13 +45,13 @@
             </a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" id="test">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Create Test</span>
             		</a>
 					</li>
 
-					<li class="sidebar-item " >
+					<li class="sidebar-item active" >
 						<a class="sidebar-link" id="panel">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">View Panel</span>
             		</a>
@@ -63,31 +63,30 @@
 		</nav>
         <div style="display: none">
 
-        <?php
-     $fname=$_REQUEST['fname'];
-     $lname=$_REQUEST['lname'];
-     $email=$_REQUEST['email'];
-     $phone=$_REQUEST['phone'];
-     $obj=$_REQUEST['obj'];
-    $sem = $_REQUEST['sem'];
-    $subject = $_REQUEST['subject'];
-    $unit = $_REQUEST['unit'];
-    $dev = $_REQUEST['dev'];
-    $userid=$_REQUEST['userid'];
+                <?php
+                $fname=$_REQUEST['fname'];
+                $lname=$_REQUEST['lname'];
+                $email=$_REQUEST['email'];
+                $phone=$_REQUEST['phone'];
+                $obj=$_REQUEST['obj'];
+				$userid=$_REQUEST['userid'];
+				$sem=$_REQUEST['sem'];
+				$dev=$_REQUEST['dev'];
+				$col=$_REQUEST['col'];
+
+				
+
+                echo "fname : <span id='fname'>".$fname."</span><br>";
+                echo "lname : <span id='lname'>".$lname."</span><br>";
+                echo "email : <span id='email'>".$email."</span><br>";
+                echo "phone : <span id='phone'>".$phone."</span><br>";
+				echo "userid : <span id='userid'>".$userid."</span><br>";
+				echo "sem : <span id='sem'>".$sem."</span><br>";
+				echo "dev : <span id='dev'>".$dev."</span><br>";
+				echo "col : <span id='col'>".$col."</span><br>";
 
 
-    echo "fname : <span id='fname'>".$fname."</span><br>";
-    echo "lname : <span id='lname'>".$lname."</span><br>";
-    echo "email : <span id='email'>".$email."</span><br>";
-    echo "phone : <span id='phone'>".$phone."</span><br>";
-    echo "sem : <span id='sem'>".$sem."</span><br>";
-    echo "subject : <span id='subject'>".$subject."</span><br>";
-    echo "unit : <span id='unit'>".$unit."</span><br>";
-    echo "Division : <span id='dev'>".$dev."</span><br>";
-    echo "userid : <span id='userid'>".$userid."</span><br>";
-
-
-    ?>
+                ?>
 
         </div>
 
@@ -126,93 +125,30 @@
 			<main class="content" style="overflow-y: scroll;">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Create Questions</h1>
+					<h1 class="h3 mb-3">Your Pending Tests</h1>
 
 					<div class="row">
 						<div class="col-12">
 							<div class="card" style="height: 80vh;" >
-								<div class="card-header">
-                                <div id="div1">
-                                </div>  
-
-                                <button id="add" class="btn btn-primary" style="float: left;">Add new</button>
-                                    <br><br>
-                                <button id="sub" class="btn btn-success" style="float: right;">Submit</button>
-
-								</div>
 								
+								<div id="div1">
+
+                                </div>
 							</div>
 						</div>
-                        
 					</div>
-                    
 
 				</div>
-                
-	
 			</main>
-
-			<main class="content" >
-				<div class="container-fluid p-0">
-
-					<h1 class="h3 mb-3">Or Upload Excel</h1>
-
-					<div class="row">
-						<div class="col-12">
-							<div class="card" style="height: 80vh;" >
-								<div class="card-header">
-                               
-                                <?php
-                                if(isset($_FILES['image'])){
-
-                                    $name=$_FILES['image']['name'];
-                                    $size=$_FILES['image']['size'];
-                                    $tmp=$_FILES['image']['tmp_name'];
-                                    $type=$_FILES['image']['type'];
-                                
-                                    move_uploaded_file($tmp,"../uploads/".$name);
-                                    echo "<span id='file' style='display:none'>";
-                                    print_r($_FILES['image']['type']);
-                                    echo "</span>";
-                                    echo "<span id='filename' style='display:none'>";
-                                    print_r($_FILES['image']['name']);
-                                    echo "</span>";
-                                }
-                                ?>
-                                <br>
-                                <p align="center"><img  src="../excelsample.png" style="width: 70%;" alt="Excel Format"></p>
-                                <br><br>
-                                <center>
-                                <form name="myform"  method="post" enctype="multipart/form-data">
-                                <input type="file" name="image" class="btn btn-success" id="file" required> 
-                                <input type="submit"  value="submit" class="btn btn-success">
-                                </form>
-                                </center>
-                                <br><br>
-                                <button style="float: right;display: none;" id="next" class="btn btn-primary">Next</button>
-								</div>
-								
-							</div>
-						</div>
-                        
-					</div>
-                    
-
-				</div>
-                
-	
-			</main>
-
 
 		</div>
 	</div>
 
-    <script src="../js/ADMIN/question.js"></script>
-
+    <script src="result.js"></script>
 
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
+           fname=document.getElementById("fname").innerHTML;
         lname=document.getElementById("lname").innerHTML;
         email=document.getElementById("email").innerHTML;
         phone=document.getElementById("phone").innerHTML;
@@ -220,7 +156,7 @@
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
-        
+		
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
         })
@@ -234,81 +170,42 @@
 
         document.getElementById("panel").addEventListener("click",()=>{
             location.replace("panel.php?"+details+"&obj=1")
+            // document.getElementById("panel").href=
         })
         document.getElementById("logout").addEventListener("click",()=>{
             location.replace("../home.html")
-        })
-
-        fil=document.getElementById("file").innerHTML;
-        filename=document.getElementById("filename").innerHTML;
-        
-        if(fil!=""){
-            document.getElementById("next").style.display="block"
-        }
-        document.getElementById("next").addEventListener("click",()=>{
-           
-            if(fil==""){
-                alert("please select file")
-            }else if(fil!="text/csv"){
-                alert("please select CSV file \n in proper format as shown in figure")
-            }else{
-            nam=document.getElementById("fname").innerHTML;
-            sub=document.getElementById("subject").innerHTML;
-            sem=document.getElementById("sem").innerHTML;
-            unit=document.getElementById("unit").innerHTML;
-            dev=document.getElementById("dev").innerHTML;
-           
-            location.href = "file.php?sub="+sub+"&sem="+sem+"&unit="+unit+"&dev="+dev+"&quid="+nam+details+"&filename="+filename;
-            }
+			// window.close();
         })
 
     </script>
 
 
 <style>
-    #div1{
-        padding: 40px;
+	table{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 2%;
+	}
+	td{
+		border: solid grey;
+		padding: 1%;
+		font-size: 20px;
+		color: black;
+		border-radius: 10px;
+		text-align: center;
+		text-transform: capitalize;
+	}
+    button{
+        width: 9%;
+        margin:0% 3%;
     }
-    legend{
-        color: black;
-        padding: 10px;
-    }
-    input[type='text']{
-        margin-left: 10px;
-        width: 30%;
+    input{
+        margin: 6px;
     }
 </style>
-
-
 
 
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-<!-- 
-<body>
-
-<div id="question">
-   
-</div>
-
-
-    
-
-    
-
-    <br><br>
-
-
-
-    
-</body>
-</html>  -->

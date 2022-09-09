@@ -92,6 +92,7 @@ document.getElementById("devision").addEventListener("click",()=>{
     console.log(dev);
 
     if(dev==""){
+        alert("Plaese Select Division")
         document.getElementById("se").disabled=true;
     }else{
         document.getElementById("se").disabled=false;
@@ -237,16 +238,16 @@ document.getElementById("uni").addEventListener("click",()=>{
     }
 
     if(uni==0 || uni=="" || sbj==0 || sbj=="" || semester==0 || semester==""){
-        alert("please fill Subject")
+        alert("please select Subject")
         document.getElementById("submit").disabled=true
     }else{
 
     if(semester==0 || semester==""){
-        alert("please fill semester")
+        alert("please select semester")
     }else if(sbj==0 || sbj==""){
-        alert("please fill subject")
+        alert("please select subject")
     }else if(uni==0 || uni==""){
-        alert("please fill semester")
+        alert("please select unit")
     }else{
 
     colname="sem_"+semester+"_"+sbj+"_unit_"+uni;

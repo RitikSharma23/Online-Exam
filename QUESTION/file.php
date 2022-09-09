@@ -20,7 +20,36 @@
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body  onload="column()">
+<body>
+<div style="display: none;">
+
+        <?php
+        $fname=$_REQUEST['fname'];
+        $lname=$_REQUEST['lname'];
+        $email=$_REQUEST['email'];
+        $phone=$_REQUEST['phone'];
+        $sem = $_REQUEST['sem'];
+        $sub = $_REQUEST['sub'];
+        $unit = $_REQUEST['unit'];
+        $dev = $_REQUEST['dev'];
+        $userid=$_REQUEST['userid'];
+        $filename=$_REQUEST['filename'];
+
+
+        echo "fname : <span id='fname'>".$fname."</span><br>";
+        echo "lname : <span id='lname'>".$lname."</span><br>";
+        echo "email : <span id='email'>".$email."</span><br>";
+        echo "phone : <span id='phone'>".$phone."</span><br>";
+        echo "sem : <span id='sem'>".$sem."</span><br>";
+        echo "subject : <span id='sub'>".$sub."</span><br>";
+        echo "unit : <span id='unit'>".$unit."</span><br>";
+        echo "Division : <span id='dev'>".$dev."</span><br>";
+        echo "phone : <span id='userid'>".$userid."</span><br>";
+        echo "filename : <span id='filename'>".$filename."</span><br>";
+
+
+        ?>
+</div>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
@@ -61,31 +90,6 @@
 
 			</div>
 		</nav>
-        <div style="display: none">
-
-        <?php
-     $fname=$_REQUEST['fname'];
-     $lname=$_REQUEST['lname'];
-     $email=$_REQUEST['email'];
-     $phone=$_REQUEST['phone'];
-     $obj=$_REQUEST['obj'];
-    $sem = $_REQUEST['sem'];
-    $subject = $_REQUEST['subject'];
-    $unit = $_REQUEST['unit'];
-    $dev = $_REQUEST['dev'];
-
-    echo "fname : <span id='fname'>".$fname."</span><br>";
-    echo "lname : <span id='lname'>".$lname."</span><br>";
-    echo "email : <span id='email'>".$email."</span><br>";
-    echo "phone : <span id='phone'>".$phone."</span><br>";
-    echo "sem : <span id='sem'>".$sem."</span><br>";
-    echo "subject : <span id='subject'>".$subject."</span><br>";
-    echo "unit : <span id='unit'>".$unit."</span><br>";
-    echo "Division : <span id='dev'>".$dev."</span><br>";
-
-    ?>
-
-        </div>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -112,7 +116,7 @@
 								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../home.html">Log out</a>
+								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -130,14 +134,13 @@
 								<div class="card-header">
                                 <div id="div1">
 
+                                <center>The CSV Has Less rows Then expected <br> Please Upload CSV In Proper Format As Shown</center>
+
                                 </div>  
 
                                 <br><br>
 
-                                <form action="../excel.php"  method="post" enctype="multipart/form-data">
-                                <input type="file" name="image" class="btn btn-success" id="file" required> <br><br>
-                                <input type="submit" value="submit" class="btn btn-success" >
-                                </form>
+                                <button id="submit" style="display: none;">Submit</button>
 								</div>
 								
 							</div>
@@ -159,41 +162,198 @@
 		</div>
 	</div>
 
-    <script src="../js/ADMIN/question.js"></script>
+    <style>
+    table{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 2%;
+	}
+	td{
+		border: solid grey;
+		padding: 1%;
+		font-size: 20px;
+		color: black;
+		border-radius: 10px;
+		text-align: center;
+		text-transform: capitalize;
+	}
+    button{
+        width: 9%;
+        margin:0% 3%;
+    }
+    input{
+        margin: 6px;
+    }
+    
+    </style>
+
 
 
 	<script src="../js/app.js"></script>
     <script>
+                
+            l=0;
+            res={}
         fname=document.getElementById("fname").innerHTML;
         lname=document.getElementById("lname").innerHTML;
         email=document.getElementById("email").innerHTML;
         phone=document.getElementById("phone").innerHTML;
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+        userid=document.getElementById("userid").innerHTML;
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-        document.getElementById("n_name").innerHTML=fname+" "+lname
+        document.getElementById("n_name").innerHTML=fname+" "+lname;
+        filename=document.getElementById("filename").innerHTML;
+            ss=new XMLHttpRequest
+            ss.open("GET","../excel.php?filename="+filename,true)
+            ss.onload=function(){
+            res=JSON.parse(this.responseText)
 
-        // document.getElementById("profilepage").addEventListener("click",()=>{
-        //     document.getElementById("profilepage").href="profile.php?"+details
-        // })
+            console.log(res['data'].length);
+            l=res['data'].length;
 
-        // document.getElementById("homepage").addEventListener("click",()=>{
-        //     document.getElementById("homepage").href="admin.php?"+details
-        // })
+            div=document.getElementById("div1")
+            div.innerHTML=""
 
-        // document.getElementById("test").addEventListener("click",()=>{
-        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
-        // })
 
-        // document.getElementById("panel").addEventListener("click",()=>{
-        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
-        // })
+            if(res['row']>6){
+                div.innerHTML="<center>The CSV has Much Rows Then Required <br> Please Upload CSV In proper Format as Shown </center> "
+            }else if(res['data'][0]['question']!='question' && res['data'][0]['question']!='Question' ){
+                div.innerHTML="<center>The CSV First cell :A1 not match <br> contains \'question\'</center> "
+            }else if(res['data'][0]['a']!='a' && res['data'][0]['a']!='A' ){
+                div.innerHTML="<center>The CSV First cell :B1 not match <br> contains \'a\'</center> "
+            }else if(res['data'][0]['b']!='b' && res['data'][0]['b']!='B' ){
+                div.innerHTML="<center>The CSV First cell :C1 not match <br> contains \'b\'</center> "
+            }else if(res['data'][0]['c']!='c' && res['data'][0]['c']!='C' ){
+                div.innerHTML="<center>The CSV First cell :D1 not match <br> contains \'c\'</center> "
+            }else if(res['data'][0]['d']!='d' && res['data'][0]['d']!='D' ){
+                div.innerHTML="<center>The CSV First cell :E1 not match <br> contains \'d\'</center> "
+            }else if(res['data'][0]['correct']!='correct' && res['data'][0]['correct']!='Correct' ){
+                div.innerHTML="<center>The CSV First cell :F1 not match <br> contains \'correct\'</center> "
+            }else{
+            table=document.createElement('table')
+            table.border="1"
+            document.getElementById("submit").style.display="block";
 
-        
+            for(i=0;i<res['data'].length;i++){
+            row=document.createElement('tr')
+            td=document.createElement('td')
+
+            td0=document.createElement('td')
+            text0=document.createTextNode(i)
+            td0.appendChild(text0)
+
+            td1=document.createElement('td')
+            text1=document.createTextNode(res['data'][i]['question'])
+            td1.appendChild(text1)
+
+            td2=document.createElement('td')
+            text2=document.createTextNode(res['data'][i]['a'])
+            td2.appendChild(text2)
+
+            td3=document.createElement('td')
+            text3=document.createTextNode(res['data'][i]['b'])
+            td3.appendChild(text3)
+
+            td4=document.createElement('td')
+            text4=document.createTextNode(res['data'][i]['c'])
+            td4.appendChild(text4)
+
+            td5=document.createElement('td')
+            text5=document.createTextNode(res['data'][i]['d'])
+            td5.appendChild(text5)
+
+            td6=document.createElement('td')
+            text6=document.createTextNode(res['data'][i]['correct'])
+            td6.appendChild(text6)
+
+            td7=document.createElement('td')
+            text7=document.createTextNode(res['data'][i]['total'])
+            td7.appendChild(text7)
+
+            td8=document.createElement('td')
+            text8=document.createTextNode(res['data'][i]['status'])
+            td8.appendChild(text8)
+
+            td9=document.createElement('td')
+            var a=document.createElement('a')
+            a.href="edit.php?id="+res['data'][i]['question_id']
+            text9=document.createTextNode('Edit')
+            a.appendChild(text9)
+            td9.appendChild(a)
+
+
+            row.appendChild(td0)
+            row.appendChild(td1)
+            row.appendChild(td2)
+            row.appendChild(td3)
+            row.appendChild(td4)
+            row.appendChild(td5)
+            row.appendChild(td6)
+            table.appendChild(row)
+            div.appendChild(table)
+            }
+        }
+    }
+    ss.send()
+
+
+    document.getElementById("submit").addEventListener("click",()=>{
+        function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
+    y=new Date;
+    id=pad(y.getMinutes())+pad(y.getDate())+pad(y.getMonth())+pad(y.getSeconds());
+    
+        ss=new XMLHttpRequest
+            ss.open("GET","../excel.php?filename="+filename,true)
+            ss.onload=function(){
+            res=JSON.parse(this.responseText)
+            for(i=1;i<res['data'].length;i++){
+                no=i+1;
+                nam=document.getElementById("fname").innerHTML;
+                sub=document.getElementById("sub").innerHTML;
+                sem=document.getElementById("sem").innerHTML;
+                unit=document.getElementById("unit").innerHTML;
+                dev=document.getElementById("dev").innerHTML;
+                q1=res['data'][i]['question']
+                o1=res['data'][i]['a']
+                o2=res['data'][i]['b']
+                o3=res['data'][i]['c']
+                o4=res['data'][i]['d']
+                selectedSize=res['data'][i]['correct']
+
+                console.log(id)
+                console.log(nam)
+                console.log(sub)
+                console.log(div)
+                console.log(unit)
+
+            ss=new XMLHttpRequest
+            ss.open("GET","../api/question.php?dev="+dev+"&quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
+            ss.onload=function(){
+            res=this.responseText
+            }
+            ss.send()
+
+            
+            }
+
+            tot=res['data'].length-1;
+    
+            ss=new XMLHttpRequest
+            ss.open("GET","../api/question.php?dev="+dev+"&quid="+phone+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
+            ss.onload=function(){
+            res=this.responseText
+            }
+            ss.send()
+            }
+            ss.send()
+            window.location.href = "panel.php?"+details+"&obj=1";
+    })
+
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
         })
 
-        document.getElementById("adminpage").addEventListener("click",()=>{
+        document.getElementById("homepage").addEventListener("click",()=>{
             location.replace("admin.php?"+details)
         })
 		document.getElementById("test").addEventListener("click",()=>{
@@ -212,19 +372,7 @@
     </script>
 
 
-<style>
-    #div1{
-        padding: 40px;
-    }
-    legend{
-        color: black;
-        padding: 10px;
-    }
-    input[type='text']{
-        margin-left: 10px;
-        width: 30%;
-    }
-</style>
+
 
 
 

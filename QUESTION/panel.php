@@ -69,11 +69,16 @@
                 $email=$_REQUEST['email'];
                 $phone=$_REQUEST['phone'];
                 $obj=$_REQUEST['obj'];
+				$userid=$_REQUEST['userid'];
+
+				
 
                 echo "fname : <span id='fname'>".$fname."</span><br>";
                 echo "lname : <span id='lname'>".$lname."</span><br>";
                 echo "email : <span id='email'>".$email."</span><br>";
                 echo "phone : <span id='phone'>".$phone."</span><br>";
+				echo "phone : <span id='userid'>".$userid."</span><br>";
+
 
                 ?>
 
@@ -111,7 +116,7 @@
 				</div>
 			</nav>
 
-			<main class="content">
+			<main class="content" style="overflow-y: scroll;">
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3">Your Pending Tests</h1>
@@ -143,11 +148,12 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
+           fname=document.getElementById("fname").innerHTML;
         lname=document.getElementById("lname").innerHTML;
         email=document.getElementById("email").innerHTML;
         phone=document.getElementById("phone").innerHTML;
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+        userid=document.getElementById("userid").innerHTML;
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
 
@@ -200,7 +206,7 @@
 	td{
 		border: solid grey;
 		padding: 1%;
-		font-size: 20px;
+		font-size: 15px;
 		color: black;
 		border-radius: 10px;
 		text-align: center;

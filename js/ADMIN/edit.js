@@ -121,7 +121,7 @@ console.log(res['data'][x]['correct'])
 
     var div=document.createElement("div")
     div.id="d1"
-    div.style="border:solid;"
+    div.style="border:solid;padding-bottom:10px;font-size:15px;border-radius:10px"
     div.appendChild(field)
 
     const element = document.getElementById("div1");
@@ -170,12 +170,7 @@ document.getElementById("sub").addEventListener("click",()=>{
     }
     ss.send()
     }
-
-    tot=x-1
-
-    alert(res)
-
-    
+    location.href = "panel.php?"+details+"&obj=1";
 
 
 })

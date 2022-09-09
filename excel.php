@@ -1,5 +1,6 @@
 <?php
 $name;
+$filename=$_REQUEST['filename'];
 if(isset($_FILES['image'])){
 
     $name=$_FILES['image']['name'];
@@ -20,7 +21,7 @@ $correct=array();
 $result=array();
 $result['data']=array();
 
-if (($handle = fopen("uploads/question.csv", "r")) !== FALSE) {
+if (($handle = fopen("uploads/$filename", "r")) !== FALSE) {
 
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
@@ -38,8 +39,8 @@ if (($handle = fopen("uploads/question.csv", "r")) !== FALSE) {
             $index["d"]=$data[4];
             $index["correct"]=$data[5];
             array_push($result['data'],$index);
-        // }
     }
+    $result['row']=$num;
     echo json_encode($result);
     fclose($handle);
 }
