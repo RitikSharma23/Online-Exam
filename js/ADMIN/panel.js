@@ -85,7 +85,6 @@ a.appendChild(text2)
 td2.appendChild(a)
 
 
-// row.appendChild(td0)
 row.appendChild(td1)
 row.appendChild(td3)
 row.appendChild(td4)

@@ -181,7 +181,7 @@
                                 ?>
                                 <br>
                                 <p align="center"><img  src="../excelsample.png" style="width: 70%;" alt="Excel Format"></p>
-                                <br><br>
+                                <br><p align="center">Excel Format Sample</p><br>
                                 <center>
                                 <form name="myform"  method="post" enctype="multipart/form-data">
                                 <input type="file" name="image" class="btn btn-success" id="file" required> 
