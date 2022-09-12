@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | Admin</title>
+	<title>Edit | Student</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -168,7 +168,7 @@
 
 
 	if(fname==null){
-		alert("please login");
+		alert("please login first");
 		location.replace("admin.php")
 	}
 
@@ -213,17 +213,35 @@
 		email=document.getElementById("email").value;
 		dob=document.getElementById("dob").value;
 		phone=document.getElementById("phone").value;
+		if(phone.length<10){
+		alert("Phone length should be atleast 10 digit");
+		document.getElementById("phone").focus()}
+		else{
+	
 		roll=document.getElementById("roll").value;
 		sem=document.getElementById("sem").value;
 		div=document.getElementById("div").value;
 		year=document.getElementById("year").value;
 		flat=document.getElementById("flat").value;
 		pin=document.getElementById("pin").value;
+		if(pin.length<6){
+		alert("Pincode length should be atleast 6 digit");
+		document.getElementById("pin").focus()}
+		else{
+	
 		area=document.getElementById("area").value;
 		city=document.getElementById("city").value;
 		state=document.getElementById("state").value;
 		pass=document.getElementById("password").value;
+		if(pass.length<8){
+		alert("Password length should be atleast 8 digit");
+		document.getElementById("pass").focus()}
+		else{
 		cpass=document.getElementById("cpassword").value;
+		if(pass!=cpass){
+		alert("Password not match");
+		document.getElementById("pass").focus()}
+		else{
 		try{
 		image=document.getElementById("filename").innerHTML;
 		}catch{
@@ -243,6 +261,10 @@
 		ss.send();
 		
 		location.href="student.php";
+		}
+		}
+		}
+		}
 		})
 	</script>
 
