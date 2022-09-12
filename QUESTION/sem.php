@@ -18,6 +18,13 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body  onload="column()">
@@ -170,7 +177,6 @@
 	userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-        console.log(details)
         document.getElementById("n_name").innerHTML=fname+" "+lname
         
         document.getElementById("profilepage").addEventListener("click",()=>{
@@ -188,6 +194,7 @@
             location.replace("panel.php?"+details+"&obj=1")
         })
         document.getElementById("logout").addEventListener("click",()=>{
+			sessionStorage.clear();
             location.replace("../home.html")
         })
 

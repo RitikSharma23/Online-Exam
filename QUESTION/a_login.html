@@ -70,7 +70,7 @@ Sign in to your account to continue
 </main>
 
 <script>
-	var data=[[]];
+var data=[[]];
 var obj=1;
 fname="";
 lname="";
@@ -110,8 +110,7 @@ if(num==""){
 	sessionStorage.setItem("userid",userid);
 	sessionStorage.setItem("pass",pass);
 
-    details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj+"&userid="+userid;   
-    location.replace("admin.php")
+    location.replace("profile.php")
 
 }else{
     alert("User-ID or Password not found")

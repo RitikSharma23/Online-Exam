@@ -18,6 +18,13 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
@@ -191,6 +198,7 @@
 
 	<script src="../js/app.js"></script>
     <script>
+        flag=0;
                 
             l=0;
             res={}
@@ -201,15 +209,15 @@
             userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-        console.log(details)
         document.getElementById("n_name").innerHTML=fname+" "+lname;
         filename=document.getElementById("filename").innerHTML;
+        console.log(filename)
             ss=new XMLHttpRequest
             ss.open("GET","../excel.php?filename="+filename,true)
             ss.onload=function(){
             res=JSON.parse(this.responseText)
+            console.log(this.responseText)
 
-            console.log(res['data'].length);
             l=res['data'].length;
 
             div=document.getElementById("div1")
@@ -308,7 +316,7 @@
             ss.onload=function(){
             res=JSON.parse(this.responseText)
             for(i=1;i<res['data'].length;i++){
-                no=i+1;
+                no=i-1;
                 nam=document.getElementById("fname").innerHTML;
                 sub=document.getElementById("sub").innerHTML;
                 sem=document.getElementById("sem").innerHTML;
@@ -320,12 +328,6 @@
                 o3=res['data'][i]['c']
                 o4=res['data'][i]['d']
                 selectedSize=res['data'][i]['correct']
-
-                console.log(id)
-                console.log(nam)
-                console.log(sub)
-                console.log(div)
-                console.log(unit)
 
             ss=new XMLHttpRequest
             ss.open("GET","../api/question.php?dev="+dev+"&quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
@@ -343,12 +345,24 @@
             ss.open("GET","../api/question.php?dev="+dev+"&quid="+phone+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
             ss.onload=function(){
             res=this.responseText
+            if(res=='1'){
+                flag=1;
+            }
             }
             ss.send()
+            if(res=='1'){
+                flag=1;
+            }
             }
             ss.send()
 
-            window.location.href = "panel.php?"+details+"&obj=1";
+            setTimeout(function(){
+                location.href = "panel.php?"+details+"&obj=1";
+         }, 1000);
+
+
+
+
     })
 
         document.getElementById("profilepage").addEventListener("click",()=>{
@@ -364,11 +378,10 @@
 
         document.getElementById("panel").addEventListener("click",()=>{
             location.replace("panel.php?"+details+"&obj=1")
-            // document.getElementById("panel").href=
         })
         document.getElementById("logout").addEventListener("click",()=>{
+			sessionStorage.clear();
             location.replace("../home.html")
-			// window.close();
         })
 
     </script>

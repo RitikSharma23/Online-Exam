@@ -43,7 +43,7 @@ function insert_question($conn){
     $select="INSERT INTO question(user,question_id,dat,sem,subject,unit,division,no,question,a,b,c,d,correct)VALUES ('$quid','$testid','$date','$sem','$subject','$unit','$division','$no','$question','$a','$b','$c','$d','$correct')";
 
     if ($conn->query($select) === TRUE) {
-        echo "New record created successfully";
+        echo "1";
       } else {
         echo "Error:  <br>" . $conn->error;
       }
@@ -65,7 +65,7 @@ function insert_question_details($conn){
     $select="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
 
     if ($conn->query($select) === TRUE) {
-        echo "New record created successfully";
+        echo "1";
       } else {
         echo "Error: <br>" . $conn->error;
       }

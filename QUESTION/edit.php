@@ -18,6 +18,13 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
@@ -186,30 +193,8 @@
             location.replace("panel.php?"+details+"&obj=1")
         })
         document.getElementById("logout").addEventListener("click",()=>{
+			sessionStorage.clear();
             location.replace("../home.html")
-        })
-
-        fil=document.getElementById("file").innerHTML;
-        filename=document.getElementById("filename").innerHTML;
-        
-        if(fil!=""){
-            document.getElementById("next").style.display="block"
-        }
-        document.getElementById("next").addEventListener("click",()=>{
-           
-            if(fil==""){
-                alert("please select file")
-            }else if(fil!="text/csv"){
-                alert("please select CSV file \n in proper format as shown in figure")
-            }else{
-            nam=document.getElementById("fname").innerHTML;
-            sub=document.getElementById("subject").innerHTML;
-            sem=document.getElementById("sem").innerHTML;
-            unit=document.getElementById("unit").innerHTML;
-            dev=document.getElementById("dev").innerHTML;
-           
-            location.href = "file.php?sub="+sub+"&sem="+sem+"&unit="+unit+"&dev="+dev+"&quid="+nam+details+"&filename="+filename;
-            }
         })
 
     </script>

@@ -154,7 +154,9 @@ function update($conn){
     $correct = $_REQUEST['correct'];
     $select="UPDATE question set question='$question',a='$a',b='$b',c='$c',d='$d',correct='$correct' WHERE no='$no' AND question_id='$quid';";
     if ($conn->query($select) === TRUE) {
-    echo "New record created successfully";
+    // echo "New record update successfully $no $quid    $question    $a    $b    $c    $d    $correct";
+
+    echo $select;
     } else {
     echo "Error: <br>" . $conn->error;
     }
