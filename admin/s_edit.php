@@ -203,7 +203,6 @@
 		document.getElementById("password").value=res['data'][0]['pass'];
 		document.getElementById("cpassword").value=res['data'][0]['pass'];
 		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
-		image="../uploads/"+res['data'][0]['img'];
 		}
 		ss.send();
 		

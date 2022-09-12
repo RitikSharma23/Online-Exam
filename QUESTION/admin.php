@@ -108,12 +108,13 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        num=sessionStorage.getItem("userid");
-        ph=sessionStorage.getItem("pass");
-        
+    num=sessionStorage.getItem("userid");
+    ph=sessionStorage.getItem("pass");
+
     ss=new XMLHttpRequest
     ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=1",true)
     ss.onload=function(){
+    res=JSON.parse(this.responseText);
     fname=res['data'][0].fname;
     lname=res['data'][0].lname;
     email=res['data'][0].email;
@@ -127,7 +128,12 @@
 	sessionStorage.setItem("userid",userid);
 	sessionStorage.setItem("pass",pass);
     }
-        ss.send();
+    ss.send();
+        fname=sessionStorage.getItem("fname");
+        lname=sessionStorage.getItem("lname");
+        email=sessionStorage.getItem("email");
+        phone=sessionStorage.getItem("phone");
+        userid=sessionStorage.getItem("userid");
     
         document.getElementById("n_name").innerHTML=fname+" "+lname
 
