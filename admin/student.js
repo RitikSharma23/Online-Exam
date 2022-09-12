@@ -107,7 +107,6 @@ for(i=0;i<res['data'].length;i++){
     row.appendChild(td7)
     table.appendChild(row)
     div.appendChild(table)
-
     }
 
 }
