@@ -22,8 +22,9 @@
 	fname=sessionStorage.getItem("fname")
 	if(fname==null){
 		alert("please login first");
+		location.replace("../home.html")
 		
-		location.replace("../home.php")
+		
 	}
 	</script>
 </head>
