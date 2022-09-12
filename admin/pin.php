@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 $pincode=$_REQUEST['pincode'];
 $result=array();
 $result['data']=array();
-$select="SELECT * FROM `mytable` WHERE pincode='$pincode';";
+$select="SELECT * FROM `pincode` WHERE pincode='$pincode';";
 $responce=mysqli_query($conn,$select);
 while($row=mysqli_fetch_array($responce)){
 $index["pincode"]=$row['0'];
