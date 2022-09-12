@@ -184,7 +184,7 @@
 	phone=sessionStorage.getItem("phone")
 
 	if(fname==null){
-		alert("please login");
+		alert("please login FIRST");
 		location.replace("admin.php")
 	}
 
