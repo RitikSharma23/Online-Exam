@@ -22,7 +22,7 @@
 	fname=sessionStorage.getItem("fname")
 	if(fname==null){
 		alert("please login");
-		location.replace("admin.php")
+		location.replace("../home.php")
 	}
 	</script>
 </head>
@@ -136,10 +136,10 @@
 	<script src="../js/app.js"></script>
     <script>
         fname=sessionStorage.getItem("fname");
-	lname=sessionStorage.getItem("lname");
-	email=sessionStorage.getItem("email");
-	phone=sessionStorage.getItem("phone");
-	userid=sessionStorage.getItem("userid");
+		lname=sessionStorage.getItem("lname");
+		email=sessionStorage.getItem("email");
+		phone=sessionStorage.getItem("phone");
+		userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
@@ -161,7 +161,6 @@
 
         document.getElementById("panel").addEventListener("click",()=>{
             location.replace("panel.php?"+details+"&obj=1")
-            // document.getElementById("panel").href=
         })
         document.getElementById("logout").addEventListener("click",()=>{
 			sessionStorage.clear();
@@ -169,7 +168,6 @@
         })
         document.getElementById("editprofile").addEventListener("click",()=>{
             location.href=("f_edit.php?userid="+userid)
-			// window.close();
         })
     </script>
 
