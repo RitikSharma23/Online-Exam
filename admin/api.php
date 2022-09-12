@@ -294,6 +294,7 @@ function facultyreg($conn){
          }
          
          $conn->close();
+         header("Location: faculty.php");
    }
    
    }
