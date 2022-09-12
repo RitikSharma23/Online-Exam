@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | Admin</title>
+	<title>Edit &nbsp;| &nbsp;Student</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-
+						<span>Edit Profile</span>
 						<div class="text-center mt-4">
 							<img src="../uploads/profile.png" width="150px" id="profileimg" style="width: 150px;height:150px;border-radius:100px">
 						</div>
