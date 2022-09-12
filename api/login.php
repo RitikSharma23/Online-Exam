@@ -83,7 +83,7 @@ function studentlogin($conn){
   $password = $_REQUEST['password'];
   $result=array();
   $result['data']=array();
-  $select="SELECT roll,fname,lname,phone,email,semester,dev,uid,pass FROM student WHERE phone='$number' AND pass='$password'";
+  $select="SELECT roll,fname,lname,phone,email,semester,dev,uid,pass,img FROM student WHERE phone='$number' AND pass='$password'";
   $responce=mysqli_query($conn,$select);
   while($row=mysqli_fetch_array($responce)){
 
@@ -96,6 +96,7 @@ function studentlogin($conn){
   $index["dev"]=$row['6'];
   $index["uid"]=$row['7'];
   $index["pass"]=$row['8'];
+  $index["img"]=$row['9'];
 
   array_push($result['data'],$index);
   }
