@@ -17,7 +17,6 @@ fname=sessionStorage.getItem("fname");
 	userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-        console.log(details)
 
 
 function column(){
@@ -35,15 +34,12 @@ function column(){
                 c.push(res['data'][i].col);
                 data[i]= c[i].split("_");
         }
-        console.log(res['data'][0])
-        console.log(data)
 
         for(i=0;i<data.length;i++){
             sem[i]=data[i][1]
         }
         sem=removeDuplicates(sem)
 
-        console.log(sem)
 
     
         for(i=1;i<sem.length;i++){
@@ -86,7 +82,6 @@ document.getElementById("devision").addEventListener("click",()=>{
             break;
         }
     }
-    console.log(dev);
 
     if(dev==""){
         alert("Plaese Select Division")
@@ -257,7 +252,6 @@ document.getElementById("uni").addEventListener("click",()=>{
 
 document.getElementById("submit").addEventListener("click",()=>{
 
-    console.log(colname)
 
     flag=0;
     for(i=0;i<c.length;i++){
@@ -275,7 +269,6 @@ document.getElementById("submit").addEventListener("click",()=>{
 
     c=c.sort();
 
-    console.log(c)
 
     for(i=0;i<c.length;i++){
         if(c[i]==colname){
@@ -295,7 +288,6 @@ document.getElementById("submit").addEventListener("click",()=>{
   
 }
 
-console.log(details)
 window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni+"&dev="+dev+"&obj=1";  
 
 })

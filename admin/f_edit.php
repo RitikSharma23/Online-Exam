@@ -76,11 +76,11 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Pasword</label>
-											<input class="form-control form-control-lg" type="text" id="password" placeholder="Passcord" />
+											<input class="form-control form-control-lg" type="password" id="password" placeholder="Passcord" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Confirm Pasword</label>
-											<input class="form-control form-control-lg" type="text" id="cpassword" placeholder=" Confirm Passcord" />
+											<input class="form-control form-control-lg" type="password" id="cpassword" placeholder=" Confirm Passcord" />
 										</div>
 										<div class="text-center mt-3">
 											<button id="submit" class="btn btn-lg btn-primary">Submit</button>

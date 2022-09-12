@@ -296,6 +296,28 @@ function facultyreg($conn){
          $conn->close();
          header("Location: faculty.php");
    }
+   function pincode($conn){
+    $pincode=$_REQUEST['pincode'];
+    $result=array();
+    $result['data']=array();
+    $select="SELECT * FROM `pincode` WHERE pincode='$pincode';";
+    $responce=mysqli_query($conn,$select);
+    while($row=mysqli_fetch_array($responce)){
+    $index["pincode"]=$row['0'];
+    $index["city"]=$row['1'];
+    $index["state"]=$row['2'];
+    $index["area"]=$row['3'];
+    array_push($result['data'],$index);
+    }
+    if($result['data']==null){
+      $result['success']="0";
+    }else{
+      $result['success']="1";
+    }
+    echo json_encode($result);
+    mysqli_close($conn);
+    
+   }
    
    }
 
@@ -315,6 +337,7 @@ switch($choice){
   case 8:$apple->facultyreg($conn);break;
   case 9:$apple->studentdelete($conn);break;
   case 10:$apple->facdelete($conn);break;
+  case 11:$apple->pincode($conn);break;
 
 }
 

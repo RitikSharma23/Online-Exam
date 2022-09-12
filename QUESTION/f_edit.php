@@ -18,6 +18,13 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
@@ -99,10 +106,8 @@
 		ss.open("GET","../admin/api.php?userid="+userid+"&obj=6",true)
 		ss.onload=function(){
 		res1=(this.responseText)
-		console.log(res1)
 		res=JSON.parse(this.responseText)
 
-		console.log(res['data'][0]['div'])
 		document.getElementById("fname").value=res['data'][0]['fname'];
 		document.getElementById("lname").value=res['data'][0]['lname'];
 		document.getElementById("email").value=res['data'][0]['email'];
@@ -127,12 +132,10 @@
 			
 		details="userid="+userid+"&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;
 		
-		console.log(details)
 		ss=new XMLHttpRequest
 		ss.open("GET","../admin/api.php?"+data,true)
 		ss.onload=function(){
 		res1=(this.responseText)
-		console.log(res1)
 		res=JSON.parse(this.responseText)
 		}
 		ss.send();
