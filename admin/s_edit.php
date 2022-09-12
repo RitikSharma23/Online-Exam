@@ -173,6 +173,40 @@
 		location.replace("admin.php")
 	}
 
+
+	document.getElementById("pin").addEventListener("keyup",()=>{
+	pin=document.getElementById("pin").value;
+			if(pin.length==6){
+				ss=new XMLHttpRequest
+				ss.open("GET","api.php?pincode="+pin+"&obj=11",true)
+				ss.onload=function(){
+					res=JSON.parse(this.responseText)
+					try{
+					document.getElementById("area").value=res['data'][0]['area'];
+					document.getElementById("city").value=res['data'][0]['city'];
+					document.getElementById("state").value=res['data'][0]['state'];
+					}catch{
+						
+					}
+					if(res['success']==1){
+						document.getElementById("area").disabled=true;
+						document.getElementById("city").disabled=true;
+						document.getElementById("state").disabled=true;
+					}else{
+						alert("pincode not found \n please enter manually")
+						document.getElementById("area").disabled=false;
+						document.getElementById("city").disabled=false;
+						document.getElementById("state").disabled=false;						
+						document.getElementById("area").value="";
+						document.getElementById("city").value="";
+						document.getElementById("state").value="";						
+					}
+					console.log(res['data'])
+				}
+				ss.send();
+			}
+		})
+
 		fn=document.getElementById("fn").innerHTML;
         ln=document.getElementById("ln").innerHTML;
         em=document.getElementById("em").innerHTML;
@@ -250,6 +284,8 @@
 		}catch{
 			pass;
 		}
+
+		
 
 		data="fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid="+uid+"&obj=2"+"&img="+image;
 
