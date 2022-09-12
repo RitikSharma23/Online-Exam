@@ -21,7 +21,7 @@
 	<script>
 		fname=sessionStorage.getItem("fname")
 	if(fname==null){
-		alert("please login");
+		alert("please login  first");
 		location.replace("admin.php")
 	}
 	</script>
@@ -46,7 +46,7 @@
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-						<span>Edit Profile</span>
+						<center><span style="font-size: 25pt;">Edit Profile</span></center>
 						<div class="text-center mt-4">
 							<img src="../uploads/profile.png" width="150px" id="profileimg" style="width: 150px;height:150px;border-radius:100px">
 						</div>
@@ -168,7 +168,7 @@
 
 
 	if(fname==null){
-		alert("please login");
+		alert("please login first");
 		location.replace("admin.php")
 	}
 
@@ -192,6 +192,8 @@
 		document.getElementById("email").value=res['data'][0]['email'];
 		document.getElementById("dob").value=res['data'][0]['dob'];
 		document.getElementById("phone").value=res['data'][0]['phone'];
+		
+
 		document.getElementById("roll").value=res['data'][0]['roll'];
 		document.getElementById("sem").value=res['data'][0]['sem'];
 		document.getElementById("div").value=res['data'][0]['div'];
@@ -215,17 +217,33 @@
 		email=document.getElementById("email").value;
 		dob=document.getElementById("dob").value;
 		phone=document.getElementById("phone").value;
+		if(phone.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("phone").focus()}
+		else{
 		roll=document.getElementById("roll").value;
 		sem=document.getElementById("sem").value;
 		div=document.getElementById("div").value;
 		year=document.getElementById("year").value;
 		flat=document.getElementById("flat").value;
 		pin=document.getElementById("pin").value;
+		if(pin.length!=6){
+		alert("Pincode should be 6 digit only");
+		document.getElementById("pin").focus()}
+		else{
 		area=document.getElementById("area").value;
 		city=document.getElementById("city").value;
 		state=document.getElementById("state").value;
 		pass=document.getElementById("password").value;
+		if(pass.length<8){
+		alert("Password length should be atleast 8 character.");
+		}
+		else{
 		cpass=document.getElementById("cpassword").value;
+		if(cpass!=pass){
+		alert("Password not matched!!!.");
+		}
+		else{
 		try{
 		image=document.getElementById("filename").innerHTML;
 		}catch{
@@ -245,7 +263,7 @@
 		ss.send();
 		
 		location.href="student.php";
-		})
+		}}}}})
 	</script>
 
 </body>
