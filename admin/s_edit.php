@@ -51,6 +51,7 @@
 							<img src="../uploads/profile.png" width="150px" id="profileimg" style="width: 150px;height:150px;border-radius:100px">
 						</div>
 
+
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">

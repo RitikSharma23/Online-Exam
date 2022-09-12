@@ -280,6 +280,7 @@ function facultyreg($conn){
          }
          
          $conn->close();
+         header("Location: student.php");
    }
    function facdelete($conn){
      $uid=$_REQUEST['uid'];
