@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2022 at 06:35 AM
+-- Generation Time: Sep 12, 2022 at 05:20 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `exam`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `userid` int(11) NOT NULL,
+  `fname` varchar(20) NOT NULL,
+  `lname` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `pass` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
+(1123, 'Ritik', 'Sharma', 'ritikss748@gmail.com', '8866892314', 'admin123');
 
 -- --------------------------------------------------------
 
@@ -42,7 +64,8 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`ind`, `userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
-(10, 4310, 'ritik', 'sharma', 'ritikss748@gmail.com', '8866892314', '8866892314');
+(10, 4310, 'Ritik', 'Sharma', 'ritikss748@gmail.com', '8866892314', 'ritik123'),
+(14, 1212, 'shanu', 'pandey', 'shanu@gmail.com', '123456', '123456');
 
 -- --------------------------------------------------------
 
@@ -66,6 +89,88 @@ CREATE TABLE `question` (
   `d` mediumtext NOT NULL,
   `correct` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`user`, `question_id`, `dat`, `sem`, `subject`, `unit`, `division`, `no`, `question`, `a`, `b`, `c`, `d`, `correct`) VALUES
+('Ritik', 28100852, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100852, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 28100852, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100852, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100852, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100852, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 28100858, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100858, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100858, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 28100858, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100858, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 28100858, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 29100839, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100839, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 29100839, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100839, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 29100839, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100839, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100846, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100846, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 29100846, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100846, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100854, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 29100854, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100854, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100854, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 29100854, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 29100854, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100800, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100800, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100800, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100800, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100800, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100800, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100817, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100817, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100817, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100817, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100817, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100817, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100818, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100818, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100818, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100818, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100818, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100818, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100822, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100822, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100822, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100822, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100822, '2022-09-10', 1, 'es', 1, 'A', 7, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100822, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100826, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100826, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100826, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100826, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100840, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100840, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100840, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100840, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100850, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 30100850, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 30100850, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100821, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100821, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100821, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 32100821, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 32100826, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100826, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 32100826, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100826, '2022-09-10', 1, 'es', 1, 'A', 5, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100826, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 32100831, '2022-09-10', 1, 'es', 1, 'A', 2, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100831, '2022-09-10', 1, 'es', 1, 'A', 3, 'what is html', 'a', 'b', 'c', 'd', 'a'),
+('Ritik', 32100831, '2022-09-10', 1, 'es', 1, 'A', 4, 'lkj', 'lkj', 'lkj', 'lkj', 'lkj', 'a'),
+('Ritik', 32100831, '2022-09-10', 1, 'es', 1, 'A', 6, 'what is html', 'a', 'b', 'c', 'd', 'a');
 
 -- --------------------------------------------------------
 
@@ -107,15 +212,18 @@ CREATE TABLE `student` (
   `area` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `state` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `img` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'profile.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `dob`, `semester`, `dev`, `uid`, `ayear`, `flat`, `pin`, `area`, `city`, `state`, `pass`) VALUES
-(62, 'Ritik', 'Sharma', '8866892314', 'ritikss748@gmail.com', '2003-07-23', 3, 'A', '21004500210167', 2021, 'naiya apartment', 380026, 'vastral', 'ahmedabad', 'gujarat', 'ritik123');
+INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `dob`, `semester`, `dev`, `uid`, `ayear`, `flat`, `pin`, `area`, `city`, `state`, `pass`, `img`) VALUES
+(18, 'vrutik', 'jagad', '123456', 'vrutik1@gmail.com', '2002-09-01', 1, 'A', '123456', 2021, '', 0, '', '', '', '123456', 'profile.png'),
+(29, 'shanu', 'pandey', '9877867541', 'shanu@gmail.com', '2003-01-04', 2, 'B', '21004500210045', 2021, '', 0, '', '', '', '9877867541', 'shanu.png'),
+(62, 'ritik', 'sharma', '8866892314', 'ritiks431@gmail.com', '2003-07-23', 1, 'A', '21004500210167', 2021, '', 0, '', '', '', '8866892314', '../uploads/profile.p');
 
 -- --------------------------------------------------------
 
@@ -124,41 +232,38 @@ INSERT INTO `student` (`roll`, `fname`, `lname`, `phone`, `email`, `dob`, `semes
 --
 
 CREATE TABLE `student_result` (
+  `sem` int(11) NOT NULL,
+  `sem_1_es_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_1_fco_unit_3` int(11) NOT NULL DEFAULT -1,
+  `dev` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `uid` char(20) COLLATE utf8_unicode_ci NOT NULL,
-  `sem_1_cpp_unit_1` int(11) NOT NULL,
-  `sem_1_cpp_unit_2` int(11) NOT NULL DEFAULT -1
+  `sem_1_html_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_1_html_unit_2` int(11) NOT NULL DEFAULT -1,
+  `sem_1_html_unit_3` int(11) NOT NULL DEFAULT -1,
+  `sem_1_html_unit_4` int(11) NOT NULL DEFAULT -1,
+  `sem_1_sdot_unit_3` int(11) NOT NULL DEFAULT -1,
+  `sem_2_fco_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_2_fco_unit_2` int(11) NOT NULL DEFAULT -1,
+  `sem_2_sdot_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_2_sdot_unit_2` int(11) NOT NULL DEFAULT -1,
+  `sem_3_cpp_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_3_cpp_unit_2` int(11) NOT NULL DEFAULT -1,
+  `sem_3_cpp_unit_3` int(11) NOT NULL DEFAULT -1,
+  `sem_3_php_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_4_java_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_4_java_unit_2` int(11) NOT NULL DEFAULT -1,
+  `sem_5_python_unit_1` int(11) NOT NULL DEFAULT -1,
+  `sem_6_laravel_unit_1` int(11) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `student_result`
 --
 
-INSERT INTO `student_result` (`uid`, `sem_1_cpp_unit_1`, `sem_1_cpp_unit_2`) VALUES
-('21004500210048', 0, -1),
-('21004500210167', 0, -1),
-('786785765875', 0, -1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `userid` int(11) NOT NULL,
-  `fname` varchar(20) NOT NULL,
-  `lname` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `pass` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`userid`, `fname`, `lname`, `email`, `phone`, `pass`) VALUES
-(1123, 'Ritik', 'Sharma', 'ritikss748@gmail.com', '8866892314', 'admin123');
+INSERT INTO `student_result` (`sem`, `sem_1_es_unit_1`, `sem_1_fco_unit_3`, `dev`, `uid`, `sem_1_html_unit_1`, `sem_1_html_unit_2`, `sem_1_html_unit_3`, `sem_1_html_unit_4`, `sem_1_sdot_unit_3`, `sem_2_fco_unit_1`, `sem_2_fco_unit_2`, `sem_2_sdot_unit_1`, `sem_2_sdot_unit_2`, `sem_3_cpp_unit_1`, `sem_3_cpp_unit_2`, `sem_3_cpp_unit_3`, `sem_3_php_unit_1`, `sem_4_java_unit_1`, `sem_4_java_unit_2`, `sem_5_python_unit_1`, `sem_6_laravel_unit_1`) VALUES
+(1, -1, -1, 'A', '123456', -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1),
+(2, -1, -1, 'A', '21004500210045', -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1),
+(1, 0, -1, 'A', '21004500210167', 0, -1, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
 
 --
 -- Indexes for dumped tables
@@ -191,7 +296,7 @@ ALTER TABLE `student_result`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `ind` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ind` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
