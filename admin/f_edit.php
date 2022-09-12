@@ -48,10 +48,8 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
-							<p class="lead">
-								With Basic Details
-							</p>
+							<h1 class="h2">Edit Profile</h1>
+							
 						</div>
 
 						<div class="card">
@@ -138,8 +136,20 @@
 		lname=document.getElementById("lname").value
 		email=document.getElementById("email").value
 		phone=document.getElementById("phone").value
+		if(phone.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("phone").focus()}
+		else{
 		pass=document.getElementById("password").value
+		if(pass.length<8){
+		alert("Password length should be atleast 8 character.");
+		}
+		else{
 		cpass=document.getElementById("cpassword").value
+		if(cpass!=pass){
+		alert("Password not matched!!!.");
+		}
+		else{
 
 		data="userid="+userid+"&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&pass="+pass+"&obj=7"
 	
@@ -156,7 +166,7 @@
 
 		location.href="faculty.php";
 
-		})
+		}}}})
 	</script>
 
 </body>

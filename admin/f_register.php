@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Add &nbsp;| &nbsp;Faculty</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -87,7 +87,7 @@
 	lname=sessionStorage.getItem("lname")
 	email=sessionStorage.getItem("email")
 	phone=sessionStorage.getItem("phone")
-
+	
 	if(fname==null){
 		alert("please login");
 		location.replace("admin.php")
@@ -103,6 +103,11 @@
 		ln=document.getElementById("ln").value;
 		em=document.getElementById("em").value;
 		ph=document.getElementById("ph").value;
+		if(ph.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("ph").focus()}
+		else{
+
 
 
 
@@ -118,7 +123,7 @@
 		ss.send();
 
 		location.href="faculty.php";
-		})
+		}})
 	</script>
 
 </body>

@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Add &nbsp;|&nbsp; Student</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="student_reg2.php" method="get">
+									
 										<div class="mb-3">
 											<label class="form-label">First Name</label>
 											<input class="form-control form-control-lg" type="text" id="fname" placeholder=" First name" required/>
@@ -73,7 +73,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Division</label>
-											<input class="form-control form-control-lg" type="email" id="div" placeholder="Division" required/>
+											<input class="form-control form-control-lg" type="text" id="div" placeholder="Division" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Academic Year</label>
@@ -83,7 +83,7 @@
 											<button id="submit" class="btn btn-lg btn-primary">Submit</button>
 											
 										</div>
-									</form>
+									
 								</div>
 							</div>
 						</div>
@@ -116,6 +116,10 @@
 		lname=document.getElementById("lname").value;
 		dob=document.getElementById("dob").value;
 		phone=document.getElementById("phone").value;
+		if(phone.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("phone").focus()}
+		else{
 		enroll=document.getElementById("enroll").value;
 		roll=document.getElementById("roll").value;
 		sem=document.getElementById("sem").value;
@@ -136,7 +140,7 @@
 
 		location.href="student.php";
 
-		})
+		}})
 	</script>
 
 </body>
