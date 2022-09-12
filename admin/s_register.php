@@ -21,18 +21,6 @@
 </head>
 
 <body>
-<div style="display: none;">
-		<?php
-		$fname=$_REQUEST['fname'];
-		$lname=$_REQUEST['lname'];
-		$email=$_REQUEST['email'];
-		$phone=$_REQUEST['phone'];
-		echo "<span id='fn'>".$fname."</span>";
-		echo "<span id='ln'>".$lname."</span>";
-		echo "<span id='em'>".$email."</span>";
-		echo "<span id='ph'>".$phone."</span>";
-		?>
-</div>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -102,11 +90,19 @@
 	<script src="../js/app.js"></script>
 
 	<script>
-		fn=document.getElementById("fn").innerHTML;
-        ln=document.getElementById("ln").innerHTML;
-        em=document.getElementById("em").innerHTML;
-        ph=document.getElementById("ph").innerHTML;
-        details="&fname="+fn+"&lname="+ln+"&email="+em+"&phone="+ph;  
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone; 
+		
+		console.log(details)  
 
 		document.getElementById("submit").addEventListener("click",()=>{
 		fname=document.getElementById("fname").value;
@@ -131,7 +127,7 @@
 		}
 		ss.send();
 
-		location.href="student.php?"+details;
+		location.href="student.php";
 
 		})
 	</script>

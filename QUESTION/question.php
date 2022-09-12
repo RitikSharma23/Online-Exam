@@ -164,12 +164,10 @@
                                
                                 <?php
                                 if(isset($_FILES['image'])){
-
                                     $name=$_FILES['image']['name'];
                                     $size=$_FILES['image']['size'];
                                     $tmp=$_FILES['image']['tmp_name'];
                                     $type=$_FILES['image']['type'];
-                                
                                     move_uploaded_file($tmp,"../uploads/".$name);
                                     echo "<span id='file' style='display:none'>";
                                     print_r($_FILES['image']['type']);
@@ -212,7 +210,8 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
+   
+        // fname=document.getElementById("fname").innerHTML;
         lname=document.getElementById("lname").innerHTML;
         email=document.getElementById("email").innerHTML;
         phone=document.getElementById("phone").innerHTML;
@@ -288,27 +287,3 @@
 </html>
 
 
-
-
-
-
-
-<!-- 
-<body>
-
-<div id="question">
-   
-</div>
-
-
-    
-
-    
-
-    <br><br>
-
-
-
-    
-</body>
-</html>  -->

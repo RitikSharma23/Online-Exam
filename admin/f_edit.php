@@ -92,6 +92,16 @@
 	<script src="../js/app.js"></script>
 
 	<script>
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+
 		fn=document.getElementById("fn").innerHTML;
         ln=document.getElementById("ln").innerHTML;
         em=document.getElementById("em").innerHTML;
@@ -137,7 +147,7 @@
 		}
 		ss.send();
 
-		location.href="faculty.php?"+details;
+		location.href="faculty.php";
 
 		})
 	</script>

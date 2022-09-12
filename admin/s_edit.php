@@ -41,15 +41,31 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
-							<p class="lead">
-								With Basic Details
-							</p>
+							<img src="../uploads/profile.png" width="150px" id="profileimg" style="width: 150px;height:150px;border-radius:100px">
 						</div>
 
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
+								<?php
+										if(isset($_FILES['profile'])){
+											$name=$_FILES['profile']['name'];
+											$size=$_FILES['profile']['size'];
+											$tmp=$_FILES['profile']['tmp_name'];
+											$type=$_FILES['profile']['type'];
+											move_uploaded_file($tmp,"../uploads/".$name);
+											echo "<span id='file' style='display:none;'>";
+											print_r($_FILES['profile']['type']);
+											echo "</span>";
+											echo "<span id='filename' style='display:none;'>";
+											print_r($_FILES['profile']['name']);
+											echo "</span>";
+										}
+										?>
+										<form action="" method="post" enctype="multipart/form-data">
+											<input type="file" name="profile">
+											<input type="submit" value="Upload image" id="uploaded">
+										</form><br><br>
 										
 									<div class="mb-3">
 											<label class="form-label">First Name</label>
@@ -109,16 +125,19 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Pasword</label>
-											<input class="form-control form-control-lg" type="text" id="password" placeholder="Passcord" />
+											<input class="form-control form-control-lg" type="password" id="password" placeholder="Passcord" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Confirm Pasword</label>
-											<input class="form-control form-control-lg" type="text" id="cpassword" placeholder=" Confirm Passcord" />
+											<input class="form-control form-control-lg" type="password" id="cpassword" placeholder=" Confirm Passcord" />
 										</div>
+										
 										<div class="text-center mt-3">
 											<button id="submit" class="btn btn-lg btn-primary">Submit</button>
 											
 										</div>
+										
+
 								</div>
 							</div>
 						</div>
@@ -131,7 +150,21 @@
 
 	<script src="../js/app.js"></script>
 
+	
+
 	<script>
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+	image="";
+
+
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+
 		fn=document.getElementById("fn").innerHTML;
         ln=document.getElementById("ln").innerHTML;
         em=document.getElementById("em").innerHTML;
@@ -162,6 +195,8 @@
 		document.getElementById("state").value=res['data'][0]['state'];
 		document.getElementById("password").value=res['data'][0]['pass'];
 		document.getElementById("cpassword").value=res['data'][0]['pass'];
+		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
+		image="../uploads/"+res['data'][0]['img'];
 		}
 		ss.send();
 		
@@ -183,8 +218,13 @@
 		state=document.getElementById("state").value;
 		pass=document.getElementById("password").value;
 		cpass=document.getElementById("cpassword").value;
+		try{
+		image=document.getElementById("filename").innerHTML;
+		}catch{
+			pass;
+		}
 
-		data="fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid="+uid+"&obj=2"
+		data="fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid="+uid+"&obj=2"+"&img="+image;
 
 		console.log(details)
 		ss=new XMLHttpRequest
@@ -196,7 +236,7 @@
 		}
 		ss.send();
 		
-		location.href="student.php?"+details;
+		location.href="student.php";
 		})
 	</script>
 
