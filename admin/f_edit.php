@@ -21,7 +21,7 @@
 	<script>
 		fname=sessionStorage.getItem("fname")
 	if(fname==null){
-		alert("please login");
+		alert("please login first");
 		location.replace("admin.php")
 	}
 	</script>
