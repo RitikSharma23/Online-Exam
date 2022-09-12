@@ -346,6 +346,7 @@
             ss.send()
             }
             ss.send()
+
             window.location.href = "panel.php?"+details+"&obj=1";
     })
 
