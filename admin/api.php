@@ -74,6 +74,7 @@ function dashboardenroll($conn){
     $index["city"]=$row['13'];
     $index["state"]=$row['14'];
     $index["pass"]=$row['15'];
+    $index["img"]=$row['16'];
     array_push($result['data'],$index);
     }
     if($result['data']==null){
@@ -227,8 +228,9 @@ function facultyreg($conn){
         $state=$_REQUEST['state'];
         $pass=$_REQUEST['pass'];
         $uid=$_REQUEST['uid'];
+        $img=$_REQUEST['img'];
 
-        $select="update student set fname='$fname',lname='$lname',email='$email',dob='$dob',phone='$phone',roll='$roll',semester='$sem',dev='$div',ayear='$year',flat='$flat',pin='$pin',area='$area',city='$city',state='$state',pass='$pass' where uid='$uid';";
+        $select="update student set fname='$fname',lname='$lname',email='$email',dob='$dob',phone='$phone',roll='$roll',semester='$sem',dev='$div',ayear='$year',flat='$flat',pin='$pin',area='$area',city='$city',state='$state',pass='$pass',img='$img' where uid='$uid';";
  
        if ($conn->query($select) === TRUE) {
            echo "New record updated successfully";

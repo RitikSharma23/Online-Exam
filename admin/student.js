@@ -3,7 +3,6 @@ ss.open("GET","api.php?obj=1",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 
-console.log(res['data'])
 
 div=document.getElementById("div1")
 table=document.createElement('table')
