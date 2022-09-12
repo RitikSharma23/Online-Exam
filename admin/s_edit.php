@@ -179,6 +179,7 @@
         details="&fname="+fn+"&lname="+ln+"&email="+em+"&phone="+ph;
 
 		uid=document.getElementById("uid").innerHTML;
+		image=""
 
 		ss=new XMLHttpRequest
 		ss.open("GET","api.php?uid="+uid+"&obj=3",true)
