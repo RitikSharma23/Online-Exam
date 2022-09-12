@@ -93,7 +93,6 @@ for(i=0;i<res['data'].length;i++){
     
     td7=document.createElement('td')
     a=document.createElement("a")
-    XC=confirm("Are you Sure You want to delete")
     a.href="api.php?uid="+res['data'][i]['uid']+"&obj=9"
     text7=document.createTextNode("Delete")
     a.appendChild(text7)
@@ -108,6 +107,7 @@ for(i=0;i<res['data'].length;i++){
     row.appendChild(td7)
     table.appendChild(row)
     div.appendChild(table)
+
     }
 
 }
