@@ -14,14 +14,14 @@
 
 	<link rel="canonical" href="../https://demo-basic.adminkit.io/" />
 
-	<title>Dashboard</title>
+	<title>Create | Test</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script>
 	fname=sessionStorage.getItem("fname")
 	if(fname==null){
-		alert("please login");
+		alert("please login first");
 		location.replace("admin.php")
 	}
 	</script>
@@ -31,7 +31,7 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="../index.html">
+				<a class="sidebar-brand" >
             <span class="align-middle">Faculty</span>
             </a>
 
@@ -89,12 +89,8 @@
                 <img src="../img/avatars/profile.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="../pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-								<div class="dropdown-divider"></div>
+								
+							
 								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
@@ -105,7 +101,7 @@
 			<main class="content" style="overflow-y: scroll;">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Your Pending Tests</h1>
+					<h1 class="h3 mb-3">Create Exam</h1>
 
 					<div class="row">
 						<div class="col-12">

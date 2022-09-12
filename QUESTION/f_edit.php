@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Edit | Profile</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -48,10 +48,8 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
-							<p class="lead">
-								With Basic Details
-							</p>
+							<h1 class="h2">Edit Profile</h1>
+							
 						</div>
 
 						<div class="card">
@@ -122,8 +120,21 @@
 		lname=document.getElementById("lname").value
 		email=document.getElementById("email").value
 		phone=document.getElementById("phone").value
+		if(phone.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("phone").focus()}
+		else{
+
 		pass=document.getElementById("password").value
+		if(pass.length<8){
+		alert("Password length should be atleast 8 character.");
+		}
+		else{
 		cpass=document.getElementById("cpassword").value
+		if(cpass!=pass){
+		alert("Password not match!!!");
+		}
+		else{
 
 		if(pass==cpass){
 
@@ -146,7 +157,7 @@
 		}
 
 
-		})
+		}}}})
 	</script>
 
 </body>
