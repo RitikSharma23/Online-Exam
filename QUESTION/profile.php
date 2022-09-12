@@ -62,26 +62,6 @@
 			</div>
 	    </nav>
 
-        <div style="display: none">
-
-                <?php
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $email=$_REQUEST['email'];
-                $phone=$_REQUEST['phone'];
-                $userid=$_REQUEST['userid'];
-                $obj=$_REQUEST['obj'];
-
-                echo "fname : <span id='fname'>".$fname."</span><br>";
-                echo "lname : <span id='lname'>".$lname."</span><br>";
-                echo "email : <span id='email'>".$email."</span><br>";
-                echo "phone : <span id='phone'>".$phone."</span><br>";
-                echo "phone : <span id='userid'>".$userid."</span><br>";
-
-                ?>
-
-        </div>
-
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
@@ -148,13 +128,14 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        userid=document.getElementById("userid").innerHTML;
+        fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
+        console.log(details)
         document.getElementById("n_name").innerHTML=fname+" "+lname
         document.getElementById("n_id").innerHTML="User id : "+userid
         document.getElementById("n_nam").innerHTML="Name : "+fname+" "+lname

@@ -1,10 +1,11 @@
+fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-fname=document.getElementById("fname").innerHTML;
-lname=document.getElementById("lname").innerHTML;
-email=document.getElementById("email").innerHTML;
-phone=document.getElementById("phone").innerHTML;
-details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
-
+        console.log(details)
 
 l=0;
 res={}

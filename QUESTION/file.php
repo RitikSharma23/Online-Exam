@@ -194,13 +194,14 @@
                 
             l=0;
             res={}
-        fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        userid=document.getElementById("userid").innerHTML;
+            fname=sessionStorage.getItem("fname");
+            lname=sessionStorage.getItem("lname");
+            email=sessionStorage.getItem("email");
+            phone=sessionStorage.getItem("phone");
+            userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
+        console.log(details)
         document.getElementById("n_name").innerHTML=fname+" "+lname;
         filename=document.getElementById("filename").innerHTML;
             ss=new XMLHttpRequest

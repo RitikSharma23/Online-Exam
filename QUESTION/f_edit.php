@@ -137,7 +137,7 @@
 		}
 		ss.send();
 
-		location.href="profile.php?"+details;
+		location.href="admin.php?"+details;
 		}else{
 			alert("Password Not Match")
 		}

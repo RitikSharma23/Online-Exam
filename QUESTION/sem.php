@@ -61,27 +61,7 @@
 
 			</div>
 		</nav>
-        <div style="display: none">
-
-                <?php
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $email=$_REQUEST['email'];
-                $phone=$_REQUEST['phone'];
-                $obj=$_REQUEST['obj'];
-                $userid=$_REQUEST['userid'];
-
-
-                echo "fname : <span id='fname'>".$fname."</span><br>";
-                echo "lname : <span id='lname'>".$lname."</span><br>";
-                echo "email : <span id='email'>".$email."</span><br>";
-                echo "phone : <span id='phone'>".$phone."</span><br>";
-                echo "userid : <span id='userid'>".$userid."</span><br>";
-
-
-                ?>
-
-        </div>
+        
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -183,13 +163,14 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        userid=document.getElementById("userid").innerHTML;
+        fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
+        console.log(details)
         document.getElementById("n_name").innerHTML=fname+" "+lname
         
         document.getElementById("profilepage").addEventListener("click",()=>{
