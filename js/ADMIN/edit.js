@@ -7,12 +7,11 @@ ss.open("GET","../api/dashboard.php?id="+qid+"&obj=3",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 
+
 que=(res['data'])
 
 
 for(x=0;x<que.length;x++){
-// for(x=que.length-1;x>=0;x--){
-console.log(res['data'][x]['correct'])
 
 
     var field=document.createElement("fieldset")
@@ -127,20 +126,10 @@ console.log(res['data'][x]['correct'])
     const element = document.getElementById("div1");
     element.appendChild(div);
     element.appendChild(document.createElement("br"));
-
-
 }
 
 }
 ss.send()
-
-
-
-
-
-
-
-
 
 document.getElementById("sub").addEventListener("click",()=>{
     
@@ -170,14 +159,7 @@ document.getElementById("sub").addEventListener("click",()=>{
     }
     ss.send()
     }
-
     tot=x-1
-
-    alert(res)
-
-    
-
-
 })
 
 

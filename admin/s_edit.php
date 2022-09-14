@@ -14,10 +14,17 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Edit &nbsp;| &nbsp;Student</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+		fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login  first");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
@@ -39,17 +46,34 @@
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-
+						<center><span style="font-size: 25pt;">Edit Profile</span></center>
 						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
-							<p class="lead">
-								With Basic Details
-							</p>
+							<img src="../uploads/profile.png" width="150px" id="profileimg" style="width: 150px;height:150px;border-radius:100px">
 						</div>
+
 
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
+								<?php
+										if(isset($_FILES['profile'])){
+											$name=$_FILES['profile']['name'];
+											$size=$_FILES['profile']['size'];
+											$tmp=$_FILES['profile']['tmp_name'];
+											$type=$_FILES['profile']['type'];
+											move_uploaded_file($tmp,"../uploads/".$name);
+											echo "<span id='file' style='display:none;'>";
+											print_r($_FILES['profile']['type']);
+											echo "</span>";
+											echo "<span id='filename' style='display:none;'>";
+											print_r($_FILES['profile']['name']);
+											echo "</span>";
+										}
+										?>
+										<form action="" method="post" enctype="multipart/form-data">
+											<input type="file" name="profile">
+											<input type="submit" value="Upload image" id="uploaded">
+										</form><br><br>
 										
 									<div class="mb-3">
 											<label class="form-label">First Name</label>
@@ -109,16 +133,19 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Pasword</label>
-											<input class="form-control form-control-lg" type="text" id="password" placeholder="Passcord" />
+											<input class="form-control form-control-lg" type="password" id="password" placeholder="Passcord" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Confirm Pasword</label>
-											<input class="form-control form-control-lg" type="text" id="cpassword" placeholder=" Confirm Passcord" />
+											<input class="form-control form-control-lg" type="password" id="cpassword" placeholder=" Confirm Passcord" />
 										</div>
+										
 										<div class="text-center mt-3">
 											<button id="submit" class="btn btn-lg btn-primary">Submit</button>
 											
 										</div>
+										
+
 								</div>
 							</div>
 						</div>
@@ -131,7 +158,55 @@
 
 	<script src="../js/app.js"></script>
 
+	
+
 	<script>
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+	image="";
+
+
+	if(fname==null){
+		alert("please login first");
+		location.replace("admin.php")
+	}
+
+
+	document.getElementById("pin").addEventListener("keyup",()=>{
+	pin=document.getElementById("pin").value;
+			if(pin.length==6){
+				ss=new XMLHttpRequest
+				ss.open("GET","api.php?pincode="+pin+"&obj=11",true)
+				ss.onload=function(){
+					res=JSON.parse(this.responseText)
+					try{
+					document.getElementById("area").value=res['data'][0]['area'];
+					document.getElementById("city").value=res['data'][0]['city'];
+					document.getElementById("state").value=res['data'][0]['state'];
+					}catch{
+						
+					}
+					if(res['success']==1){
+						document.getElementById("area").disabled=true;
+						document.getElementById("city").disabled=true;
+						document.getElementById("state").disabled=true;
+					}else{
+						alert("pincode not found \n please enter manually")
+						document.getElementById("area").disabled=false;
+						document.getElementById("city").disabled=false;
+						document.getElementById("state").disabled=false;						
+						document.getElementById("area").value="";
+						document.getElementById("city").value="";
+						document.getElementById("state").value="";						
+					}
+					console.log(res['data'])
+				}
+				ss.send();
+			}
+		})
+
 		fn=document.getElementById("fn").innerHTML;
         ln=document.getElementById("ln").innerHTML;
         em=document.getElementById("em").innerHTML;
@@ -139,6 +214,7 @@
         details="&fname="+fn+"&lname="+ln+"&email="+em+"&phone="+ph;
 
 		uid=document.getElementById("uid").innerHTML;
+		image=""
 
 		ss=new XMLHttpRequest
 		ss.open("GET","api.php?uid="+uid+"&obj=3",true)
@@ -151,6 +227,8 @@
 		document.getElementById("email").value=res['data'][0]['email'];
 		document.getElementById("dob").value=res['data'][0]['dob'];
 		document.getElementById("phone").value=res['data'][0]['phone'];
+		
+
 		document.getElementById("roll").value=res['data'][0]['roll'];
 		document.getElementById("sem").value=res['data'][0]['sem'];
 		document.getElementById("div").value=res['data'][0]['div'];
@@ -162,6 +240,8 @@
 		document.getElementById("state").value=res['data'][0]['state'];
 		document.getElementById("password").value=res['data'][0]['pass'];
 		document.getElementById("cpassword").value=res['data'][0]['pass'];
+		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
+		image=res['data'][0]['img'];
 		}
 		ss.send();
 		
@@ -172,19 +252,42 @@
 		email=document.getElementById("email").value;
 		dob=document.getElementById("dob").value;
 		phone=document.getElementById("phone").value;
+		if(phone.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("phone").focus()}
+		else{
 		roll=document.getElementById("roll").value;
 		sem=document.getElementById("sem").value;
 		div=document.getElementById("div").value;
 		year=document.getElementById("year").value;
 		flat=document.getElementById("flat").value;
 		pin=document.getElementById("pin").value;
+		if(pin.length!=6){
+		alert("Pincode should be 6 digit only");
+		document.getElementById("pin").focus()}
+		else{
 		area=document.getElementById("area").value;
 		city=document.getElementById("city").value;
 		state=document.getElementById("state").value;
 		pass=document.getElementById("password").value;
+		if(pass.length<8){
+		alert("Password length should be atleast 8 character.");
+		}
+		else{
 		cpass=document.getElementById("cpassword").value;
+		if(cpass!=pass){
+		alert("Password not matched!!!.");
+		}
+		else{
+		try{
+		image=document.getElementById("filename").innerHTML;
+		}catch{
+			pass;
+		}
 
-		data="fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid="+uid+"&obj=2"
+		
+
+		data="fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid="+uid+"&obj=2"+"&img="+image;
 
 		console.log(details)
 		ss=new XMLHttpRequest
@@ -196,8 +299,8 @@
 		}
 		ss.send();
 		
-		location.href="student.php?"+details;
-		})
+		location.href="student.php";
+		}}}}})
 	</script>
 
 </body>

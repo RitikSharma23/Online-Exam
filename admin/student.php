@@ -14,10 +14,17 @@
 
 	<link rel="canonical" href="../https://demo-basic.adminkit.io/" />
 
-	<title>Dashboard</title>
+	<title>Manage&nbsp;|&nbsp;Student</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+		fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login first");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
@@ -36,7 +43,7 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="../index.html">
+				<a class="sidebar-brand" >
             <span class="align-middle">ADMIN</span>
             </a>
 
@@ -114,7 +121,7 @@
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								
-								<a href="admin.php" class="dropdown-item" id="logout"> Log out</a>
+								<a class="dropdown-item" id="logout"> Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -171,28 +178,37 @@
     <script src="student.js"></script>
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+
+	if(fname==null){
+		alert("please login first");
+		location.replace("admin.php")
+	}
+
 
         document.getElementById("n_name").innerHTML="ADMIN";
 
 
         document.getElementById("mstudent").addEventListener("click",()=>{
-            location.replace("student.php?"+details)
+            location.replace("student.php")
         })
 		document.getElementById("astudent").addEventListener("click",()=>{
-            location.href=("s_register.php?"+details)
+            location.href=("s_register.php")
         })
 
         document.getElementById("mfaculty").addEventListener("click",()=>{
-            location.replace("faculty.php?"+details)
+            location.replace("faculty.php")
         })
 
         document.getElementById("afaculty").addEventListener("click",()=>{
-            location.href=("f_register.php?"+details)
+            location.href=("f_register.php")
+        })
+        document.getElementById("logout").addEventListener("click",()=>{
+            location.replace("admin.php")
+			sessionStorage.clear();
         })
      
 

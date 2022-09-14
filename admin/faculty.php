@@ -14,29 +14,24 @@
 
 	<link rel="canonical" href="../https://demo-basic.adminkit.io/" />
 
-	<title>Dashboard</title>
+	<title>Manage&nbsp;|&nbsp;Faculty</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+		fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
-	<div style="display: none;">
-		<?php
-		$fname=$_REQUEST['fname'];
-		$lname=$_REQUEST['lname'];
-		$email=$_REQUEST['email'];
-		$phone=$_REQUEST['phone'];
-		echo "<span id='fname'>".$fname."</span>";
-		echo "<span id='lname'>".$lname."</span>";
-		echo "<span id='email'>".$email."</span>";
-		echo "<span id='phone'>".$phone."</span>";
-		?>
-	</div>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="../index.html">
+				<a class="sidebar-brand" >
             <span class="align-middle">ADMIN</span>
             </a>
 
@@ -76,23 +71,6 @@
 
 			</div>
 		</nav>
-        <div style="display: none">
-
-                <?php
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $email=$_REQUEST['email'];
-                $phone=$_REQUEST['phone'];
-                $obj=$_REQUEST['obj'];
-
-                echo "fname : <span id='fname'>".$fname."</span><br>";
-                echo "lname : <span id='lname'>".$lname."</span><br>";
-                echo "email : <span id='email'>".$email."</span><br>";
-                echo "phone : <span id='phone'>".$phone."</span><br>";
-
-                ?>
-
-        </div>
 
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -114,7 +92,7 @@
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								
-								<a href="admin.php" class="dropdown-item" id="logout">Log out</a>
+								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -171,24 +149,31 @@
     <script src="faculty.js"></script>
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+    fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
 
         document.getElementById("n_name").innerHTML="ADMIN"
 
 
         document.getElementById("mstudent").addEventListener("click",()=>{
-            location.replace("student.php?"+details)
+            location.replace("student.php")
         })
 		document.getElementById("astudent").addEventListener("click",()=>{
-            location.href=("s_register.php?"+details+"&obj=1")
+            location.href=("s_register.php")
         })
 		document.getElementById("afaculty").addEventListener("click",()=>{
-            location.href=("f_register.php?"+details)
-            // document.getElementById("panel").href=
+            location.href=("f_register.php")
+        })
+		document.getElementById("logout").addEventListener("click",()=>{
+            location.replace("admin.php")
+			sessionStorage.clear();
         })
     </script>
 

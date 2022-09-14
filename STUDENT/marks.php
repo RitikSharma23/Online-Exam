@@ -22,7 +22,7 @@ $subcol=$_REQUEST['subcol'];
 $marks=$_REQUEST['marks'];
 
 
-$select="UPDATE `student` SET `$subcol` = '$marks' WHERE `student`.`uid` = '$uid';";
+$select="UPDATE `student_result` SET `$subcol` = '$marks' WHERE `student_result`.`uid` = '$uid';";
 
 if ($conn->query($select) === TRUE) {
     echo "<h1 align='center'><pre>FEEDBACK<h1><pre><textarea style='width:80%;height:500px;border:4px solid #b865ae;font'></textarea>
@@ -31,5 +31,4 @@ if ($conn->query($select) === TRUE) {
     echo "Error: <br>" . $conn->error;
   }
   $conn->close();
-
 ?>

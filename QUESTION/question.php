@@ -18,9 +18,16 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+        location.replace("../home.php")
+	}
+	</script>
 </head>
 
-<body  onload="column()">
+<body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
@@ -73,8 +80,8 @@
     $subject = $_REQUEST['subject'];
     $unit = $_REQUEST['unit'];
     $dev = $_REQUEST['dev'];
-    
-   
+    $userid=$_REQUEST['userid'];
+
 
     echo "fname : <span id='fname'>".$fname."</span><br>";
     echo "lname : <span id='lname'>".$lname."</span><br>";
@@ -84,6 +91,8 @@
     echo "subject : <span id='subject'>".$subject."</span><br>";
     echo "unit : <span id='unit'>".$unit."</span><br>";
     echo "Division : <span id='dev'>".$dev."</span><br>";
+    echo "userid : <span id='userid'>".$userid."</span><br>";
+
 
     ?>
 
@@ -114,7 +123,7 @@
 								<a class="dropdown-item" href="../index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="../#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="../home.html">Log out</a>
+								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -124,27 +133,71 @@
 			<main class="content" style="overflow-y: scroll;">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Your Pending Tests</h1>
+					<h1 class="h3 mb-3">Create Questions</h1>
 
 					<div class="row">
 						<div class="col-12">
 							<div class="card" style="height: 80vh;" >
 								<div class="card-header">
                                 <div id="div1">
-
                                 </div>  
 
                                 <button id="add" class="btn btn-primary" style="float: left;">Add new</button>
                                     <br><br>
                                 <button id="sub" class="btn btn-success" style="float: right;">Submit</button>
-                               
+
 								</div>
 								
 							</div>
-							
+						</div>
+                        
+					</div>
+                    
 
-							
-							
+				</div>
+                
+	
+			</main>
+
+			<main class="content" >
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3">Or Upload Excel</h1>
+
+					<div class="row">
+						<div class="col-12">
+							<div class="card" style="height: 80vh;" >
+								<div class="card-header">
+                               
+                                <?php
+                                if(isset($_FILES['image'])){
+                                    $name=$_FILES['image']['name'];
+                                    $size=$_FILES['image']['size'];
+                                    $tmp=$_FILES['image']['tmp_name'];
+                                    $type=$_FILES['image']['type'];
+                                    move_uploaded_file($tmp,"../uploads/".$name);
+                                    echo "<span id='file' style='display:none'>";
+                                    print_r($_FILES['image']['type']);
+                                    echo "</span>";
+                                    echo "<span id='filename' style='display:none'>";
+                                    print_r($_FILES['image']['name']);
+                                    echo "</span>";
+                                }
+                                ?>
+                                <br>
+                                <p align="center"><img  src="../excelsample.png" style="width: 70%;" alt="Excel Format"></p>
+                                <br><p align="center">Excel Format Sample</p><br>
+                                <center>
+                                <form name="myform"  method="post" enctype="multipart/form-data">
+                                <input type="file" name="image" class="btn btn-success" id="file" required> 
+                                <input type="submit"  value="submit" class="btn btn-success">
+                                </form>
+                                </center>
+                                <br><br>
+                                <button style="float: right;display: none;" id="next" class="btn btn-primary">Next</button>
+								</div>
+								
+							</div>
 						</div>
                         
 					</div>
@@ -164,36 +217,21 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        fname=document.getElementById("fname").innerHTML;
+   
+        // fname=document.getElementById("fname").innerHTML;
         lname=document.getElementById("lname").innerHTML;
         email=document.getElementById("email").innerHTML;
         phone=document.getElementById("phone").innerHTML;
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+        userid=document.getElementById("userid").innerHTML;
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
-
-        // document.getElementById("profilepage").addEventListener("click",()=>{
-        //     document.getElementById("profilepage").href="profile.php?"+details
-        // })
-
-        // document.getElementById("homepage").addEventListener("click",()=>{
-        //     document.getElementById("homepage").href="admin.php?"+details
-        // })
-
-        // document.getElementById("test").addEventListener("click",()=>{
-        //     document.getElementById("test").href="sem.php?"+details+"&obj=1"
-        // })
-
-        // document.getElementById("panel").addEventListener("click",()=>{
-        //     document.getElementById("panel").href="panel.php?"+details+"&obj=1"
-        // })
-
         
         document.getElementById("profilepage").addEventListener("click",()=>{
             location.replace("profile.php?"+details)
         })
 
-        document.getElementById("adminpage").addEventListener("click",()=>{
+        document.getElementById("homepage").addEventListener("click",()=>{
             location.replace("admin.php?"+details)
         })
 		document.getElementById("test").addEventListener("click",()=>{
@@ -202,11 +240,33 @@
 
         document.getElementById("panel").addEventListener("click",()=>{
             location.replace("panel.php?"+details+"&obj=1")
-            // document.getElementById("panel").href=
         })
         document.getElementById("logout").addEventListener("click",()=>{
+			sessionStorage.clear();
             location.replace("../home.html")
-			// window.close();
+        })
+
+        fil=document.getElementById("file").innerHTML;
+        filename=document.getElementById("filename").innerHTML;
+        
+        if(fil!=""){
+            document.getElementById("next").style.display="block"
+        }
+        document.getElementById("next").addEventListener("click",()=>{
+           
+            if(fil==""){
+                alert("please select file")
+            }else if(fil!="text/csv"){
+                alert("please select CSV file \n in proper format as shown in figure")
+            }else{
+            nam=document.getElementById("fname").innerHTML;
+            sub=document.getElementById("subject").innerHTML;
+            sem=document.getElementById("sem").innerHTML;
+            unit=document.getElementById("unit").innerHTML;
+            dev=document.getElementById("dev").innerHTML;
+           
+            location.href = "file.php?sub="+sub+"&sem="+sem+"&unit="+unit+"&dev="+dev+"&quid="+nam+details+"&filename="+filename;
+            }
         })
 
     </script>
@@ -235,27 +295,3 @@
 </html>
 
 
-
-
-
-
-
-<!-- 
-<body>
-
-<div id="question">
-   
-</div>
-
-
-    
-
-    
-
-    <br><br>
-
-
-
-    
-</body>
-</html>  -->

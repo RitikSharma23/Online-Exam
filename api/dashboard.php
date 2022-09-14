@@ -105,8 +105,19 @@ function edit($conn){
 
 function start($conn){
     $id=$_REQUEST['id'];
+    $sem=$_REQUEST['sem'];
+    $dev=$_REQUEST['dev'];
+    $unit=$_REQUEST['unit'];
+    $sub=$_REQUEST['sub'];
+    $col='sem_'.$sem.'_'.$sub.'_unit_'.$unit;
     $select="UPDATE `question_details` SET `status` = 'start' WHERE `question_details`.`question_id` = $id;";;
     if ($conn->query($select) === TRUE) {
+    echo "New record created successfully";
+    } else {
+    echo "Error: <br>" . $conn->error;
+    }
+    $select1="UPDATE `student_result` SET `$col` = '0' WHERE sem='$sem' AND dev='$dev';";
+    if ($conn->query($select1) === TRUE) {
     echo "New record created successfully";
     } else {
     echo "Error: <br>" . $conn->error;
@@ -143,7 +154,9 @@ function update($conn){
     $correct = $_REQUEST['correct'];
     $select="UPDATE question set question='$question',a='$a',b='$b',c='$c',d='$d',correct='$correct' WHERE no='$no' AND question_id='$quid';";
     if ($conn->query($select) === TRUE) {
-    echo "New record created successfully";
+    // echo "New record update successfully $no $quid    $question    $a    $b    $c    $d    $correct";
+
+    echo $select;
     } else {
     echo "Error: <br>" . $conn->error;
     }

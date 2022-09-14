@@ -1,10 +1,11 @@
+fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-fname=document.getElementById("fname").innerHTML;
-lname=document.getElementById("lname").innerHTML;
-email=document.getElementById("email").innerHTML;
-phone=document.getElementById("phone").innerHTML;
-details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
-
+        console.log(details)
 
 l=0;
 res={}
@@ -77,10 +78,15 @@ text9=document.createTextNode('')
 a.appendChild(text9)
 td9.appendChild(a)
 
+td2=document.createElement('td')
+var a=document.createElement('a')
+a.href="edit.php?id="+res['data'][i]['question_id']
+text2=document.createTextNode('')
+a.appendChild(text2)
+td2.appendChild(a)
 
-// row.appendChild(td0)
+
 row.appendChild(td1)
-// row.appendChild(td2)
 row.appendChild(td3)
 row.appendChild(td4)
 row.appendChild(td5)
@@ -88,6 +94,7 @@ row.appendChild(td6)
 row.appendChild(td7)
 row.appendChild(td8)
 row.appendChild(td9)
+row.appendChild(td2)
 table.appendChild(row)
 div.appendChild(table)
 
@@ -155,10 +162,17 @@ td8.appendChild(text8)
 
 td9=document.createElement('td')
 var a=document.createElement('a')
-a.href="edit.php?id="+res['data'][i]['question_id']
+a.href="edit.php?id="+res['data'][i]['question_id']+details
 text9=document.createTextNode('Edit')
 a.appendChild(text9)
 td9.appendChild(a)
+
+td2=document.createElement('td')
+var a=document.createElement('a')
+a.href="result.php?sem="+res['data'][i]['sem']+"&dev="+res['data'][i]['dev']+"&col=sem_"+res['data'][i]['sem']+"_"+res['data'][i]['subject']+"_unit_"+res['data'][i]['unit']
+text2=document.createTextNode('View Result')
+a.appendChild(text2)
+td2.appendChild(a)
 
 
 // row.appendChild(td0)
@@ -171,6 +185,7 @@ row.appendChild(td6)
 row.appendChild(td7)
 row.appendChild(td8)
 row.appendChild(td9)
+row.appendChild(td2)
 table.appendChild(row)
 div.appendChild(table)
 
@@ -187,27 +202,35 @@ ss.send()
 
 document.getElementById("start").addEventListener("click",()=>{
     window.location.reload()
-
-    chec=[]
+    chec=[];
+    sem=[];
+    div=[];
+    subject=[];
+    unit=[];
     var checkedValue = null; 
     var inputElements = document.getElementsByClassName('messageCheckbox');
     for(var i=0; inputElements[i]; ++i){
           if(inputElements[i].checked){
             //    chec.push(inputElements[i].value);
                chec.push(res['data'][i]['question_id']);
+               sem.push(res['data'][i]['sem']);
+               div.push(res['data'][i]['dev']);
+               subject.push(res['data'][i]['subject']);
+               unit.push(res['data'][i]['unit']);
           }
     }
 
     for(i=0;i<chec.length;i++){
         // alert(chec[i])
             ss=new XMLHttpRequest
-            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&obj=4",true)
+            ss.open("GET","../api/dashboard.php?id="+chec[i]+"&sem="+sem[i]+"&dev="+div[i]+"&sub="+subject[i]+"&unit="+unit[i]+"&obj=4",true)
             ss.onload=function(){
             res=this.responseText
         }
         ss.send()
     }
     window.location.reload()
+
 
     
 })

@@ -43,7 +43,7 @@ function insert_question($conn){
     $select="INSERT INTO question(user,question_id,dat,sem,subject,unit,division,no,question,a,b,c,d,correct)VALUES ('$quid','$testid','$date','$sem','$subject','$unit','$division','$no','$question','$a','$b','$c','$d','$correct')";
 
     if ($conn->query($select) === TRUE) {
-        echo "New record created successfully";
+        echo "1";
       } else {
         echo "Error:  <br>" . $conn->error;
       }
@@ -65,7 +65,7 @@ function insert_question_details($conn){
     $select="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
 
     if ($conn->query($select) === TRUE) {
-        echo "New record created successfully";
+        echo "1";
       } else {
         echo "Error: <br>" . $conn->error;
       }
@@ -76,7 +76,7 @@ function insert_column($conn){
     $column = $_REQUEST['column'];
     $pos = $_REQUEST['pos'];
     
-    $select="ALTER TABLE `student` ADD `$column` INT NOT NULL AFTER `$pos`;";
+    $select="ALTER TABLE `student_result` ADD `$column` INT NOT NULL DEFAULT '-1' AFTER `$pos`;";
     
     if ($conn->query($select) === TRUE) {
         echo "New record created successfully";
@@ -89,7 +89,7 @@ function insert_column($conn){
 function display_column($conn){
       $result=array();
       $result['data']=array();
-      $select="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'student' ORDER BY ORDINAL_POSITION;";
+      $select="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'student_result' ORDER BY ORDINAL_POSITION;";
       $responce=mysqli_query($conn,$select);
       $i=0;
       while($row=mysqli_fetch_array($responce)){

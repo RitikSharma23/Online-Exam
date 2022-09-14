@@ -74,6 +74,7 @@ function dashboardenroll($conn){
     $index["city"]=$row['13'];
     $index["state"]=$row['14'];
     $index["pass"]=$row['15'];
+    $index["img"]=$row['16'];
     array_push($result['data'],$index);
     }
     if($result['data']==null){
@@ -180,7 +181,7 @@ function facultyreg($conn){
          } else {
            echo "Error: <br>" . $conn->error;
          }
-    $select2="INSERT INTO student_result (uid) VALUES ('$uid') ;";
+    $select2="INSERT INTO student_result (uid,sem,dev) VALUES ('$uid','$semester','$dev') ;";
        
        if ($conn->query($select2) === TRUE) {
            echo "New record created successfully";
@@ -227,8 +228,9 @@ function facultyreg($conn){
         $state=$_REQUEST['state'];
         $pass=$_REQUEST['pass'];
         $uid=$_REQUEST['uid'];
+        $img=$_REQUEST['img'];
 
-        $select="update student set fname='$fname',lname='$lname',email='$email',dob='$dob',phone='$phone',roll='$roll',semester='$sem',dev='$div',ayear='$year',flat='$flat',pin='$pin',area='$area',city='$city',state='$state',pass='$pass' where uid='$uid';";
+        $select="update student set fname='$fname',lname='$lname',email='$email',dob='$dob',phone='$phone',roll='$roll',semester='$sem',dev='$div',ayear='$year',flat='$flat',pin='$pin',area='$area',city='$city',state='$state',pass='$pass',img='$img' where uid='$uid';";
  
        if ($conn->query($select) === TRUE) {
            echo "New record updated successfully";
@@ -264,14 +266,21 @@ function facultyreg($conn){
      $uid=$_REQUEST['uid'];
     
      $select="delete from student where uid='$uid' ;";
+     $select1="delete from student_result where uid='$uid' ;";
         
        if ($conn->query($select) === TRUE) {
            echo "New record deleted successfully";
          } else {
            echo "Error: <br>" . $conn->error;
          }
+       if ($conn->query($select1) === TRUE) {
+           echo "New record deleted successfully";
+         } else {
+           echo "Error: <br>" . $conn->error;
+         }
          
          $conn->close();
+         header("Location: student.php");
    }
    function facdelete($conn){
      $uid=$_REQUEST['uid'];
@@ -285,6 +294,29 @@ function facultyreg($conn){
          }
          
          $conn->close();
+         header("Location: faculty.php");
+   }
+   function pincode($conn){
+    $pincode=$_REQUEST['pincode'];
+    $result=array();
+    $result['data']=array();
+    $select="SELECT * FROM `pincode` WHERE pincode='$pincode';";
+    $responce=mysqli_query($conn,$select);
+    while($row=mysqli_fetch_array($responce)){
+    $index["pincode"]=$row['0'];
+    $index["city"]=$row['1'];
+    $index["state"]=$row['2'];
+    $index["area"]=$row['3'];
+    array_push($result['data'],$index);
+    }
+    if($result['data']==null){
+      $result['success']="0";
+    }else{
+      $result['success']="1";
+    }
+    echo json_encode($result);
+    mysqli_close($conn);
+    
    }
    
    }
@@ -305,6 +337,7 @@ switch($choice){
   case 8:$apple->facultyreg($conn);break;
   case 9:$apple->studentdelete($conn);break;
   case 10:$apple->facdelete($conn);break;
+  case 11:$apple->pincode($conn);break;
 
 }
 

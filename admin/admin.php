@@ -72,7 +72,6 @@ fname="";
 lname="";
 email="";
 phone="";
-var details="";
     
 document.getElementById("submit").addEventListener("click",()=>{
 
@@ -98,8 +97,12 @@ if(num==""){
     email=res['data'][0].email;
     phone=res['data'][0].phone;
     pass=res['data'][0].pass;
-    details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj="+obj;   
-    location.replace("student.php?"+details)
+    location.replace("student.php")
+
+	sessionStorage.setItem("fname",fname)
+	sessionStorage.setItem("lname",lname)
+	sessionStorage.setItem("email",email)
+	sessionStorage.setItem("phone",phone)
 
 }else{
     alert("User-ID or Password not found")
@@ -118,27 +121,3 @@ ss.send()
 </body>
 
 </html>
-
-
-
-
-
-
-  
-    <!-- Enter Phone : <input type="phone" name="number" id="number"><br>
-    Enter Password : <input type="password" name="password" id="password"><br>
-
-    <button id="submit">submit</button><br>
-
-    fname : <span id="fname"></span><br>
-    lname : <span id="lname"></span><br>
-    email : <span id="email"></span><br>
-    phone : <span id="phone"></span><br>
-    <span id="pass"></span><br>
-
-    <br><br>
-    <br><br>
-
-    <button id="create">Create Questions</button>
-    <button id="panel">PANEL</button> -->
-

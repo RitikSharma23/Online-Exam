@@ -1,11 +1,15 @@
 
-fname=document.getElementById("fname").innerHTML;
-lname=document.getElementById("lname").innerHTML;
-email=document.getElementById("email").innerHTML;
-phone=document.getElementById("phone").innerHTML;
-details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
+fname=sessionStorage.getItem("fname");
+lname=sessionStorage.getItem("lname");
+email=sessionStorage.getItem("email");
+phone=sessionStorage.getItem("phone");
+userid=sessionStorage.getItem("userid");
+details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
+
+    console.log(details)   
 x=1;
 phone=document.getElementById("phone").innerHTML;
+document.getElementById("div1").innerHTML=""
 
 document.getElementById("add").addEventListener("click",()=>{
     var field=document.createElement("fieldset")
@@ -114,58 +118,107 @@ document.getElementById("add").addEventListener("click",()=>{
     x=x+1;
 })
 
-
-
+sub="";
+sem=0;
+unit=0;
+dev="";
 
 
 document.getElementById("sub").addEventListener("click",()=>{
-    
-    function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
-    y=new Date;
-    id=pad(y.getMinutes())+pad(y.getDate())+pad(y.getMonth())+pad(y.getSeconds());
-    
-    for(i=1;i<x;i++){
+    dd = document.getElementById("div1").innerHTML;
+    flag=0;
 
-    q1=(document.getElementById("input"+i).value)
-    o1=(document.getElementById("optiona"+i).value)
-    o2=(document.getElementById("optionb"+i).value)
-    o3=(document.getElementById("optionc"+i).value)
-    o4=(document.getElementById("optiond"+i).value)
+    if(dd==""){
+        alert("Please Create any Question \n or Upload Excel File Below")
+    }else{
 
-            for (const radioButton of document.querySelectorAll('input[name="o'+i+'"]')) {
-                if (radioButton.checked) {
-                    selectedSize = radioButton.value;
-                    break;
-                }
+        function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
+        y=new Date;
+        id=pad(y.getMinutes())+pad(y.getDate())+pad(y.getMonth())+pad(y.getSeconds());
+        
+        for(i=1;i<x;i++){
+
+            q1=(document.getElementById("input"+i).value)
+            o1=(document.getElementById("optiona"+i).value)
+            o2=(document.getElementById("optionb"+i).value)
+            o3=(document.getElementById("optionc"+i).value)
+            o4=(document.getElementById("optiond"+i).value)
+
+            if(document.getElementById("input"+i).value==""){
+                flag=1;
+                alert("Please Enter Question No : "+(i))
+                document.getElementById("input"+i).focus();
+                break;
+            }else if(document.getElementById("optiona"+i).value==""){
+                flag=1;
+                alert("Please Enter Option No : "+(i))
+                document.getElementById("optiona"+i).focus();
+                break;
+            }else if(document.getElementById("optionb"+i).value==""){
+                flag=1;
+                alert("Please Enter Option No : "+(i))
+                document.getElementById("optionb"+i).focus();
+                break;
+            }else if(document.getElementById("optionc"+i).value==""){
+                flag=1;
+                alert("Please Enter Option No : "+(i))
+                document.getElementById("optionc"+i).focus();
+                break;
+            }else if(document.getElementById("optiond"+i).value==""){
+                flag=1;
+                alert("Please Enter Option No : "+(i))
+                document.getElementById("optiond"+i).focus();
+                break;
             }
-    
-            nam=document.getElementById("fname").innerHTML;
-            sub=document.getElementById("subject").innerHTML;
-            sem=document.getElementById("sem").innerHTML;
-            unit=document.getElementById("unit").innerHTML;
-            dev=document.getElementById("dev").innerHTML;
-            no=i-1
-    ss=new XMLHttpRequest
-    ss.open("GET","../api/question.php?dev="+dev+"&quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
-    ss.onload=function(){
-    res=this.responseText
-    }
-    ss.send()
-    }
-
-    tot=x-1
-    
-        ss=new XMLHttpRequest
-        ss.open("GET","../api/question.php?dev="+dev+"&quid="+phone+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
-        ss.onload=function(){
-        res=this.responseText
         }
-        ss.send()
 
+        if(flag==0){
+        
+        for(i=1;i<x;i++){
 
-        window.location.href = "panel.php?"+details+"&obj=1"; 
+        q1=(document.getElementById("input"+i).value)
+        o1=(document.getElementById("optiona"+i).value)
+        o2=(document.getElementById("optionb"+i).value)
+        o3=(document.getElementById("optionc"+i).value)
+        o4=(document.getElementById("optiond"+i).value)
 
+        
 
+                for (const radioButton of document.querySelectorAll('input[name="o'+i+'"]')) {
+                    if (radioButton.checked) {
+                        selectedSize = radioButton.value;
+                        break;
+                    }
+                }
+        
+                nam=document.getElementById("fname").innerHTML;
+                sub=document.getElementById("subject").innerHTML;
+                sem=document.getElementById("sem").innerHTML;
+                unit=document.getElementById("unit").innerHTML;
+                dev=document.getElementById("dev").innerHTML;
+                no=i-1
+            ss=new XMLHttpRequest
+            ss.open("GET","../api/question.php?dev="+dev+"&quid="+nam+"&id="+id+"&no="+no.toString()+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&question="+q1+"&a="+o1+"&b="+o2+"&c="+o3+"&d="+o4+"&correct="+selectedSize+"&obj=1",true)
+            ss.onload=function(){
+                res=this.responseText
+            }
+            ss.send()
+        }
+
+        tot=x-1
+        
+            ss=new XMLHttpRequest
+            ss.open("GET","../api/question.php?dev="+dev+"&quid="+phone+"&id="+id+"&sem="+sem+"&subject="+sub+"&unit="+unit+"&total="+tot+"&obj=2",true)
+            ss.onload=function(){
+            res=this.responseText
+            }
+            ss.send()
+            location.href = "panel.php?"+details+"&obj=1"; 
+        }
+        
+    }
 })
+
+
 
 

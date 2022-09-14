@@ -14,25 +14,20 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Add &nbsp;|&nbsp; Student</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+		fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
-<div style="display: none;">
-		<?php
-		$fname=$_REQUEST['fname'];
-		$lname=$_REQUEST['lname'];
-		$email=$_REQUEST['email'];
-		$phone=$_REQUEST['phone'];
-		echo "<span id='fn'>".$fname."</span>";
-		echo "<span id='ln'>".$lname."</span>";
-		echo "<span id='em'>".$email."</span>";
-		echo "<span id='ph'>".$phone."</span>";
-		?>
-</div>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -47,7 +42,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="student_reg2.php" method="get">
+									
 										<div class="mb-3">
 											<label class="form-label">First Name</label>
 											<input class="form-control form-control-lg" type="text" id="fname" placeholder=" First name" required/>
@@ -78,7 +73,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Division</label>
-											<input class="form-control form-control-lg" type="email" id="div" placeholder="Division" required/>
+											<input class="form-control form-control-lg" type="text" id="div" placeholder="Division" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Academic Year</label>
@@ -88,7 +83,7 @@
 											<button id="submit" class="btn btn-lg btn-primary">Submit</button>
 											
 										</div>
-									</form>
+									
 								</div>
 							</div>
 						</div>
@@ -102,17 +97,29 @@
 	<script src="../js/app.js"></script>
 
 	<script>
-		fn=document.getElementById("fn").innerHTML;
-        ln=document.getElementById("ln").innerHTML;
-        em=document.getElementById("em").innerHTML;
-        ph=document.getElementById("ph").innerHTML;
-        details="&fname="+fn+"&lname="+ln+"&email="+em+"&phone="+ph;  
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone; 
+		
+		console.log(details)  
 
 		document.getElementById("submit").addEventListener("click",()=>{
 		fname=document.getElementById("fname").value;
 		lname=document.getElementById("lname").value;
 		dob=document.getElementById("dob").value;
 		phone=document.getElementById("phone").value;
+		if(phone.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("phone").focus()}
+		else{
 		enroll=document.getElementById("enroll").value;
 		roll=document.getElementById("roll").value;
 		sem=document.getElementById("sem").value;
@@ -131,9 +138,9 @@
 		}
 		ss.send();
 
-		location.href="student.php?"+details;
+		location.href="student.php";
 
-		})
+		}})
 	</script>
 
 </body>

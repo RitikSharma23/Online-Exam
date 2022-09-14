@@ -10,16 +10,12 @@ function removeDuplicates(arr) {
 semester=sbj=uni=0
 var c = [];
 
-fname="";
-lname="";
-email="";
-phone="";
-var details="";
-fname=document.getElementById("fname").innerHTML;
-lname=document.getElementById("lname").innerHTML;
-email=document.getElementById("email").innerHTML;
-phone=document.getElementById("phone").innerHTML;
-details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&obj=1";    
+fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
 
 
@@ -33,9 +29,10 @@ function column(){
 
         c = [];
 
-        for(i=8;i<count;i++){
+
+        for(i=0;i<count;i++){
                 c.push(res['data'][i].col);
-                data[i-8]= c[i-8].split("_");
+                data[i]= c[i].split("_");
         }
 
         for(i=0;i<data.length;i++){
@@ -43,7 +40,6 @@ function column(){
         }
         sem=removeDuplicates(sem)
 
-        console.log(sem)
 
     
         for(i=1;i<sem.length;i++){
@@ -86,9 +82,9 @@ document.getElementById("devision").addEventListener("click",()=>{
             break;
         }
     }
-    console.log(dev);
 
     if(dev==""){
+        alert("Plaese Select Division")
         document.getElementById("se").disabled=true;
     }else{
         document.getElementById("se").disabled=false;
@@ -234,16 +230,16 @@ document.getElementById("uni").addEventListener("click",()=>{
     }
 
     if(uni==0 || uni=="" || sbj==0 || sbj=="" || semester==0 || semester==""){
-        alert("please fill Subject")
+        alert("please select Subject")
         document.getElementById("submit").disabled=true
     }else{
 
     if(semester==0 || semester==""){
-        alert("please fill semester")
+        alert("please select semester")
     }else if(sbj==0 || sbj==""){
-        alert("please fill subject")
+        alert("please select subject")
     }else if(uni==0 || uni==""){
-        alert("please fill semester")
+        alert("please select unit")
     }else{
 
     colname="sem_"+semester+"_"+sbj+"_unit_"+uni;
@@ -256,7 +252,6 @@ document.getElementById("uni").addEventListener("click",()=>{
 
 document.getElementById("submit").addEventListener("click",()=>{
 
-    console.log(colname)
 
     flag=0;
     for(i=0;i<c.length;i++){
@@ -274,7 +269,6 @@ document.getElementById("submit").addEventListener("click",()=>{
 
     c=c.sort();
 
-    console.log(c)
 
     for(i=0;i<c.length;i++){
         if(c[i]==colname){
@@ -294,7 +288,6 @@ document.getElementById("submit").addEventListener("click",()=>{
   
 }
 
-console.log(details)
 window.location.href = "question.php?"+details+"&sem="+semester+"&subject="+sbj+"&unit="+uni+"&dev="+dev+"&obj=1";  
 
 })

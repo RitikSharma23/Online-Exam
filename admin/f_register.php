@@ -14,25 +14,20 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Sign Up | AdminKit Demo</title>
+	<title>Add &nbsp;| &nbsp;Faculty</title>
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+		fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+	</script>
 </head>
 
 <body>
-	<div style="display: none;">
-		<?php
-		$fname=$_REQUEST['fname'];
-		$lname=$_REQUEST['lname'];
-		$email=$_REQUEST['email'];
-		$phone=$_REQUEST['phone'];
-		echo "<span id='fname'>".$fname."</span>";
-		echo "<span id='lname'>".$lname."</span>";
-		echo "<span id='email'>".$email."</span>";
-		echo "<span id='phone'>".$phone."</span>";
-		?>
-</div>
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -88,11 +83,19 @@
 	<script src="../js/app.js"></script>
 
 	<script>
-		fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        details="fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;  
+	fname=sessionStorage.getItem("fname")
+	lname=sessionStorage.getItem("lname")
+	email=sessionStorage.getItem("email")
+	phone=sessionStorage.getItem("phone")
+	
+	if(fname==null){
+		alert("please login");
+		location.replace("admin.php")
+	}
+
+        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone; 
+		
+		console.log(details)  
 
 		document.getElementById("submit").addEventListener("click",()=>{
 		userid=document.getElementById("userid").value;
@@ -100,6 +103,11 @@
 		ln=document.getElementById("ln").value;
 		em=document.getElementById("em").value;
 		ph=document.getElementById("ph").value;
+		if(ph.length<10){
+		alert("Phone number should be atleast 10 digit.");
+		document.getElementById("ph").focus()}
+		else{
+
 
 
 
@@ -114,8 +122,8 @@
 		}
 		ss.send();
 
-		location.href="faculty.php?"+details;
-		})
+		location.href="faculty.php";
+		}})
 	</script>
 
 </body>

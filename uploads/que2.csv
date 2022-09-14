@@ -1,0 +1,7 @@
+question,a,b,c,d,correct
+Who is the father of HTML?,Rasmus Lerdorf,Tim Berners-Lee,Brendan Eich,Sergey Brin,b
+HTML stands for __________,HyperText Markup Language,HyperText Machine Language,HyperText Marking Language,HighText Marking Language,a
+What is the correct syntax of doctype in HTML5?,</doctype html>,<doctype html>,<doctype html!>,<!doctype html>,d
+Which of the following is used to read an HTML page and render it?,Web server,Web network,Web browser,Web matrix,c
+Which of the following tag is used for inserting the largest heading in HTML?,head,<h1>,<h6>,heading,b
+Which element is used for or styling HTML5 layout?,CSS,jQuery,JavaScript,PHP,a
