@@ -87,6 +87,25 @@
 	lname=sessionStorage.getItem("lname")
 	email=sessionStorage.getItem("email")
 	phone=sessionStorage.getItem("phone")
+
+	document.getElementById("userid").addEventListener("keyup",()=>{
+		x=document.getElementById("userid").value;
+		if(x.length==4){
+			ss=new XMLHttpRequest
+			ss.open("GET","api.php?obj=12&userid="+x,true)
+			ss.onload=function(){
+			res=JSON.parse(this.responseText)
+			if(res['success']==1){
+				alert("Userid Already Taken \n please select different one")
+				document.getElementById("submit").disabled=true;
+			}else{
+				document.getElementById("submit").disabled=false;
+			}
+			}
+			ss.send();
+
+		}
+	})
 	
 	if(fname==null){
 		alert("please login");

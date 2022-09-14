@@ -137,10 +137,15 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="card" style="height: 80vh;" >
-								
+							<button id="send" class="btn btn-success" style=" display: inline;">send Result</button>
+
+							<a href="result.xls" download><button style="float: right;display: inline;" class="btn btn-success" >Download Result</button></a>
 								<div id="div1">
 
                                 </div>
+								<br><br>
+
+								
 							</div>
 						</div>
 					</div>
@@ -177,11 +182,17 @@
 
         document.getElementById("panel").addEventListener("click",()=>{
             location.replace("panel.php?"+details+"&obj=1")
-            // document.getElementById("panel").href=
         })
         document.getElementById("logout").addEventListener("click",()=>{
             location.replace("../home.html")
-			// window.close();
+        })
+        document.getElementById("send").addEventListener("click",()=>{
+            ss.open("GET","telegram.php",true)
+			ss.onload=function(){
+			res=JSON.parse(this.responseText);
+			}
+			ss.send();
+			alert("Result Has Been Sent To Your Telegram Successfully")
         })
 
     </script>
