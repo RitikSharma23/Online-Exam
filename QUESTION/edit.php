@@ -22,7 +22,7 @@
 	fname=sessionStorage.getItem("fname")
 	if(fname==null){
 		alert("please login");
-        location.replace("../home.php")
+        location.replace("a_login.html")
 	}
 	</script>
 </head>
