@@ -87,20 +87,41 @@ res=JSON.parse(this.responseText)
 succ=res['success']
 
 if(succ==1){
-	roll=res['data'][0].roll
+		roll=res['data'][0].roll
         fname=res['data'][0].fname
         lname=res['data'][0].lname
+        roll=res['data'][0].roll
         phone=res['data'][0].phone
         email=res['data'][0].email
         sem=res['data'][0].semester
         dev=res['data'][0].dev
         uid=res['data'][0].uid
+        img=res['data'][0].img
+        flat=res['data'][0].flat
+        pin=res['data'][0].pin
+        area=res['data'][0].area
+		city=res['data'][0].city
+        state=res['data'][0].state
+        pass=res['data'][0].pass
 
 
+		sessionStorage.setItem("fname",fname)
+		sessionStorage.setItem("lname",lname)
+		sessionStorage.setItem("roll",roll)
+		sessionStorage.setItem("phone",phone)
+		sessionStorage.setItem("email",email)
+		sessionStorage.setItem("sem",sem)
+		sessionStorage.setItem("dev",dev)
+		sessionStorage.setItem("uid",uid)
+		sessionStorage.setItem("img",img)
+		sessionStorage.setItem("flat",flat)
+		sessionStorage.setItem("pin",pin)
+		sessionStorage.setItem("city",city)
+		sessionStorage.setItem("area",area)
+		sessionStorage.setItem("state",state)
+		sessionStorage.setItem("pass",pass)
 
-        data="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
-
-        window.location.href = "studentdashboard.php"+data; 
+        window.location.href = "studentdashboard.php"; 
 
 }else{
     alert("No UserId Or Password Found")
@@ -119,27 +140,3 @@ ss.send()
 </body>
 
 </html>
-
-
-
-
-
-
-  
-    <!-- Enter Phone : <input type="phone" name="number" id="number"><br>
-    Enter Password : <input type="password" name="password" id="password"><br>
-
-    <button id="submit">submit</button><br>
-
-    fname : <span id="fname"></span><br>
-    lname : <span id="lname"></span><br>
-    email : <span id="email"></span><br>
-    phone : <span id="phone"></span><br>
-    <span id="pass"></span><br>
-
-    <br><br>
-    <br><br>
-
-    <button id="create">Create Questions</button>
-    <button id="panel">PANEL</button> -->
-

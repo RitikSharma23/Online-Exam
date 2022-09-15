@@ -18,6 +18,13 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login first");
+		location.replace("../home.html")
+	}
+	</script>
 </head>
 
 <body>
@@ -96,12 +103,12 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="../#" data-bs-toggle="dropdown">
-                <img src="../img/avatars/profile.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
+                <img src="../img/avatars/profile.png" id="profileimgm" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								
 								
-								<a class="dropdown-item" href="../home.html">Log out</a>
+								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -118,14 +125,15 @@
 									<h5 class="card-title mb-0">Profile Details</h5>
 								</div>
 								<div class="card-body text-center">
-									<img src="../img/avatars/profile.png" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<img src="../img/avatars/profile.png" id="profileimg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
 									<h5 class="card-title mb-0" id="n_nam" style="text-transform: capitalize;">user name</h5><br>
 									<h5 class="card-title mb-0" id="n_uid" style="text-transform: capitalize;">user uid</h5><br>
 									<h5 class="card-title mb-0" id="n_sem" style="text-transform: capitalize;">user sem</h5><br>
+									<h5 class="card-title mb-0" id="n_dev" style="text-transform: capitalize;">user div</h5><br>
 									<h5 class="card-title mb-0" id="n_email" style="text-transform: capitalize;">user email</h5><br>
 									<h5 class="card-title mb-0" id="n_phone" style="text-transform: capitalize;">user phone</h5><br>
-									
 
+									<button id="edit">Edit Profile</button>
 									
 								</div>
 		
@@ -144,14 +152,16 @@
 
 	<script src="../js/app.js"></script>
     <script>
-                roll=document.getElementById("roll").innerHTML
-        fname=document.getElementById("fname").innerHTML
-        lname=document.getElementById("lname").innerHTML
-        uid=document.getElementById("uid").innerHTML
-        sem=document.getElementById("sem").innerHTML
-        email=document.getElementById("email").innerHTML
-        phone=document.getElementById("phone").innerHTML
-        dev=document.getElementById("dev").innerHTML
+
+        roll=sessionStorage.getItem("roll")
+        fname=sessionStorage.getItem("fname")
+        lname=sessionStorage.getItem("lname")
+        uid=sessionStorage.getItem("uid")
+        sem=sessionStorage.getItem("sem")
+        email=sessionStorage.getItem("email")
+        phone=sessionStorage.getItem("phone")
+        dev=sessionStorage.getItem("dev")
+        img=sessionStorage.getItem("img")
 
         details="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
         
@@ -161,13 +171,23 @@
         document.getElementById("n_uid").innerHTML="En no.: "+uid
         document.getElementById("n_sem").innerHTML="Sem : "+sem
         document.getElementById("n_phone").innerHTML="No +91 "+phone
+        document.getElementById("n_dev").innerHTML="Div : "+dev
+		document.getElementById("profileimg").src="../uploads/"+img
+		document.getElementById("profileimgm").src="../uploads/"+img
 
         document.getElementById("profilepage").addEventListener("click",()=>{
-            document.getElementById("profilepage").href="profile.php?"+details
+            location.replace("profile.php")
         })
 
         document.getElementById("adminpage").addEventListener("click",()=>{
-            document.getElementById("adminpage").href="studentdashboard.php?"+details
+            location.replace("studentdashboard.php")
+        })
+        document.getElementById("edit").addEventListener("click",()=>{
+            location.href=("s_edit.php?uid="+uid)
+        })
+		document.getElementById("logout").addEventListener("click",()=>{
+			sessionStorage.clear();
+            location.replace("s_login.html")
         })
     </script>
 
@@ -178,29 +198,3 @@
 </html>
 
 
-
-
-
-
-
-
-<!-- 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin login</title>
-</head>
-<body>
-
-  
-<a href="../panel.php"><button id="panel">PANEL</button></a>
-
-    <button id="create">Create Questions</button>
-
-
-</body>
-</html> -->

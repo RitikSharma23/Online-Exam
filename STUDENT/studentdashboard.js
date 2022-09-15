@@ -1,24 +1,22 @@
-
-roll=document.getElementById("roll").innerHTML
-fname=document.getElementById("fname").innerHTML
-lname=document.getElementById("lname").innerHTML
-uid=document.getElementById("uid").innerHTML
-sem=document.getElementById("sem").innerHTML
-email=document.getElementById("email").innerHTML
-phone=document.getElementById("phone").innerHTML
-dev=document.getElementById("dev").innerHTML
+		
+roll=sessionStorage.getItem("roll")
+fname=sessionStorage.getItem("fname")
+lname=sessionStorage.getItem("lname")
+uid=sessionStorage.getItem("uid")
+sem=sessionStorage.getItem("sem")
+email=sessionStorage.getItem("email")
+phone=sessionStorage.getItem("phone")
+dev=sessionStorage.getItem("dev")
 
 data="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
 
-console.log(data)
 l=0;
 res={}
 ss=new XMLHttpRequest
 ss.open("GET","loadsubject.php"+data,true)
 ss.onload=function(){
-res=JSON.parse(this.responseText)
 
-// console.log(res['data'][1]);
+res=JSON.parse(this.responseText)
 l=res['data'].length;
 
 

@@ -18,6 +18,13 @@
 
 	<link href="../css/app.css" rel="stylesheet">
 	<link href="../https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script>
+	fname=sessionStorage.getItem("fname")
+	if(fname==null){
+		alert("please login first");
+		location.replace("../home.html")
+	}
+	</script>
 </head>
 
 <body>
@@ -59,31 +66,6 @@
 
 			</div>
 		</nav>
-        <div style="display: none">
-
-                <?php
-                $roll=$_REQUEST['roll'];
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $phone=$_REQUEST['phone'];
-                $email=$_REQUEST['email'];
-                $sem=$_REQUEST['sem'];
-                $dev=$_REQUEST['dev'];
-                $uid=$_REQUEST['uid'];
-                
-                echo "roll : <span id='roll'>".$roll."</span><br>";
-                echo "fname : <span id='fname'>".$fname."</span><br>";
-                echo "lname : <span id='lname'>".$lname."</span><br>";
-                echo "phone : <span id='phone'>".$phone."</span><br>";
-                echo "email : <span id='email'>".$email."</span><br>";
-                echo "sem : <span id='sem'>".$sem."</span><br>";
-                echo "dev : <span id='dev'>".$dev."</span><br>";
-                echo "uid : <span id='uid'>".$uid."</span><br>";
-
-                ?>
-
-        </div>
-
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
@@ -100,12 +82,12 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="../#" data-bs-toggle="dropdown">
-                <img src="../img/avatars/profile.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
+                <img src="../img/avatars/profile.png" id="profileimgm" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark" id="n_name">User</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								
 								
-								<a class="dropdown-item" href="../home.html">Log out</a>
+								<a class="dropdown-item" id="logout">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -142,30 +124,77 @@
 
 	<script src="../js/app.js"></script>
     <script>
-        roll=document.getElementById("roll").innerHTML
-        fname=document.getElementById("fname").innerHTML
-        lname=document.getElementById("lname").innerHTML
-        uid=document.getElementById("uid").innerHTML
-        sem=document.getElementById("sem").innerHTML
-        email=document.getElementById("email").innerHTML
-        phone=document.getElementById("phone").innerHTML
-        dev=document.getElementById("dev").innerHTML
+		img=sessionStorage.getItem("img")
+		document.getElementById("profileimgm").src="../uploads/"+img
 
-        details="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
-        
+			num=sessionStorage.getItem("phone")
+		ph=sessionStorage.getItem("pass")
+		ss=new XMLHttpRequest
+		ss.open("GET","../api/login.php?number="+num+"&password="+ph+"&obj=2",true)
+		ss.onload=function(){
+		res=JSON.parse(this.responseText)
+		succ=res['success']
+		roll=res['data'][0].roll
+        fname=res['data'][0].fname
+        lname=res['data'][0].lname
+        roll=res['data'][0].roll
+        phone=res['data'][0].phone
+        email=res['data'][0].email
+        sem=res['data'][0].semester
+        dev=res['data'][0].dev
+        uid=res['data'][0].uid
+        img=res['data'][0].img
+        flat=res['data'][0].flat
+        pin=res['data'][0].pin
+        area=res['data'][0].area
+		city=res['data'][0].city
+        state=res['data'][0].state
+
+
+		sessionStorage.setItem("fname",fname)
+		sessionStorage.setItem("lname",lname)
+		sessionStorage.setItem("roll",roll)
+		sessionStorage.setItem("phone",phone)
+		sessionStorage.setItem("email",email)
+		sessionStorage.setItem("sem",sem)
+		sessionStorage.setItem("dev",dev)
+		sessionStorage.setItem("uid",uid)
+		sessionStorage.setItem("img",img)
+		sessionStorage.setItem("flat",flat)
+		sessionStorage.setItem("pin",pin)
+		sessionStorage.setItem("city",city)
+		sessionStorage.setItem("area",area)
+		sessionStorage.setItem("state",state)
+		document.getElementById("profileimgm").src="../uploads/"+img
+}
+ss.send()
+		
+        roll=sessionStorage.getItem("roll")
+        fname=sessionStorage.getItem("fname")
+        lname=sessionStorage.getItem("lname")
+        uid=sessionStorage.getItem("uid")
+        sem=sessionStorage.getItem("sem")
+        email=sessionStorage.getItem("email")
+        phone=sessionStorage.getItem("phone")
+        dev=sessionStorage.getItem("dev")
+
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
 
         document.getElementById("profilepage").addEventListener("click",()=>{
-            document.getElementById("profilepage").href="profile.php?"+details
+            location.replace("profile.php")
         })
 
         document.getElementById("homepage").addEventListener("click",()=>{
-            document.getElementById("homepage").href="studentdashboard.php?"+details
+            location.replace("studentdashboard.php")
+        })
+        document.getElementById("logout").addEventListener("click",()=>{
+			sessionStorage.clear();
+            location.replace("s_login.html")
         })
 
-        document.getElementById("exam").addEventListener("click",()=>{
-            document.getElementById("exam").href="loadsubjet.php?"+details
+        document.getElementById("marks").addEventListener("click",()=>{
+            location.replace("result.php")
         })
 
 
