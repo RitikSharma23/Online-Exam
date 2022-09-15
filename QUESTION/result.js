@@ -1,8 +1,8 @@
-
-fname=document.getElementById("fname").innerHTML;
-lname=document.getElementById("lname").innerHTML;
-email=document.getElementById("email").innerHTML;
-phone=document.getElementById("phone").innerHTML;
+fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
 dev=document.getElementById("dev").innerHTML;
 sem=document.getElementById("sem").innerHTML;
 col=document.getElementById("col").innerHTML;
