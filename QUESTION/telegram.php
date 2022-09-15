@@ -22,5 +22,4 @@ $result = curl_exec($ch);
 var_dump($result);
 curl_close($ch);
 
-
 ?>

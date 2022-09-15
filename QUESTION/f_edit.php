@@ -28,19 +28,7 @@
 </head>
 
 <body>
-	<div style="display: none;">
-		<?php $uid=$_REQUEST['userid'];
-		echo "<span id='userid'>".$uid."</span>";
-			$fname=$_REQUEST['fname'];
-			$lname=$_REQUEST['lname'];
-			$email=$_REQUEST['email'];
-			$phone=$_REQUEST['phone'];
-			echo "<span id='fn'>".$fname."</span>";
-			echo "<span id='ln'>".$lname."</span>";
-			echo "<span id='em'>".$email."</span>";
-			echo "<span id='ph'>".$phone."</span>";
-		?>
-	</div>
+
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row vh-100">
@@ -98,7 +86,7 @@
 
 	<script>
         details=""  
-		userid=document.getElementById("userid").innerHTML;
+		userid=sessionStorage.getItem("userid");
 
 		ss=new XMLHttpRequest
 		ss.open("GET","../admin/api.php?userid="+userid+"&obj=6",true)

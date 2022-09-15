@@ -1,11 +1,10 @@
 fname=sessionStorage.getItem("fname");
-	lname=sessionStorage.getItem("lname");
-	email=sessionStorage.getItem("email");
-	phone=sessionStorage.getItem("phone");
-	userid=sessionStorage.getItem("userid");
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
+lname=sessionStorage.getItem("lname");
+email=sessionStorage.getItem("email");
+phone=sessionStorage.getItem("phone");
+userid=sessionStorage.getItem("userid");
+details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-        console.log(details)
 
 l=0;
 res={}
@@ -14,7 +13,6 @@ ss.open("GET","../api/dashboard.php?phone="+phone+"&obj=1",true)
 ss.onload=function(){
 res=JSON.parse(this.responseText)
 
-console.log(res['data'][1]);
 l=res['data'].length;
 
 
@@ -74,14 +72,14 @@ td8.appendChild(text8)
 td9=document.createElement('td')
 var a=document.createElement('a')
 a.href="edit.php?id="+res['data'][i]['question_id']
-text9=document.createTextNode('')
+text9=document.createTextNode('Action')
 a.appendChild(text9)
 td9.appendChild(a)
 
 td2=document.createElement('td')
 var a=document.createElement('a')
 a.href="edit.php?id="+res['data'][i]['question_id']
-text2=document.createTextNode('')
+text2=document.createTextNode('Action')
 a.appendChild(text2)
 td2.appendChild(a)
 

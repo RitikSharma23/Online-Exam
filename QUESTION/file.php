@@ -32,22 +32,12 @@
 <div style="display: none;">
 
         <?php
-        $fname=$_REQUEST['fname'];
-        $lname=$_REQUEST['lname'];
-        $email=$_REQUEST['email'];
-        $phone=$_REQUEST['phone'];
         $sem = $_REQUEST['sem'];
         $sub = $_REQUEST['sub'];
         $unit = $_REQUEST['unit'];
         $dev = $_REQUEST['dev'];
         $userid=$_REQUEST['userid'];
         $filename=$_REQUEST['filename'];
-
-
-        echo "fname : <span id='fname'>".$fname."</span><br>";
-        echo "lname : <span id='lname'>".$lname."</span><br>";
-        echo "email : <span id='email'>".$email."</span><br>";
-        echo "phone : <span id='phone'>".$phone."</span><br>";
         echo "sem : <span id='sem'>".$sem."</span><br>";
         echo "subject : <span id='sub'>".$sub."</span><br>";
         echo "unit : <span id='unit'>".$unit."</span><br>";
@@ -212,12 +202,10 @@
 
         document.getElementById("n_name").innerHTML=fname+" "+lname;
         filename=document.getElementById("filename").innerHTML;
-        console.log(filename)
             ss=new XMLHttpRequest
             ss.open("GET","../excel.php?filename="+filename,true)
             ss.onload=function(){
             res=JSON.parse(this.responseText)
-            console.log(this.responseText)
 
             l=res['data'].length;
 
@@ -318,7 +306,7 @@
             res=JSON.parse(this.responseText)
             for(i=1;i<res['data'].length;i++){
                 no=i-1;
-                nam=document.getElementById("fname").innerHTML;
+                nam=sessionStorage.getItem("fname");
                 sub=document.getElementById("sub").innerHTML;
                 sem=document.getElementById("sem").innerHTML;
                 unit=document.getElementById("unit").innerHTML;
@@ -367,18 +355,18 @@
     })
 
         document.getElementById("profilepage").addEventListener("click",()=>{
-            location.replace("profile.php?"+details)
+            location.replace("profile.php")
         })
 
         document.getElementById("homepage").addEventListener("click",()=>{
-            location.replace("admin.php?"+details)
+            location.replace("admin.php")
         })
 		document.getElementById("test").addEventListener("click",()=>{
-            location.replace("sem.php?"+details+"&obj=1")
+            location.replace("sem.php")
         })
 
         document.getElementById("panel").addEventListener("click",()=>{
-            location.replace("panel.php?"+details+"&obj=1")
+            location.replace("panel.php")
         })
         document.getElementById("logout").addEventListener("click",()=>{
 			sessionStorage.clear();
