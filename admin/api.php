@@ -318,6 +318,25 @@ function facultyreg($conn){
     mysqli_close($conn);
     
    }
+   function usercheck($conn){
+    $userid=$_REQUEST['userid'];
+    $result=array();
+    $result['data']=array();
+    $select="SELECT userid FROM faculty WHERE userid='$userid';";
+    $responce=mysqli_query($conn,$select);
+    while($row=mysqli_fetch_array($responce)){
+    $index["userid"]=$row['0'];
+    array_push($result['data'],$index);
+    }
+    if($result['data']==null){
+      $result['success']="0";
+    }else{
+      $result['success']="1";
+    }
+    echo json_encode($result);
+    mysqli_close($conn);
+    
+   }
    
    }
 
@@ -338,6 +357,7 @@ switch($choice){
   case 9:$apple->studentdelete($conn);break;
   case 10:$apple->facdelete($conn);break;
   case 11:$apple->pincode($conn);break;
+  case 12:$apple->usercheck($conn);break;
 
 }
 

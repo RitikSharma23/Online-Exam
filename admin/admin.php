@@ -66,7 +66,7 @@ Sign in to your account to continue
 </main>
 
 <script>
-	var data=[[]];
+var data=[[]];
 var obj=1;
 fname="";
 lname="";
