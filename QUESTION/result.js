@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-
-fname = document.getElementById("fname").innerHTML;
-lname = document.getElementById("lname").innerHTML;
-email = document.getElementById("email").innerHTML;
-phone = document.getElementById("phone").innerHTML;
-dev = document.getElementById("dev").innerHTML;
-sem = document.getElementById("sem").innerHTML;
-col = document.getElementById("col").innerHTML;
-details = "&fname=" + fname + "&lname=" + lname + "&email=" + email + "&phone=" + phone;
-=======
 fname=sessionStorage.getItem("fname");
 	lname=sessionStorage.getItem("lname");
 	email=sessionStorage.getItem("email");
@@ -18,7 +7,6 @@ dev=document.getElementById("dev").innerHTML;
 sem=document.getElementById("sem").innerHTML;
 col=document.getElementById("col").innerHTML;
 details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone;    
->>>>>>> 05ec35986559d06a836d18d27e6f4a9c4ab4e120
 
 l = 0;
 res = {}
