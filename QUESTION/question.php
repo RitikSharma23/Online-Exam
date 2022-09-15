@@ -218,28 +218,28 @@
 	<script src="../js/app.js"></script>
     <script>
    
-        // fname=document.getElementById("fname").innerHTML;
-        lname=document.getElementById("lname").innerHTML;
-        email=document.getElementById("email").innerHTML;
-        phone=document.getElementById("phone").innerHTML;
-        userid=document.getElementById("userid").innerHTML;
+   fname=sessionStorage.getItem("fname");
+	lname=sessionStorage.getItem("lname");
+	email=sessionStorage.getItem("email");
+	phone=sessionStorage.getItem("phone");
+	userid=sessionStorage.getItem("userid");
         details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
         document.getElementById("n_name").innerHTML=fname+" "+lname
         
         document.getElementById("profilepage").addEventListener("click",()=>{
-            location.replace("profile.php?"+details)
+            location.replace("profile.php")
         })
 
         document.getElementById("homepage").addEventListener("click",()=>{
-            location.replace("admin.php?"+details)
+            location.replace("admin.php")
         })
 		document.getElementById("test").addEventListener("click",()=>{
-            location.replace("sem.php?"+details+"&obj=1")
+            location.replace("sem.php")
         })
 
         document.getElementById("panel").addEventListener("click",()=>{
-            location.replace("panel.php?"+details+"&obj=1")
+            location.replace("panel.php")
         })
         document.getElementById("logout").addEventListener("click",()=>{
 			sessionStorage.clear();

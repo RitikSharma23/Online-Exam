@@ -71,12 +71,7 @@
         <div style="display: none">
 
                 <?php
-                $fname=$_REQUEST['fname'];
-                $lname=$_REQUEST['lname'];
-                $email=$_REQUEST['email'];
-                $phone=$_REQUEST['phone'];
                 $obj=$_REQUEST['obj'];
-				$userid=$_REQUEST['userid'];
 				$sem=$_REQUEST['sem'];
 				$dev=$_REQUEST['dev'];
 				$col=$_REQUEST['col'];
@@ -170,18 +165,18 @@
         document.getElementById("n_name").innerHTML=fname+" "+lname
 		
         document.getElementById("profilepage").addEventListener("click",()=>{
-            location.replace("profile.php?"+details)
+            location.replace("profile.php")
         })
 
         document.getElementById("homepage").addEventListener("click",()=>{
-            location.replace("admin.php?"+details)
+            location.replace("admin.php")
         })
 		document.getElementById("test").addEventListener("click",()=>{
-            location.replace("sem.php?"+details+"&obj=1")
+            location.replace("sem.php")
         })
 
         document.getElementById("panel").addEventListener("click",()=>{
-            location.replace("panel.php?"+details+"&obj=1")
+            location.replace("panel.php")
         })
         document.getElementById("logout").addEventListener("click",()=>{
             location.replace("../home.html")

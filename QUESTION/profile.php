@@ -146,18 +146,18 @@
         document.getElementById("n_phone").innerHTML="Phone : +91 "+phone
 
         document.getElementById("profilepage").addEventListener("click",()=>{
-            location.replace("profile.php?"+details)
+            location.replace("profile.php")
         })
 
         document.getElementById("adminpage").addEventListener("click",()=>{
-            location.replace("admin.php?"+details)
+            location.replace("admin.php")
         })
 		document.getElementById("test").addEventListener("click",()=>{
-            location.replace("sem.php?"+details+"&obj=1")
+            location.replace("sem.php")
         })
 
         document.getElementById("panel").addEventListener("click",()=>{
-            location.replace("panel.php?"+details+"&obj=1")
+            location.replace("panel.php")
         })
         document.getElementById("logout").addEventListener("click",()=>{
 			sessionStorage.clear();
