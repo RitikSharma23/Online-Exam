@@ -249,10 +249,9 @@
         fil=document.getElementById("file").innerHTML;
         filename=document.getElementById("filename").innerHTML;
         
-        if(fil!=""){
+        if(fil==""){
             document.getElementById("next").style.display="block"
-        }
-        document.getElementById("next").addEventListener("click",()=>{
+        }else{
            
             if(fil==""){
                 alert("please select file")
@@ -267,7 +266,8 @@
            
             location.href = "file.php?sub="+sub+"&sem="+sem+"&unit="+unit+"&dev="+dev+"&quid="+nam+details+"&filename="+filename;
             }
-        })
+        }
+        // })
 
     </script>
 
