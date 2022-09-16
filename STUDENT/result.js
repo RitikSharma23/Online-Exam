@@ -22,11 +22,12 @@ ss.onload=function(){
     for(i=3;i<res['data'].length;i++){
     subject.push((res['data'][i]['col']).split("_"))
     temp.push((res['data'][i]['col']))
+    console.log((res['data'][i]['col']))
     }
     l=temp.length;
 }
 ss.send()
-div=document.getElementById("div1");
+
 ss=new XMLHttpRequest
 ss.open("GET","resutapi.php",true)
 ss.onload=function(){
@@ -40,7 +41,6 @@ for(i=0;i<subject.length;i++){
     if(subject[i][5]==-1){flag=1}else{flag=0}
 }
 
-if(flag=0){
 div=document.getElementById("div1");
 div.innerHTML="";
 
@@ -105,9 +105,6 @@ table.appendChild(row)
 div.appendChild(table)
     }
 
-}
-}else{
-    div.innerHTML="No Marks Found"
 }
 
 }

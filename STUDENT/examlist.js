@@ -43,7 +43,8 @@ shuffle(res['data'])
 
 
 
-for(x=0;x<que.length;x++){
+// for(x=0;x<que.length;x++){
+  x=0;
 var field=document.createElement("fieldset")
 var legend=document.createElement("legend")
 var text=document.createTextNode("Question "+(x+1))
@@ -89,13 +90,16 @@ field.appendChild(document.createElement("br"))
 field.appendChild(document.createElement("br"))
 field.appendChild(ans1)
 field.appendChild(zz1)
-
+field.appendChild(document.createElement("br"))
+field.appendChild(document.createElement("br"))
 field.appendChild(ans2)
 field.appendChild(zz2)
 field.appendChild(document.createElement("br"))
 field.appendChild(document.createElement("br"))
 field.appendChild(ans3)
 field.appendChild(zz3)
+field.appendChild(document.createElement("br"))
+field.appendChild(document.createElement("br"))
 field.appendChild(ans4)
 field.appendChild(zz4)
 
@@ -108,7 +112,7 @@ const element = document.getElementById("div1");
 element.appendChild(div);
 element.appendChild(document.createElement("br"));
 
-}
+// }
 
 }
 ss.send()

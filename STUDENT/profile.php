@@ -189,6 +189,9 @@
 			sessionStorage.clear();
             location.replace("s_login.html")
         })
+		document.getElementById("marks").addEventListener("click",()=>{
+            location.replace("result.php")
+        })
     </script>
 
 
