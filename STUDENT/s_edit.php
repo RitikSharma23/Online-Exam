@@ -72,7 +72,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Phone </label>
-											<input class="form-control form-control-lg" type="phone" id="phone" placeholder=" Phone Number" />
+											<input class="form-control form-control-lg" type="number" id="phone" placeholder=" Phone Number" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">DOB </label>

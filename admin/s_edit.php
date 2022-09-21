@@ -85,7 +85,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Phone </label>
-											<input class="form-control form-control-lg" type="phone" id="phone" placeholder=" Phone Number" />
+											<input class="form-control form-control-lg" type="number" id="phone" placeholder=" Phone Number" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">DOB </label>
@@ -181,8 +181,6 @@
 		flag=0;
 	}
     filename=document.getElementById("filename").innerHTML;
-	console.log(fil)
-	console.log(filename)
 
 	if(fil==1){
         }else{
@@ -192,8 +190,7 @@
                 alert("please select only image file in png,jpej,jpg format only")
 				document.getElementById("submit").disabled=true;
             }else{
-				console.log(filename)
-				console.log(fil)
+
 			document.getElementById("profileimg").src="../uploads/"+filename
 			}
         }
@@ -227,7 +224,6 @@
 						document.getElementById("city").value="";
 						document.getElementById("state").value="";						
 					}
-					console.log(res['data'])
 				}
 				ss.send();
 			}
@@ -249,7 +245,6 @@
 		ss.onload=function(){
 		res=JSON.parse(this.responseText)
 
-		console.log(res['data'][0]['div'])
 		document.getElementById("fname").value=res['data'][0]['fname'];
 		document.getElementById("lname").value=res['data'][0]['lname'];
 		document.getElementById("email").value=res['data'][0]['email'];
@@ -267,7 +262,6 @@
 		document.getElementById("password").value=res['data'][0]['pass'];
 		document.getElementById("cpassword").value=res['data'][0]['pass'];
 		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
-		console.log(res['data'][0]['img'])
 		if(flag==1){
 			document.getElementById("profileimg").src="../uploads/"+filename
 		}else{
@@ -312,33 +306,28 @@
 		alert("Password not matched!!!.");
 		}
 		else{
-		if(fil==1){
-		image=document.getElementById("filename").innerHTML;
+		if(flag==1){
+			image=filename;
 		}else{
 			image=res['data'][0]['img'];
 		}
-		console.log(image)
 
-		
+		try{
+			image=filename;
+		}catch{}
 
 		data="fname="+fname+"&lname="+lname+"&email="+email+"&dob="+dob+"&phone="+phone+"&roll="+roll+"&sem="+sem+"&div="+div+"&year="+year+"&flat="+flat+"&pin="+pin+"&area="+area+"&city="+city+"&state="+state+"&pass="+pass+"&uid="+uid+"&obj=2"+"&img="+image;
 
-		console.log(details)
 		ss=new XMLHttpRequest
 		ss.open("GET","api.php?"+data,true)
 		ss.onload=function(){
 		res1=(this.responseText)
-		console.log(res1)
-		res=JSON.parse(this.responseText)
+		res=(this.responseText)
 		}
 		ss.send();
 		
 		location.href="student.php";
-		if(flag==1){
-				alert("found")
-		}else{
-			alert("not found");
-		}
+
 		}}}}})
 	</script>
 

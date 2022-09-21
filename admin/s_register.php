@@ -69,7 +69,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Sem </label>
-											<input class="form-control form-control-lg" type="phone" id="sem" placeholder="Sem" required/>
+											<input class="form-control form-control-lg" type="number" id="sem" placeholder="Sem" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Division</label>
