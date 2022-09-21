@@ -138,7 +138,7 @@
 
                                 <br><br>
 
-                                <button id="submit" style="display: none;">Submit</button>
+                                <button id="submit" style="display: none;" class="btn btn-success">Submit</button>
 								</div>
 								
 							</div>
@@ -162,8 +162,8 @@
 
     <style>
     table{
-		width: 90%;
-		margin-left: 5%;
+		width: 95%;
+		margin-left: 0%;
 		margin-top: 2%;
 	}
 	td{
@@ -198,10 +198,10 @@
             email=sessionStorage.getItem("email");
             phone=sessionStorage.getItem("phone");
             userid=sessionStorage.getItem("userid");
-        details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
+            details="&fname="+fname+"&lname="+lname+"&email="+email+"&phone="+phone+"&userid="+userid;  
 
-        document.getElementById("n_name").innerHTML=fname+" "+lname;
-        filename=document.getElementById("filename").innerHTML;
+            document.getElementById("n_name").innerHTML=fname+" "+lname;
+            filename=document.getElementById("filename").innerHTML;
             ss=new XMLHttpRequest
             ss.open("GET","../excel.php?filename="+filename,true)
             ss.onload=function(){

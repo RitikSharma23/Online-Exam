@@ -150,7 +150,7 @@ console.log(marks)
 console.log(data)
 
 if(correct.length==que.length){
-window.location.href = "marks.php"+data+"&id="+id+"&marks="+marks+"&subcol="+subcol;
+location.replace("marks.php"+data+"&id="+id+"&marks="+marks+"&subcol="+subcol);
 }else{
   alert("please select all mcq");
 }

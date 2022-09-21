@@ -170,7 +170,7 @@
         document.getElementById("n_email").innerHTML="Email : "+email
         document.getElementById("n_uid").innerHTML="En no.: "+uid
         document.getElementById("n_sem").innerHTML="Sem : "+sem
-        document.getElementById("n_phone").innerHTML="No +91 "+phone
+        document.getElementById("n_phone").innerHTML="Phone: +91 "+phone
         document.getElementById("n_dev").innerHTML="Div : "+dev
 		document.getElementById("profileimg").src="../uploads/"+img
 		document.getElementById("profileimgm").src="../uploads/"+img

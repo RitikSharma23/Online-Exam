@@ -39,7 +39,7 @@ function insert_question($conn){
     $c = $_REQUEST['c'];
     $d = $_REQUEST['d'];
     $correct = $_REQUEST['correct'];
-    $division=$_REQUEST['dev'];;
+    $division=$_REQUEST['dev'];
     $select="INSERT INTO question(user,question_id,dat,sem,subject,unit,division,no,question,a,b,c,d,correct)VALUES ('$quid','$testid','$date','$sem','$subject','$unit','$division','$no','$question','$a','$b','$c','$d','$correct')";
 
     if ($conn->query($select) === TRUE) {
@@ -59,7 +59,7 @@ function insert_question_details($conn){
     $subject=$_REQUEST['subject'];
     $unit=$_REQUEST['unit'];
     $date=date('Y-m-d');
-    $division=$_REQUEST['dev'];;
+    $division=$_REQUEST['dev'];
     $status="stop";
 
     $select="INSERT INTO question_details(user,date,question_id,sem,dev,subject,unit,total,status)VALUES ('$quid','$date','$testid','$sem','$division','$subject','$unit','$total','$status')";
@@ -106,6 +106,21 @@ function display_column($conn){
       mysqli_close($conn);
   }
 
+function feedback($conn){
+  $date=$_REQUEST['date'];
+  $uid=$_REQUEST['uid'];
+  $feed=$_REQUEST['feed'];
+
+  $select= "INSERT INTO `feedback` ( `date`, `uid`, `feed`) VALUES ('$date', '$uid', '$feed');";
+
+  if ($conn->query($select) === TRUE) {
+      echo "1";
+    } else {
+      echo "Error:  <br>" . $conn->error;
+    }
+    $conn->close();
+  }
+
 }
 
 
@@ -117,6 +132,7 @@ switch($choice){
   case 2:$apple->insert_question_details($conn);break;
   case 3:$apple->display_column($conn);break;
   case 4:$apple->insert_column($conn);break;
+  case 5:$apple->feedback($conn);break;
 
 }
 

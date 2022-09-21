@@ -58,7 +58,7 @@ td9=document.createElement('td')
 var a=document.createElement('a')
 
 a.href="examlist.php"+data+"&id="+res['data'][i]['question_id']+"&subcol="+subj;
-text9=document.createTextNode('')
+text9=document.createTextNode('Action')
 a.appendChild(text9)
 td9.appendChild(a)
 

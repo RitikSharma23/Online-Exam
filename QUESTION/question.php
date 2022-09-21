@@ -194,7 +194,7 @@
                                 </form>
                                 </center>
                                 <br><br>
-                                <button style="float: right;display: none;" id="next" class="btn btn-primary">Next</button>
+                                <button style="float: right;" id="next" class="btn btn-primary">Next</button>
 								</div>
 								
 							</div>
@@ -245,9 +245,11 @@
 			sessionStorage.clear();
             location.replace("../home.html")
         })
+        try{
 
         fil=document.getElementById("file").innerHTML;
         filename=document.getElementById("filename").innerHTML;
+        }catch{}
         
         if(fil==""){
             document.getElementById("next").style.display="block"

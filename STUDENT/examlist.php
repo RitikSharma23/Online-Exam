@@ -22,7 +22,7 @@
 	fname=sessionStorage.getItem("fname")
 	if(fname==null){
 		alert("please login first");
-		location.replace("../s_login.html")
+		location.replace("../student/s_login.html")
 	}
 	</script>
 </head>
@@ -98,8 +98,12 @@ echo "subject : <span id='subcol'>".$subcol."</span><br>";
 
 	<script src="../js/app.js"></script>
     <script>
+		if(localStorage.getItem(document.getElementById("subcol").innerHTML)==1){
+			alert("you have already attempted..")
+			location.replace('studentdashboard.php')
+		}else{
+		sessionStorage.setItem(document.getElementById("subcol").innerHTML,0)
 		img=sessionStorage.getItem("img")
-
         roll=sessionStorage.getItem("roll")
         fname=sessionStorage.getItem("fname")
         lname=sessionStorage.getItem("lname")
@@ -108,6 +112,7 @@ echo "subject : <span id='subcol'>".$subcol."</span><br>";
         email=sessionStorage.getItem("email")
         phone=sessionStorage.getItem("phone")
         dev=sessionStorage.getItem("dev")
+		}
 
     </script>
 

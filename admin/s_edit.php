@@ -166,7 +166,7 @@
 	email=sessionStorage.getItem("email")
 	phone=sessionStorage.getItem("phone")
 	image="";
-
+	flag=0;
 
 	if(fname==null){
 		alert("please login first");
@@ -175,10 +175,18 @@
 
 	try{
 	fil=document.getElementById("file").innerHTML;
+	if(fil!=""){
+		flag=1;
+	}else{
+		flag=0;
+	}
     filename=document.getElementById("filename").innerHTML;
-	if(fil==""){
+	console.log(fil)
+	console.log(filename)
+
+	if(fil==1){
         }else{
-            if(fil==""){
+            if(fil==0){
                 alert("please select file")
             }else if(fil!="image/jpeg" && fil!="image/png"){
                 alert("please select only image file in png,jpej,jpg format only")
@@ -247,8 +255,6 @@
 		document.getElementById("email").value=res['data'][0]['email'];
 		document.getElementById("dob").value=res['data'][0]['dob'];
 		document.getElementById("phone").value=res['data'][0]['phone'];
-		
-
 		document.getElementById("roll").value=res['data'][0]['roll'];
 		document.getElementById("sem").value=res['data'][0]['sem'];
 		document.getElementById("div").value=res['data'][0]['div'];
@@ -262,7 +268,7 @@
 		document.getElementById("cpassword").value=res['data'][0]['pass'];
 		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
 		console.log(res['data'][0]['img'])
-		if(fil!=""){
+		if(flag==1){
 			document.getElementById("profileimg").src="../uploads/"+filename
 		}else{
 		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
@@ -306,11 +312,12 @@
 		alert("Password not matched!!!.");
 		}
 		else{
-		try{
+		if(fil==1){
 		image=document.getElementById("filename").innerHTML;
-		}catch{
-			pass;
+		}else{
+			image=res['data'][0]['img'];
 		}
+		console.log(image)
 
 		
 
@@ -327,6 +334,11 @@
 		ss.send();
 		
 		location.href="student.php";
+		if(flag==1){
+				alert("found")
+		}else{
+			alert("not found");
+		}
 		}}}}})
 	</script>
 
