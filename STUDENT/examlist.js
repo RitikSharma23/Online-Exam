@@ -9,6 +9,8 @@ dev=document.getElementById("dev").innerHTML
 id=document.getElementById("id").innerHTML
 subcol=document.getElementById("subcol").innerHTML
 
+
+
 data="?roll="+roll+"&fname="+fname+"&lname="+lname+"&phone="+phone+"&email="+email+"&sem="+sem+"&uid="+uid+"&dev="+dev;
 
 console.log(data)
@@ -43,8 +45,7 @@ shuffle(res['data'])
 
 
 
-// for(x=0;x<que.length;x++){
-  x=0;
+for(x=0;x<que.length;x++){
 var field=document.createElement("fieldset")
 var legend=document.createElement("legend")
 var text=document.createTextNode("Question "+(x+1))
@@ -112,11 +113,11 @@ const element = document.getElementById("div1");
 element.appendChild(div);
 element.appendChild(document.createElement("br"));
 
-// }
+}
 
 }
 ss.send()
-
+flag=0;
 
 document.getElementById("submit").addEventListener("click",()=>{
 correct=[]
@@ -127,9 +128,12 @@ correct=[]
           
         if(el[i].type=="radio") {
           
-            if(el[i].checked)
+            if(el[i].checked){
+                correct.push(el[i].value)
+            }else{
+              flag=1;
 
-                    correct.push(el[i].value)
+            }
         }
     }
 
@@ -145,6 +149,9 @@ marks++;
 console.log(marks)
 console.log(data)
 
+if(correct.length==que.length){
 window.location.href = "marks.php"+data+"&id="+id+"&marks="+marks+"&subcol="+subcol;
-
+}else{
+  alert("please select all mcq");
+}
 })

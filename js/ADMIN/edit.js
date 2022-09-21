@@ -132,6 +132,7 @@ for(x=0;x<que.length;x++){
 ss.send()
 
 document.getElementById("sub").addEventListener("click",()=>{
+
     
     function pad(d){return (d < 10) ? '0' + d.toString() : d.toString();}
     y=new Date;
@@ -160,6 +161,8 @@ document.getElementById("sub").addEventListener("click",()=>{
     ss.send()
     }
     tot=x-1
+    alert("Updated Successfully")
+    location.replace("panel.php")
 })
 
 

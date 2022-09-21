@@ -22,13 +22,13 @@
 	fname=sessionStorage.getItem("fname")
 	if(fname==null){
 		alert("please login first");
-		location.replace("../home.html")
+		location.replace("../s_login.html")
 	}
 	</script>
 </head>
 
 <body>
-  <div style="display: none;">
+<div style="display: none;">
 <?php
 $roll=$_REQUEST['roll'];
 $fname=$_REQUEST['fname'];
@@ -77,9 +77,7 @@ echo "subject : <span id='subcol'>".$subcol."</span><br>";
 
                   </div>
                 </div>
-                    <button id="submit" style="display: none;">Submit</button>
-                    <button id="next" style="display: none;">next</button>
-
+                    <button id="submit">Submit</button>
 								<div class="card-body">
 									
 								</div>
@@ -101,7 +99,6 @@ echo "subject : <span id='subcol'>".$subcol."</span><br>";
 	<script src="../js/app.js"></script>
     <script>
 		img=sessionStorage.getItem("img")
-		document.getElementById("profileimgm").src="../uploads/"+img
 
         roll=sessionStorage.getItem("roll")
         fname=sessionStorage.getItem("fname")
@@ -112,30 +109,13 @@ echo "subject : <span id='subcol'>".$subcol."</span><br>";
         phone=sessionStorage.getItem("phone")
         dev=sessionStorage.getItem("dev")
 
-
-        document.getElementById("n_name").innerHTML=fname+" "+lname
-
-        document.getElementById("profilepage").addEventListener("click",()=>{
-            location.replace("profile.php")
-        })
-
-        document.getElementById("homepage").addEventListener("click",()=>{
-            location.replace("studentdashboard.php")
-        })
-        document.getElementById("logout").addEventListener("click",()=>{
-			sessionStorage.clear();
-            location.replace("s_login.html")
-        })
-
-        // document.getElementById("exam").addEventListener("click",()=>{
-        //     location.replace("loadsubjet.php")
-        // })
-
-
     </script>
 
 
 <style>
+	body{
+		font-size: 18px;
+	}
 	table{
 		width: 90%;
 		margin-left: 5%;
@@ -152,6 +132,7 @@ echo "subject : <span id='subcol'>".$subcol."</span><br>";
   }
   input[type="radio"]{
     padding: 40px;
+	margin: 10px;
   }
   fieldset{
     padding: 20px 0px 20px 60px;
