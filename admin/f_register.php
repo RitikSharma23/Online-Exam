@@ -58,7 +58,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Phone </label>
-											<input class="form-control form-control-lg" type="phone" id="ph" placeholder=" Phone Number" required/>
+											<input class="form-control form-control-lg" type="number" id="ph" placeholder=" Phone Number" required/>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Email </label>

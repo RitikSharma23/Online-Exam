@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 $choice=$_REQUEST['obj'];
 
-class Fruit {
+class obj {
   public $conn;
   public $color;
   public $number;
@@ -114,6 +114,40 @@ function sdashboard($conn){
     $result=array();
     $result['data']=array();
     $select="SELECT * FROM `student`;";
+    $responce=mysqli_query($conn,$select);
+    while($row=mysqli_fetch_array($responce)){
+    $index["roll"]=$row['0'];
+    $index["fname"]=$row['1'];
+    $index["lname"]=$row['2'];
+    $index["phone"]=$row['3'];
+    $index["email"]=$row['4'];
+    $index["dob"]=$row['5'];
+    $index["sem"]=$row['6'];
+    $index["div"]=$row['7'];
+    $index["uid"]=$row['8'];
+    $index["year"]=$row['9'];
+    $index["flat"]=$row['10'];
+    $index["pin"]=$row['11'];
+    $index["area"]=$row['12'];
+    $index["city"]=$row['13'];
+    $index["state"]=$row['14'];
+    $index["pass"]=$row['15'];
+    array_push($result['data'],$index);
+    }
+    if($result['data']==null){
+      $result['success']="0";
+    }else{
+      $result['success']="1";
+    }
+    echo json_encode($result);
+    mysqli_close($conn);
+ 
+}
+function studentsearch($conn){
+    $result=array();
+    $uid=$_REQUEST['uid'];
+    $result['data']=array();
+    $select="SELECT * FROM `student` WHERE uid='$uid';";
     $responce=mysqli_query($conn,$select);
     while($row=mysqli_fetch_array($responce)){
     $index["roll"]=$row['0'];
@@ -341,23 +375,23 @@ function facultyreg($conn){
    }
 
 
-$apple = new Fruit();
-// $apple->login($conn);
-
+$object = new obj();
 
 switch($choice){
-  case 1:$apple->sdashboard($conn);break;
-  case 2:$apple->superstudentedit($conn);break;
-  case 3:$apple->dashboardenroll($conn);break;
-  case 4:$apple->studentreg($conn);break;
-  case 5:$apple->fdashboard($conn);break;
-  case 6:$apple->dashboardenuser($conn);break;
-  case 7:$apple->facultyedit($conn);break;
-  case 8:$apple->facultyreg($conn);break;
-  case 9:$apple->studentdelete($conn);break;
-  case 10:$apple->facdelete($conn);break;
-  case 11:$apple->pincode($conn);break;
-  case 12:$apple->usercheck($conn);break;
+  case 1:$object->sdashboard($conn);break;
+  case 2:$object->superstudentedit($conn);break;
+  case 3:$object->dashboardenroll($conn);break;
+  case 4:$object->studentreg($conn);break;
+  case 5:$object->fdashboard($conn);break;
+  case 6:$object->dashboardenuser($conn);break;
+  case 7:$object->facultyedit($conn);break;
+  case 8:$object->facultyreg($conn);break;
+  case 9:$object->studentdelete($conn);break;
+  case 10:$object->facdelete($conn);break;
+  case 11:$object->pincode($conn);break;
+  case 12:$object->usercheck($conn);break;
+  case 13:$object->studentsearch($conn);break;
+
 
 }
 

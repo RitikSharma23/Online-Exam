@@ -135,7 +135,12 @@
 
 					<div class="row">
 						<div class="col-12">
+							<center>
+							<input type="number" id="uid" placeholder="Enter Enrollment">
+							<button id="search" class="btn btn-success">Search</button>
+							</center>
 							<div class="card" style="height: 80vh;" >
+
 								<div class="card-header">
                                 <div id="div1">
 
@@ -165,13 +170,16 @@
 
     <style>
         td{
-            /* width: 40px; */
             border: solid;
 			padding: 10px;
 			text-align: center;
         }
 		table{
 			width: 100%;
+		}
+		#uid{
+			margin: 30px;
+			height: 30px;
 		}
     </style>
 

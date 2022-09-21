@@ -173,6 +173,24 @@
 		location.replace("admin.php")
 	}
 
+	try{
+	fil=document.getElementById("file").innerHTML;
+    filename=document.getElementById("filename").innerHTML;
+	if(fil==""){
+        }else{
+            if(fil==""){
+                alert("please select file")
+            }else if(fil!="image/jpeg" && fil!="image/png"){
+                alert("please select only image file in png,jpej,jpg format only")
+				document.getElementById("submit").disabled=true;
+            }else{
+				console.log(filename)
+				console.log(fil)
+			document.getElementById("profileimg").src="../uploads/"+filename
+			}
+        }
+	}catch{}
+
 
 	document.getElementById("pin").addEventListener("keyup",()=>{
 	pin=document.getElementById("pin").value;
@@ -215,6 +233,8 @@
 
 		uid=document.getElementById("uid").innerHTML;
 		image=""
+		img=sessionStorage.getItem("img")
+		image=img
 
 		ss=new XMLHttpRequest
 		ss.open("GET","api.php?uid="+uid+"&obj=3",true)
@@ -241,7 +261,14 @@
 		document.getElementById("password").value=res['data'][0]['pass'];
 		document.getElementById("cpassword").value=res['data'][0]['pass'];
 		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
+		console.log(res['data'][0]['img'])
+		if(fil!=""){
+			document.getElementById("profileimg").src="../uploads/"+filename
+		}else{
+		document.getElementById("profileimg").src="../uploads/"+res['data'][0]['img'];
 		image=res['data'][0]['img'];
+
+		}
 		}
 		ss.send();
 		
